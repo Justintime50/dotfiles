@@ -1,24 +1,24 @@
 # Dotfiles
 
-My personal dotfiles. Everyone else is doing it, why not me?
+My personal dotfiles. Everyone else is doing it.
 
-Dotfiles are the configuration files that make your OS do magic. They are typically hidden folder starting with a `.` - thus they are called Dotfiles.
+Dotfiles are the configuration files that make your OS do magic. They are typically hidden files starting with a `.` - thus they are called Dotfiles.
 
 ## Usage
 
-Download and replace default configuration files.
+Clone this repo and replace default configuration files.
 
 ```bash
 # Copy EasyPost dotfiles
-cp -a src/easypost/. $HOME
+src/easypost/install.sh
 
 # Copy Personal dotfiles
-cp -a src/personal/. $HOME
+src/personal/install.sh
 ```
 
 ### EasyPost git config (per repo)
 
-Add the following to the repo in each `config` file in an EasyPost repo.
+Add the following to the `config` file in each EasyPost repo.
 
 ```bash
 [user]
