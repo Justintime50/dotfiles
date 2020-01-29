@@ -1,4 +1,4 @@
-#/!bin/bash
+#!/bin/bash
 
 echo "Installing EasyPost dotfiles..."
 mkdir "$HOME"/temp && cd "$HOME"/temp || exit
