@@ -1,4 +1,4 @@
-#/!bin/bash
+#!/bin/bash
 
 echo "Installing personal dotfiles..."
 mkdir "$HOME"/temp && cd "$HOME"/temp || exit
