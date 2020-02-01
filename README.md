@@ -1,6 +1,6 @@
 # Dotfiles
 
-My personal dotfiles. Everyone else is doing it.
+My personal dotfiles. Automated push/pull dotfile changes.
 
 [![Build Status](https://travis-ci.org/Justintime50/dotfiles.svg?branch=master)](https://travis-ci.org/Justintime50/dotfiles)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
