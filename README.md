@@ -13,10 +13,10 @@ Dotfiles are the configuration files that make your OS and tools do their magic.
 
 ```bash
 # Install Personal dotfiles
-curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/personal/install.sh) | bash
+curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/personal/install.sh | bash
 
 # Install EasyPost dotfiles
-curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/easypost/install.sh) | bash
+curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/easypost/install.sh | bash
 ```
 
 ### Push/Pull Dotfiles
