@@ -7,12 +7,15 @@ alias composer="php /usr/local/bin/composer"
 alias git-create="~/git/personal/git-create/git-create.sh"
 
 # Functions
-function update-dotfiles {
+function push-dotfiles {
 	cp "$HOME"/.zshrc "$HOME"/git/personal/dotfiles/src/personal
 	cp "$HOME"/.gitconfig "$HOME"/git/personal/dotfiles/src/personal
 	cd "$HOME"/git/personal/dotfiles
 	git add .
 	git commit -m "Updated dotfiles"
 	git push
-	echo "Dotfiles updated" 
+	echo "Dotfiles pushed!" 
+}
+function pull-dotfiles {
+	curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/personal/install.sh) | bash
 }
