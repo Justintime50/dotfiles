@@ -1,0 +1,3 @@
+[user]
+	email = jhammond@easypost.com
+	name = Justin Hammond

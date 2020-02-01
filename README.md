@@ -19,19 +19,14 @@ curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/perso
 curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/easypost/install.sh) | bash
 ```
 
-### Update Dotfiles
+### Push/Pull Dotfiles
+
+Once installed, you can push/pull any changes with these easy commands. *Be aware that pushing/pulling will overwrite the current dotfiles.*
 
 ```bash
-# Update dotfiles in repo and push to GitHub (it's an alias of these very dotfiles, how fun!)
-update-dotfiles
-```
+# Push dotfiles to GitHub
+push-dotfiles
 
-### EasyPost git config (per repo)
-
-Add the following to the `config` file in each EasyPost repo.
-
-```bash
-[user]
-	email = jhammond@easypost.com
-	name = Justin Hammond
+# Pull dotfiles from GitHub
+pull-dotfiles
 ```
