@@ -17,5 +17,5 @@ function push-dotfiles {
 	echo "Dotfiles updated!" 
 }
 function pull-dotfiles {
-	curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/easypost/install.sh) | bash
+	curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/easypost/install.sh | bash
 }
