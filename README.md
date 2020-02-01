@@ -9,12 +9,21 @@ Dotfiles are the configuration files that make your OS and tools do their magic.
 
 ## Usage
 
+### Install Dotfiles
+
 ```bash
 # Install Personal dotfiles
-bash <(curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/personal/install.sh)
+curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/personal/install.sh) | bash
 
 # Install EasyPost dotfiles
-bash <(curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/easypost/install.sh)
+curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/easypost/install.sh) | bash
+```
+
+### Update Dotfiles
+
+```bash
+# Update dotfiles in repo and push to GitHub (it's an alias of these very dotfiles, how fun!)
+update-dotfiles
 ```
 
 ### EasyPost git config (per repo)
@@ -26,7 +35,3 @@ Add the following to the `config` file in each EasyPost repo.
 	email = jhammond@easypost.com
 	name = Justin Hammond
 ```
-
-## Roadmap
-
-- Syncing between machines
