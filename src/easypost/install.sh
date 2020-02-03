@@ -6,4 +6,5 @@ git clone https://github.com/Justintime50/dotfiles.git > /dev/null 2>&1
 cp -a "$HOME"/dotfilestemp/dotfiles/src/easypost/. "$HOME"
 rm -rf "$HOME"/dotfilestemp
 rm "$HOME/install.sh"
+source ~/.zshrc
 echo "EasyPost dotfiles installed!"
