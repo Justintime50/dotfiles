@@ -13,7 +13,7 @@ alias brew-update="~/git/personal/brew-update/brew-update.sh"
 # Custom
 alias cgp="cd ~/git/personal"
 alias cge="cd ~/git/easypost"
-alias la="la -la"
+alias la="ls -la"
 
 ## Functions ##
 function push-dotfiles {
