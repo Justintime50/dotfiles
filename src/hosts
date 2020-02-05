@@ -1,0 +1,33 @@
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1	localhost ncr4.test wedding_cake.test test.wedding_cake.test
+255.255.255.255	broadcasthost
+::1             localhost 
+127.0.0.1 portal.test
+127.0.0.1 ncr4.test
+127.0.0.1 wedding_cake.test
+127.0.0.1 test1.wedding_cake.test
+127.0.0.1 test1.localhost:8000
+127.0.0.1 phpmyadmin.test
+127.0.0.1 mail.test
+127.0.0.1 gitlab.localhost
+127.0.0.1 justin.localhost
+127.0.0.1 eclipse.localhost
+127.0.0.1 nextcloud.localhost
+127.0.0.1 portainer.localhost
+127.0.0.1 laraview.localhost
+127.0.0.1 alltheinvites.local
+127.0.0.1 nginx1.localhost
+127.0.0.1 tuneapp.localhost
+
+# Added by Docker Desktop
+# To allow the same kube context to work on the host and the container:
+127.0.0.1 kubernetes.docker.internal
+# End of section
+127.0.0.1 portal.ncr4
+127.0.0.1 mail.test
+127.0.0.1 phpmyadmin.test
