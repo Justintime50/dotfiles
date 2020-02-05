@@ -3,7 +3,8 @@ PATH="/usr/local/opt/ruby/bin:/Users/jhammond/.composer/vendor/bin:/usr/local/sb
 export PATH
 
 ## Prompt ##
-#export PS1="\h:\W \u\$ "
+# http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+PROMPT="%n@%C $ "
 
 ## Aliases ##
 # Tools
@@ -16,7 +17,7 @@ alias brew-update="~/git/personal/brew-update/brew-update.sh"
 # Custom
 alias cgp="cd ~/git/personal"
 alias cge="cd ~/git/easypost"
-alias la="ls -la"
+alias lsa="ls -la"
 
 ## Functions ##
 function push-dotfiles {
