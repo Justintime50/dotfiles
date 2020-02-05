@@ -12,11 +12,8 @@ Dotfiles are the configuration files that make your OS and tools do their magic.
 ### Install Dotfiles
 
 ```bash
-# Install Personal dotfiles
-curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/personal/install.sh | bash
-
-# Install EasyPost dotfiles
-curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/easypost/install.sh | bash
+# Install dotfiles
+curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/install.sh | bash
 ```
 
 ### Push/Pull Dotfiles
@@ -29,4 +26,12 @@ push-dotfiles
 
 # Pull dotfiles from GitHub
 pull-dotfiles
+```
+
+### Human Readable Path
+
+Your path can get long, read it like a human:
+
+```bash
+tr ':' '\n' <<< "$PATH"
 ```
