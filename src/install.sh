@@ -1,10 +1,11 @@
 #!/bin/bash
 
 echo "Installing dotfiles..."
-mkdir "$HOME"/dotfilestemp && cd "$HOME"/dotfilestemp || exit
+cd "$HOME" || exit
 git clone https://github.com/Justintime50/dotfiles.git > /dev/null 2>&1
-cp -a "$HOME"/dotfilestemp/dotfiles/src/home/. "$HOME" # copy home dir files
-cp -a "$HOME"/dotfilestemp/dotfiles/src/hosts /etc/hosts # copy hosts file
-rm -rf "$HOME"/dotfilestemp
-rm "$HOME/install.sh"
+cp -a "$HOME"/dotfiles/src/home/. "$HOME" # copy home dir files
+sudo cp -a "$HOME"/dotfiles/src/hosts /etc/hosts # copy hosts file
+rm -rf "$HOME"/dotfiles
+# shellcheck disable=SC1090
+source ~/.zshrc
 echo "Dotfiles installed!"
