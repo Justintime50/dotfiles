@@ -1,6 +1,10 @@
 ## Path ##
-PATH="/Users/jhammond/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:usr/local/opt/ruby/bin:/usr/local/opt/ruby/bin:/Users/jhammond/bin/gam:/usr/local/opt/node@12/bin:/Users/jhammond/bin/gam"
+PATH="/usr/local/opt/ruby/bin:/Users/jhammond/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/jhammond/bin/gam:/usr/local/opt/node@12/bin:/Users/jhammond/bin/gam"
 export PATH
+
+## Prompt ##
+# http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+PROMPT="%n@%C $ "
 
 ## Aliases ##
 # Tools
@@ -17,9 +21,9 @@ alias la="ls -la"
 
 ## Functions ##
 function push-dotfiles {
-	cp "$HOME"/.zshrc "$HOME"/git/personal/dotfiles/src
-	cp "$HOME"/.gitconfig "$HOME"/git/personal/dotfiles/src
-	cp /etc/hosts "$HOME"/git/personal/dotfiles/src
+	cp "$HOME"/.zshrc "$HOME"/git/personal/dotfiles/src/home
+	cp "$HOME"/.gitconfig "$HOME"/git/personal/dotfiles/src/home
+	# cp /etc/hosts "$HOME"/git/personal/dotfiles/src
 	cd "$HOME"/git/personal/dotfiles
 	git add .
 	git commit -m "Updated dotfiles"
