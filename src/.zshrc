@@ -1,5 +1,5 @@
 ## Path ##
-PATH="/usr/local/opt/ruby/bin:/Users/jhammond/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/jhammond/bin/gam:/usr/local/opt/node@12/bin:/Users/jhammond/bin/gam"
+PATH="/usr/local/opt/ruby/bin:/Users/jhammond/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/jhammond/bin/gam:/usr/local/opt/node@12/bin:/Users/jhammond/bin/gam:$(dirname $(go list -f '{{.Target}}' .))"
 export PATH
 
 ## Prompt ##
@@ -23,7 +23,7 @@ alias lsa="ls -la"
 function push-dotfiles {
 	cp "$HOME"/.zshrc "$HOME"/git/personal/dotfiles/src
 	cp "$HOME"/.gitconfig "$HOME"/git/personal/dotfiles/src
-	cp /etc/hosts "$HOME"/git/personal/dotfiles/src
+	# cp /etc/hosts "$HOME"/git/personal/dotfiles/src
 	cd "$HOME"/git/personal/dotfiles
 	git add .
 	git commit -m "Updated dotfiles"
