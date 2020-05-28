@@ -33,4 +33,4 @@ alias cge="cd ~/git/easypost"
 alias lsa="ls -la"
 
 # Import dotfile functions
-source "$HOME"/dotfiles/src/functions.sh
+source "$HOME"/dotfiles/src/scripts/functions.sh
