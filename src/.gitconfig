@@ -1,7 +1,0 @@
-[core]
-	editor = nano
-[user]
-	name = Justintime50
-	email = justinpaulhammond@gmail.com
-[includeIf "gitdir:~/git/easypost/"]
-  path = ~/.gitconfig-easypost
