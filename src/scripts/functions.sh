@@ -1,9 +1,9 @@
 # shellcheck disable=SC1090,SC2148
 ## Dotfile Functions ##
 function push-dotfiles {
-	cp "$HOME"/.zshrc "$HOME"/dotfiles/src/.zshrc
-	cp "$HOME"/.gitconfig "$HOME"/dotfiles/src/.gitconfig
-	cp "$HOME"/.gitconfig-easypost "$HOME"/dotfiles/src/.gitconfig-easypost
+	cp "$HOME"/.zshrc "$HOME"/dotfiles/src/home/.zshrc
+	cp "$HOME"/.gitconfig "$HOME"/dotfiles/src/home/.gitconfig
+	cp "$HOME"/.gitconfig-easypost "$HOME"/dotfiles/src/home/.gitconfig-easypost
 	# cp /etc/hosts "$HOME"/dotfiles/src/misc/hosts
 	cd "$HOME"/dotfiles || exit
 	git add .
