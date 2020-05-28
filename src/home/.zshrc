@@ -12,7 +12,7 @@ path=(
 	/Users/jhammond/bin/gam
 	/usr/local/opt/node@12/bin
 	/Users/jhammond/bin/gam
-	$(dirname $(go list -f '{{.Target}}' .))
+	$(go env GOPATH)/bin
 )
 
 ## Prompt ##
