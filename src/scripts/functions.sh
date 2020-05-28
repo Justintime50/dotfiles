@@ -20,5 +20,5 @@ function pull-dotfiles {
 echo "Dotfiles status: "
 cd "$HOME"/dotfiles || exit
 git remote update || echo "Couldn't check remote Dotfiles"
-git status -uno || echo "Couldn't check remote Dotfiles"
+git status -s || echo "Couldn't check remote Dotfiles"
 cd || exit
