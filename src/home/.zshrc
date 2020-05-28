@@ -1,6 +1,19 @@
 ## Path ##
-PATH="/usr/local/opt/ruby/bin:/Users/jhammond/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/jhammond/bin/gam:/usr/local/opt/node@12/bin:/Users/jhammond/bin/gam:$(dirname $(go list -f '{{.Target}}' .))"
-export PATH
+path=(
+	/usr/local/opt/ruby/bin
+	/Users/jhammond/.composer/vendor/bin
+	/usr/local/sbin
+	/usr/local/bin
+	/usr/bin
+	/bin
+	/usr/sbin
+	/sbin
+	/opt/X11/bin
+	/Users/jhammond/bin/gam
+	/usr/local/opt/node@12/bin
+	/Users/jhammond/bin/gam
+	$(dirname $(go list -f '{{.Target}}' .))
+)
 
 ## Prompt ##
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
@@ -19,17 +32,5 @@ alias cgp="cd ~/git/personal"
 alias cge="cd ~/git/easypost"
 alias lsa="ls -la"
 
-## Functions ##
-function push-dotfiles {
-	cp "$HOME"/.zshrc "$HOME"/git/personal/dotfiles/src
-	cp "$HOME"/.gitconfig "$HOME"/git/personal/dotfiles/src
-	# cp /etc/hosts "$HOME"/git/personal/dotfiles/src
-	cd "$HOME"/git/personal/dotfiles
-	git add .
-	git commit -m "Updated dotfiles"
-	git push
-	echo "Dotfiles pushed!" 
-}
-function pull-dotfiles {
-	curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/install.sh | bash
-}
+# Import dotfile functions
+source "$HOME"/dotfiles/src/functions.sh

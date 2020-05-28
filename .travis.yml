@@ -1,4 +1,4 @@
 language: bash
 
 script:
-    - shellcheck src/*.sh
+    - shellcheck src/scripts/*.sh
