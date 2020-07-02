@@ -10,10 +10,10 @@ else
 fi
 
 # Install dotfiles
-ln -s ~/dotfiles/src/home/.zshrc ~/.zshrc
-ln -s ~/dotfiles/src/home/.gitconfig ~/.gitconfig
-ln -s ~/dotfiles/src/home/.gitconfig-easypost ~/.gitconfig-easypost
-# ln -s ~/dotfiles/src/misc/hosts /etc/hosts
+ln -s "$HOME"/dotfiles/src/home/.zshrc "$HOME"/.zshrc
+ln -s "$HOME"/dotfiles/src/home/.gitconfig "$HOME"/.gitconfig
+ln -s "$HOME"/dotfiles/src/home/.gitconfig-easypost "$HOME"/.gitconfig-easypost
+# ln -s "$HOME"/dotfiles/src/misc/hosts /etc/hosts
 
 # Cleanup
 source "$HOME"/.zshrc
