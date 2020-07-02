@@ -1,20 +1,19 @@
 #!/bin/bash
 # shellcheck disable=SC1090
 
-echo "Installing dotfiles..."
-
 # Check if dotfiles project exists and clone if not
+echo "Installing dotfiles..."
 if [[ ! -d "$HOME"/dotfiles ]] ; then
     git clone https://github.com/Justintime50/dotfiles.git "$HOME"/dotfiles > /dev/null 2>&1
 else
-    cd "$HOME"/dotfiles || exit
-    git pull
-    cd || exit
+    git -C "$HOME"/dotfiles pull
 fi
 
 # Install dotfiles
-cp -a "$HOME"/dotfiles/src/home/. "$HOME" # copy home dir files
-# sudo cp -a "$HOME"/dotfiles/src/hosts /etc/hosts # copy hosts file
+ln -s ~/dotfiles/src/home/.zshrc ~/.zshrc
+ln -s ~/dotfiles/src/home/.gitconfig ~/.gitconfig
+ln -s ~/dotfiles/src/home/.gitconfig-easypost ~/.gitconfig-easypost
+# ln -s ~/dotfiles/src/misc/hosts /etc/hosts
 
 # Cleanup
 source "$HOME"/.zshrc

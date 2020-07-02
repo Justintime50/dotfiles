@@ -1,5 +1,7 @@
 [core]
-	editor = nano
+	editor = vim
 [user]
 	name = Justintime50
 	email = jhammond@easypost.com
+[pull]
+	rebase = true

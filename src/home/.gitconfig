@@ -1,7 +1,9 @@
 [core]
-	editor = nano
+	editor = vim
 [user]
 	name = Justintime50
 	email = justinpaulhammond@gmail.com
 [includeIf "gitdir:~/git/easypost/"]
-  path = ~/.gitconfig-easypost
+  	path = ~/.gitconfig-easypost
+[pull]
+	rebase = true
