@@ -7,3 +7,5 @@
   	path = ~/.gitconfig-easypost
 [pull]
 	rebase = true
+[submodule]
+	recurse = true

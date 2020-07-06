@@ -26,7 +26,7 @@ esac
 if [[ $PERSONAL = "y" || $PERSONAL = "Y" ]] ; then
     ln -s "$HOME"/dotfiles/src/personal/home/.gitconfig "$HOME"/.gitconfig
     # ln -s "$HOME"/dotfiles/src/personal/misc/hosts /etc/hosts
-    echo "source $HOME/dotfiles/src/personal/.zshrc" >> ~/.zshrc
+    echo "source $HOME/dotfiles/src/personal/home/.zshrc" >> ~/.zshrc
     echo "Personal dotfiles installed!"
 fi
     
