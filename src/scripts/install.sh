@@ -14,22 +14,35 @@ fi
 cp "$HOME"/dotfiles/src/core/.zshrc-core "$HOME"/.zshrc # Install the global "~/.zshrc which will source the rest"
 
 # Iterate through each set of dotfiles to install
-while [[ "$#" -gt 0 ]]; do
-    case $1 in
-        # Personal install
-        -p|--personal)
-            ln -s "$HOME"/dotfiles/src/personal/home/.gitconfig "$HOME"/.gitconfig
-            # ln -s "$HOME"/dotfiles/src/personal/misc/hosts /etc/hosts
-            echo "Personal dotfiles installed!" ;;
-        # EasyPost install
-        -e|--easypost) 
-            ln -s "$HOME"/dotfiles/src/easypost/.gitconfig-easypost "$HOME"/.gitconfig-easypost
-            ln -s "$HOME"/dotfiles/src/easypost/ssh/config "$HOME"/.ssh/config
-            echo "EasyPost dotfiles installed!" ;;
-        *) echo "Unknown parameter passed: $1"; exit 1 ;;
-    esac
-    shift
-done
+# Personal install
+echo "Install personal dotfiles? (y/N)"
+read -r PERSONAL
+case $PERSONAL in
+    y|Y) echo "Installing personal dotfiles..." ;;
+    n|N) echo "Skipping personal dotfiles." ;;
+esac
+
+if [[ $PERSONAL = "y" || $PERSONAL = "Y" ]] ; then
+    ln -s "$HOME"/dotfiles/src/personal/home/.gitconfig "$HOME"/.gitconfig
+    # ln -s "$HOME"/dotfiles/src/personal/misc/hosts /etc/hosts
+    echo "source $HOME/dotfiles/src/personal/.zshrc" >> ~/.zshrc
+    echo "Personal dotfiles installed!" ;;
+fi
+    
+# EasyPost install
+echo "Install EasyPost dotfiles? (y/N)"
+read -r EASYPOST
+case $EASYPOST in
+    y|Y) echo "Installing EasyPost dotfiles..." ;;
+    n|N) echo "Skipping EasyPost dotfiles." ;;
+esac
+
+if [[ $EASYPOST = "y" || $EASYPOST = "Y" ]] ; then
+    ln -s "$HOME"/dotfiles/src/easypost/.gitconfig-easypost "$HOME"/.gitconfig-easypost
+    ln -s "$HOME"/dotfiles/src/easypost/ssh/config "$HOME"/.ssh/config
+    echo "source $HOME/dotfiles/src/easypost/.zshrc" >> ~/.zshrc
+    echo "EasyPost dotfiles installed!" ;;
+fi
 
 # Source core files
 source "$HOME"/.zshrc

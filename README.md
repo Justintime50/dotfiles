@@ -18,13 +18,7 @@ This project makes keeping dotfiles synced between machines a breeze. All dotfil
 ### Install Dotfiles
 
 ```bash
-curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/scripts/install.sh | bash --personal
-
-# Options (one is required):
-# -p, --personal    Install personal dotfiles
-# -e, --easypost    Install EasyPost dotfiles
-
-echo "source $HOME/dotfiles/src/personal/.zshrc" >> ~/.zshrc
+curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/scripts/install.sh | bash
 ```
 
 ### Push/Pull Dotfiles
