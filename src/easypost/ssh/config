@@ -1,0 +1,27 @@
+Host */*
+    ProxyCommand ssh -qax $(dirname %h) nc6 -q 1 -w 1 $(basename %h) %p
+
+Host admin
+    User jhammond
+    HostName admin.easypo.net
+    ForwardAgent yes
+
+Host ep-vm*
+    User vagrant
+    ForwardAgent yes
+
+Host *.easypo.net
+    User jhammond
+    ForwardAgent yes
+
+Host *sj
+    User jhammond
+    ForwardAgent yes
+    ProxyJump admin.easypo.net
+
+Host *
+    VisualHostKey yes
+    UserKnownHostsFile ~/.ssh/known_hosts
+    SendEnv TZ
+    ServerAliveInterval 180
+    ForwardAgent no

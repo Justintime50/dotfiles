@@ -24,6 +24,7 @@ PROMPT="%n@%C $ "
 
 # Tools
 alias composer="php /usr/local/bin/composer"
+alias emacs="emacs -nw"
 
 # Projects
 alias git-create="~/git/personal/git-create/git-create.sh"
@@ -32,11 +33,4 @@ alias brew-update="~/git/personal/brew-update/brew-update.sh"
 
 # Custom
 alias cgp="cd ~/git/personal"
-alias cge="cd ~/git/easypost"
 alias lsa="ls -la"
-
-#############
-## Imports ## 
-
-# Import dotfile functions
-source "$HOME"/dotfiles/src/scripts/functions.sh

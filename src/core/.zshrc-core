@@ -1,0 +1,8 @@
+#############
+## Imports ## 
+
+# Import dotfiles core
+source "$HOME"/dotfiles/src/core/functions.sh
+
+# Import custom dotfiles (comment out as needed)
+# source /path/to/dotfiles/file
