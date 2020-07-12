@@ -7,7 +7,7 @@ function push-dotfiles {
 	echo "Dotfiles pushed!"
 }
 function pull-dotfiles {
-	curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/scripts/install.sh | bash
+	bash <(curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/scripts/install.sh)
 }
 
 # Check that dotfiles are up to date each time a terminal starts
