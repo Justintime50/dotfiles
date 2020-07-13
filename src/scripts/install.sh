@@ -10,7 +10,6 @@ else
 fi
 
 # Install dotfiles core
-# NOTE: This will require some manual tweaks once installed
 cp "$HOME"/dotfiles/src/core/.zshrc-core "$HOME"/.zshrc # Install the global "~/.zshrc which will source the rest"
 
 # Iterate through each set of dotfiles to install
@@ -43,6 +42,20 @@ if [[ $EASYPOST = "y" || $EASYPOST = "Y" ]] ; then
     ln -s "$HOME"/dotfiles/src/easypost/.gitconfig-easypost "$HOME"/.gitconfig-easypost
     ln -s "$HOME"/dotfiles/src/easypost/ssh/config "$HOME"/.ssh/config
     echo "source $HOME/dotfiles/src/easypost/.zshrc" >> ~/.zshrc
+    echo "EasyPost dotfiles installed!"
+fi
+
+# Emacs install
+echo "Install Emacs dotfiles? (y/N)"
+read -r EMACS
+case $EMACS in
+    y|Y ) echo "Installing Emacs dotfiles..." ;;
+    n|N ) echo "Skipping Emacs dotfiles." ;;
+    * ) echo "Y or N input required"; exit 1 ;;
+esac
+
+if [[ $EMACS = "y" || $EMACS = "Y" ]] ; then
+    ln -s "$HOME"/dotfiles/src/emacs/.emacs "$HOME"/.emacs
     echo "EasyPost dotfiles installed!"
 fi
 
