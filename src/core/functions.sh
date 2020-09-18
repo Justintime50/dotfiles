@@ -11,7 +11,7 @@ cat "$HOME"/dotfiles/src/core/loaded-modules.txt
 echo ""
 echo "Dotfiles status: "
 git -C "$HOME"/dotfiles remote update || echo "Couldn't check remote Dotfiles"
-git -C "$HOME"/dotfiles status -s || echo "Couldn't check remote Dotfiles"
+git -C "$HOME"/dotfiles status -s -b || echo "Couldn't check remote Dotfiles"
 echo "##################################################"
 
 ## Dotfile Functions ##
