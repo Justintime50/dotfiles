@@ -42,23 +42,23 @@ esac
 
 # Based on input, install dotfiles
 if [[ $PERSONAL = "y" || $PERSONAL = "Y" ]] ; then
-    ln -s "$HOME"/dotfiles/src/personal/home/.gitconfig "$HOME"/.gitconfig
-    # ln -s "$HOME"/dotfiles/src/personal/misc/hosts /etc/hosts
+    ln -sfn "$HOME"/dotfiles/src/personal/home/.gitconfig "$HOME"/.gitconfig
+    # ln -sfn "$HOME"/dotfiles/src/personal/misc/hosts /etc/hosts
     echo "source $HOME/dotfiles/src/personal/home/.zshrc" >> "$HOME"/.zshrc
     echo "* Personal" >> "$LOADED_MODULES_FILE"
     echo "Personal dotfiles installed!"
 fi
 
 if [[ $EASYPOST = "y" || $EASYPOST = "Y" ]] ; then
-    ln -s "$HOME"/dotfiles/src/easypost/.gitconfig-easypost "$HOME"/.gitconfig-easypost
-    ln -s "$HOME"/dotfiles/src/easypost/ssh/config "$HOME"/.ssh/config
+    ln -sfn "$HOME"/dotfiles/src/easypost/.gitconfig-easypost "$HOME"/.gitconfig-easypost
+    ln -sfn "$HOME"/dotfiles/src/easypost/ssh/config "$HOME"/.ssh/config
     echo "source $HOME/dotfiles/src/easypost/.zshrc" >> "$HOME"/.zshrc
     echo "* EasyPost" >> "$LOADED_MODULES_FILE"        
     echo "EasyPost dotfiles installed!"
 fi
 
 if [[ $EMACS = "y" || $EMACS = "Y" ]] ; then
-    ln -s "$HOME"/dotfiles/src/emacs/.emacs "$HOME"/.emacs
+    ln -sfn "$HOME"/dotfiles/src/emacs/.emacs "$HOME"/.emacs
     echo "* Emacs" >> "$LOADED_MODULES_FILE"
     echo "EasyPost dotfiles installed!"
 fi
