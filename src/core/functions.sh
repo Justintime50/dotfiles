@@ -5,7 +5,8 @@ USER=Justintime50
 # Print dotfiles message on shell start
 echo "#################### $SHELL ####################"
 echo "Powered by $USER's Dotfiles"
-echo "Loaded modules: $(cat "$HOME"/dotfiles/src/core/loaded-modules.txt)"
+echo "Loaded modules:"
+echo "$(cat "$HOME"/dotfiles/src/core/loaded-modules.txt)"
 # check that dotfiles are up to date each time a terminal starts
 echo ""
 echo "Dotfiles status: "
