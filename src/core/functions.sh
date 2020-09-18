@@ -10,7 +10,7 @@ cat "$HOME"/dotfiles/src/core/loaded-modules.txt
 # check that dotfiles are up to date each time a terminal starts
 echo ""
 echo "Dotfiles status: "
-git -C "$HOME"/dotfiles remote update > /dev/null || { echo "Error updating from remote Dotfiles"; exit 1; }
+git -C "$HOME"/dotfiles remote update > /dev/null 2>&1 || { echo "Error updating from remote Dotfiles"; exit 1; }
 git -C "$HOME"/dotfiles status -s -b || { echo "Couldn't check remote Dotfiles"; exit 1; }
 echo "##################################################"
 
@@ -18,7 +18,7 @@ echo "##################################################"
 function push-dotfiles {
 	git -C "$HOME"/dotfiles add .
 	git -C "$HOME"/dotfiles commit -m "Updated dotfiles"
-	git -C "$HOME"/dotfiles push > /dev/null || { echo "Error pushing Dotfiles"; exit 1; }
+	git -C "$HOME"/dotfiles push > /dev/null 2>&1 || { echo "Error pushing Dotfiles"; exit 1; }
 	echo "Dotfiles pushed!"
 }
 function pull-dotfiles {
