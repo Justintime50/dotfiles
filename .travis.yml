@@ -2,3 +2,4 @@ language: bash
 
 script:
     - shellcheck src/scripts/*.sh
+    - shellcheck src/core/*.sh
