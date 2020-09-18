@@ -52,7 +52,7 @@ fi
 if [[ $EASYPOST = "y" || $EASYPOST = "Y" ]] ; then
     ln -s "$HOME"/dotfiles/src/easypost/.gitconfig-easypost "$HOME"/.gitconfig-easypost
     ln -s "$HOME"/dotfiles/src/easypost/ssh/config "$HOME"/.ssh/config
-    echo "source $HOME/dotfiles/src/easypost/.zshrc" >> "$HOME"
+    echo "source $HOME/dotfiles/src/easypost/.zshrc" >> "$HOME"/.zshrc
     echo "* EasyPost" >> "$LOADED_MODULES_FILE"        
     echo "EasyPost dotfiles installed!"
 fi
