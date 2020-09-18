@@ -6,7 +6,7 @@ USER=Justintime50
 echo "#################### $SHELL ####################"
 echo "Powered by $USER's Dotfiles"
 echo "Loaded modules:"
-echo "$(cat "$HOME"/dotfiles/src/core/loaded-modules.txt)"
+cat "$HOME"/dotfiles/src/core/loaded-modules.txt
 # check that dotfiles are up to date each time a terminal starts
 echo ""
 echo "Dotfiles status: "
