@@ -10,7 +10,7 @@ else
 fi
 
 # Install dotfiles core
-cp "$HOME"/dotfiles/src/core/.zshrc-core "$HOME"/.zshrc # Install the global "~/.zshrc which will source the rest"
+cp "$HOME"/dotfiles/src/core/.zshrc "$HOME"/.zshrc # Install the global "~/.zshrc which will source the rest"
 LOADED_MODULES_FILE="$HOME/dotfiles/src/core/loaded-modules.txt"
 [ -f "$LOADED_MODULES_FILE" ] && rm "$LOADED_MODULES_FILE"
 echo "* Core" >> "$LOADED_MODULES_FILE"
