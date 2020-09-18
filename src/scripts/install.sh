@@ -4,9 +4,9 @@
 # Check if dotfiles project exists and clone if not
 echo "Installing dotfiles..."
 if [[ ! -d "$HOME"/dotfiles ]] ; then
-    git clone https://github.com/Justintime50/dotfiles.git "$HOME"/dotfiles > /dev/null 2>&1
+    git clone https://github.com/Justintime50/dotfiles.git "$HOME"/dotfiles > /dev/null 2>&1 || echo "Error cloning Dotfiles"; exit 1
 else
-    git -C "$HOME"/dotfiles pull
+    git -C "$HOME"/dotfiles pull > /dev/null 2>&1 || echo "Error pulling Dotfiles"; exit 1
 fi
 
 # Install dotfiles core
