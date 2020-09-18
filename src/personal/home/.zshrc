@@ -2,6 +2,7 @@
 ## Path ##
 path=(
 	/usr/local/opt/ruby/bin
+	/usr/local/lib/ruby/gems/2.7.0/bin
 	/Users/jhammond/.composer/vendor/bin
 	/usr/local/bin
 	/usr/bin
@@ -25,11 +26,6 @@ PROMPT="%n@%C $ "
 # Tools
 alias composer="php /usr/local/bin/composer"
 alias emacs="emacs -nw"
-
-# Projects
-alias git-create="~/git/personal/git-create/git-create.sh"
-alias burn-me="~/git/personal/burn-notice/burn-me.sh"
-alias brew-update="~/git/personal/brew-update/brew-update.sh"
 
 # Custom
 alias cg="cd ~/git"

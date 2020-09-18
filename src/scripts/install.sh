@@ -11,9 +11,11 @@ fi
 
 # Install dotfiles core
 cp "$HOME"/dotfiles/src/core/.zshrc-core "$HOME"/.zshrc # Install the global "~/.zshrc which will source the rest"
+LOADED_MODULES_FILE="$HOME/dotfiles/src/core/loaded-modules.txt"
+[ -f "$LOADED_MODULES_FILE" ] && rm "$LOADED_MODULES_FILE"
+echo "Core, " >> "$LOADED_MODULES_FILE"
 
-# Iterate through each set of dotfiles to install
-# Personal install
+# Iterate through each set of dotfiles prompting which to install
 echo "Install personal dotfiles? (y/N)"
 read -r PERSONAL
 case $PERSONAL in
@@ -22,14 +24,6 @@ case $PERSONAL in
     * ) echo "Y or N input required"; exit 1 ;;
 esac
 
-if [[ $PERSONAL = "y" || $PERSONAL = "Y" ]] ; then
-    ln -s "$HOME"/dotfiles/src/personal/home/.gitconfig "$HOME"/.gitconfig
-    # ln -s "$HOME"/dotfiles/src/personal/misc/hosts /etc/hosts
-    echo "source $HOME/dotfiles/src/personal/home/.zshrc" >> ~/.zshrc
-    echo "Personal dotfiles installed!"
-fi
-    
-# EasyPost install
 echo "Install EasyPost dotfiles? (y/N)"
 read -r EASYPOST
 case $EASYPOST in
@@ -38,14 +32,6 @@ case $EASYPOST in
     * ) echo "Y or N input required"; exit 1 ;;
 esac
 
-if [[ $EASYPOST = "y" || $EASYPOST = "Y" ]] ; then
-    ln -s "$HOME"/dotfiles/src/easypost/.gitconfig-easypost "$HOME"/.gitconfig-easypost
-    ln -s "$HOME"/dotfiles/src/easypost/ssh/config "$HOME"/.ssh/config
-    echo "source $HOME/dotfiles/src/easypost/.zshrc" >> ~/.zshrc
-    echo "EasyPost dotfiles installed!"
-fi
-
-# Emacs install
 echo "Install Emacs dotfiles? (y/N)"
 read -r EMACS
 case $EMACS in
@@ -54,8 +40,26 @@ case $EMACS in
     * ) echo "Y or N input required"; exit 1 ;;
 esac
 
+# Based on input, install dotfiles
+if [[ $PERSONAL = "y" || $PERSONAL = "Y" ]] ; then
+    ln -s "$HOME"/dotfiles/src/personal/home/.gitconfig "$HOME"/.gitconfig
+    # ln -s "$HOME"/dotfiles/src/personal/misc/hosts /etc/hosts
+    echo "source $HOME/dotfiles/src/personal/home/.zshrc" >> "$HOME"/.zshrc
+    echo "Personal, " >> "$LOADED_MODULES_FILE"
+    echo "Personal dotfiles installed!"
+fi
+
+if [[ $EASYPOST = "y" || $EASYPOST = "Y" ]] ; then
+    ln -s "$HOME"/dotfiles/src/easypost/.gitconfig-easypost "$HOME"/.gitconfig-easypost
+    ln -s "$HOME"/dotfiles/src/easypost/ssh/config "$HOME"/.ssh/config
+    echo "source $HOME/dotfiles/src/easypost/.zshrc" >> "$HOME"
+    echo "EasyPost, " >> "$LOADED_MODULES_FILE"        
+    echo "EasyPost dotfiles installed!"
+fi
+
 if [[ $EMACS = "y" || $EMACS = "Y" ]] ; then
     ln -s "$HOME"/dotfiles/src/emacs/.emacs "$HOME"/.emacs
+    echo "Emacs, " >> "$LOADED_MODULES_FILE"
     echo "EasyPost dotfiles installed!"
 fi
 
