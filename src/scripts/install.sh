@@ -13,7 +13,7 @@ function install_core {
     fi
 
     # Install dotfiles core
-    ln -sfn "$DOTFILES_DIR"/src/core/.zshrc "$HOME"/.zshrc # Install the global "~/.zshrc which will source the rest"
+    cp "$DOTFILES_DIR"/src/core/.zshrc "$HOME"/.zshrc # Install the global "~/.zshrc which will source the rest"
     LOADED_MODULES_FILE="$DOTFILES_DIR/src/core/loaded-modules.txt"
     [ -f "$LOADED_MODULES_FILE" ] && rm "$LOADED_MODULES_FILE"
     echo "* Core" >> "$LOADED_MODULES_FILE"
@@ -85,10 +85,13 @@ function install_modules {
     fi
 }
 
+function cleanup {
+    # Source Dotfiles after installation
+    source "$HOME"/.zshrc
+}
+
 # Run the installation script functions
 install_core
 prompt_dotfile_modules
 install_modules
-
-# Source Dotfiles after installation
-source "$HOME"/.zshrc
+cleanup
