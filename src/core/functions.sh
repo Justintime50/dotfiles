@@ -25,16 +25,23 @@ function push-dotfiles {
 	git -C "$DOTFILES_DIR" push > /dev/null 2>&1 || { echo "Error pushing Dotfiles"; exit 1; }
 	echo "Dotfiles pushed!"
 }
+
 function pull-dotfiles {
 	bash <(curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/scripts/install.sh)
 }
+
 function clean-dotfiles {
 	# Remove symlinks and restore original core .zshrc config
-	ln -sfn "$DOTFILES_DIR"/src/core/.zshrc "$HOME"/.zshrc
+	# Core
+	cp "$DOTFILES_DIR"/src/core/.zshrc "$HOME"/.zshrc
+	# Personal
 	rm -i "$HOME"/.gitconfig
 	# rm -i /etc/hosts
+	# EasyPost
 	rm -i "$HOME"/.gitconfig-easypost
-    rm -i "$HOME"/.ssh/config
+    rm -i -rf "$HOME"/.ssh/config
+	# Emacs
 	rm -i "$HOME"/.emacs
+
 	echo "Dotfiles cleaned!"
 }
