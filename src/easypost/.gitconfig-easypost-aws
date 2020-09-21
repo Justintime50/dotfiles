@@ -1,0 +1,9 @@
+[core]
+	editor = emacs
+[user]
+	name = jhammond
+	email = jhammond@easypost.com
+[pull]
+	rebase = true
+[submodule]
+	recurse = true
