@@ -21,6 +21,13 @@ This project makes keeping dotfiles synced between machines a breeze. All dotfil
 bash <(curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/scripts/install.sh)
 ```
 
+**Emacs Installation**
+
+Emacs requires a bit more setup, install the following plugins after opening Emacs:
+
+1. You can install [monokai](https://github.com/oneKelvinSmith/monokai-emacs) with: `M-x package-install monokai-theme`.
+1. Install [iSort](https://github.com/paetzke/py-isort.el) with: `M-x package install py-isort`.
+
 ## Usage
 
 Once installed, you can push, pull, or clean dotfiles with these easy commands. *Be aware that pushing or pulling will overwrite the current dotfiles!*
