@@ -3,7 +3,7 @@
 
 DOTFILES_DIR="$HOME/dotfiles"
 
-function install_core {
+install_core() {
     # Pull the dotfiles project if it exists, clone if it does not
     echo "Installing dotfiles..."
     if [[ ! -d "$DOTFILES_DIR" ]] ; then
@@ -19,75 +19,101 @@ function install_core {
     echo "* Core" >> "$LOADED_MODULES_FILE"
 }
 
-function prompt_dotfile_modules {
+prompt_dotfile_modules() {
     # Iterate through each set of dotfiles prompting which to install
+    prompt_personal_module
+    prompt_easypost_module
+    prompt_easypost_aws_module
+    prompt_emacs_module
+}
+
+prompt_personal_module() {
     echo "Install personal dotfiles? (y/N)"
-    read -r PERSONAL
-    case $PERSONAL in
+    read -r PERSONAL_MODULE
+    case $PERSONAL_MODULE in
         y|Y ) echo "Installing personal dotfiles..." ;;
         n|N ) echo "Skipping personal dotfiles." ;;
         * ) echo "Y or N input required"; exit 1 ;;
     esac
+}
 
+prompt_easypost_module() {
     echo "Install EasyPost dotfiles? (y/N)"
-    read -r EASYPOST
-    case $EASYPOST in
+    read -r EASYPOST_MODULE
+    case $EASYPOST_MODULE in
         y|Y ) echo "Installing EasyPost dotfiles..." ;;
         n|N ) echo "Skipping EasyPost dotfiles." ;;
         * ) echo "Y or N input required"; exit 1 ;;
     esac
+}
 
+prompt_easypost_aws_module() {
     echo "Install EasyPost AWS dotfiles? (y/N)"
-    read -r EASYPOST_AWS
-    case $EASYPOST_AWS in
+    read -r EASYPOST_AWS_MODULE
+    case $EASYPOST_AWS_MODULE in
         y|Y ) echo "Installing EasyPost AWS dotfiles..." ;;
         n|N ) echo "Skipping EasyPost AWS dotfiles." ;;
         * ) echo "Y or N input required"; exit 1 ;;
     esac
+}
 
+prompt_emacs_module() {
     echo "Install Emacs dotfiles? (y/N)"
-    read -r EMACS
-    case $EMACS in
+    read -r EASYPOST_MODULE
+    case $EASYPOST_MODULE in
         y|Y ) echo "Installing Emacs dotfiles..." ;;
         n|N ) echo "Skipping Emacs dotfiles." ;;
         * ) echo "Y or N input required"; exit 1 ;;
     esac
 }
 
-function install_modules {
+install_modules() {
     # Based on input, install dotfiles
-    if [[ $PERSONAL = "y" || $PERSONAL = "Y" ]] ; then
-        ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
-        # ln -sfn "$DOTFILES_DIR"/src/personal/misc/hosts /etc/hosts
-        echo "source $DOTFILES_DIR/src/personal/home/.zshrc" >> "$HOME"/.zshrc
-        echo "* Personal" >> "$LOADED_MODULES_FILE"
-        echo "Personal dotfiles installed!"
-    fi
-
-    if [[ $EASYPOST = "y" || $EASYPOST = "Y" ]] ; then
-        ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost "$HOME"/.gitconfig-easypost
-        ln -sfn "$DOTFILES_DIR"/src/easypost/ssh/config "$HOME"/.ssh/config
-        echo "source $DOTFILES_DIR/src/easypost/.zshrc" >> "$HOME"/.zshrc
-        echo "* EasyPost" >> "$LOADED_MODULES_FILE"        
-        echo "EasyPost dotfiles installed!"
-    fi
-
-    if [[ $EASYPOST_AWS = "y" || $EASYPOST_AWS = "Y" ]] ; then
-        ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost-aws "$HOME"/.gitconfig
-        echo "* EasyPost AWS" >> "$LOADED_MODULES_FILE"        
-        echo "EasyPost AWS dotfiles installed!"
-    fi
-
-    if [[ $EMACS = "y" || $EMACS = "Y" ]] ; then
-        ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
-        echo "* Emacs" >> "$LOADED_MODULES_FILE"
-        echo "Emacs dotfiles installed!"
-    fi
+    case $PERSONAL_MODULE in y|Y )
+        install_personal_module ;;
+    esac
+    case $EASYPOST_MODULE in y|Y )
+        install_easypost_module ;;
+    esac
+    case $EASYPOST_AWS_MODULE in y|Y )
+        install_easypost_aws_module ;;
+    esac
+    case $EASYPOST_MODULE in y|Y )
+        install_emacs_module ;;
+    esac
 }
 
-function cleanup {
+install_personal_module() {
+    ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
+    # ln -sfn "$DOTFILES_DIR"/src/personal/misc/hosts /etc/hosts
+    echo "source $DOTFILES_DIR/src/personal/home/.zshrc" >> "$HOME"/.zshrc
+    echo "* Personal" >> "$LOADED_MODULES_FILE"
+    echo "Personal dotfiles installed!"
+}
+
+install_easypost_module() {
+    ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost "$HOME"/.gitconfig-easypost
+    ln -sfn "$DOTFILES_DIR"/src/easypost/ssh/config "$HOME"/.ssh/config
+    echo "source $DOTFILES_DIR/src/easypost/.zshrc" >> "$HOME"/.zshrc
+    echo "* EasyPost" >> "$LOADED_MODULES_FILE"        
+    echo "EasyPost dotfiles installed!"
+}
+
+install_easypost_aws_module() {
+    ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost-aws "$HOME"/.gitconfig
+    echo "* EasyPost AWS" >> "$LOADED_MODULES_FILE"        
+    echo "EasyPost AWS dotfiles installed!"
+}
+
+install_emacs_module() {
+    ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
+    echo "* Emacs" >> "$LOADED_MODULES_FILE"
+    echo "Emacs dotfiles installed!"
+}
+
+cleanup() {
     # Source Dotfiles after installation
-    source "$HOME"/.zshrc
+    . "$HOME"/.zshrc
 }
 
 # Run the installation script functions
