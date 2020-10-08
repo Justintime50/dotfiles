@@ -21,6 +21,12 @@ This project makes keeping dotfiles synced between machines a breeze. All dotfil
 bash <(curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/scripts/install.sh)
 ```
 
+**Personal Installation**
+
+My personal dotfiles require keychain to setup your SSH keys correctly.
+
+1. You can install [keychain](https://github.com/funtoo/keychain) with: `brew install keychain`.
+
 **Emacs Installation**
 
 Emacs requires a bit more setup, install the following plugins after opening Emacs:
