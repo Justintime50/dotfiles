@@ -59,8 +59,8 @@ prompt_easypost_aws_module() {
 
 prompt_emacs_module() {
     echo "Install Emacs dotfiles? (y/N)"
-    read -r EASYPOST_MODULE
-    case $EASYPOST_MODULE in
+    read -r EMACS_MODULE
+    case $EMACS_MODULE in
         y|Y ) echo "Installing Emacs dotfiles..." ;;
         n|N ) echo "Skipping Emacs dotfiles." ;;
         * ) echo "Y or N input required"; exit 1 ;;
@@ -85,6 +85,7 @@ install_modules() {
 
 install_personal_module() {
     ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
+    ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
     # ln -sfn "$DOTFILES_DIR"/src/personal/misc/hosts /etc/hosts
     echo "source $DOTFILES_DIR/src/personal/home/.zshrc" >> "$HOME"/.zshrc
     echo "* Personal" >> "$LOADED_MODULES_FILE"
