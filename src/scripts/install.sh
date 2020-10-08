@@ -78,7 +78,7 @@ install_modules() {
     case $EASYPOST_AWS_MODULE in y|Y )
         install_easypost_aws_module ;;
     esac
-    case $EASYPOST_MODULE in y|Y )
+    case $EMACS_MODULE in y|Y )
         install_emacs_module ;;
     esac
 }
