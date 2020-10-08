@@ -19,6 +19,7 @@ path=(
 ## Prompt ##
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 PROMPT="%n@%C $ "
+HOSTNAME=$(hostname)
 
 #############
 ## Aliases ##
