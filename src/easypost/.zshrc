@@ -5,6 +5,7 @@
 ## Setup ##
 
 EP_USERNAME="jhammond"
+ADMIN_HOST="admin.easypo.net"
 AWS_DEVVM="oregon1"
 AWS_DEVVM_USER="vagrant"
 AWS_DEVVM_HOST="devvm.easypo.net"
@@ -21,7 +22,7 @@ alias ssh-teamvm="ssh -A $AWS_DEVVM_USER@team.jontsai.$AWS_DEVVM_HOST"
 alias ssh-admin="ssh -A admin.easypo.net"
 
 # Proxies
-alias eztunnel='ssh -L 1080:proxy.local.easypo.net:1080 -N -C ${EP_USERNAME}@${AWS_DEVVM_HOST}'
+alias eztunnel='ssh -L 1080:proxy.local.easypo.net:1080 -N -C ${EP_USERNAME}@${ADMIN_HOST}'
 
 # SCP/RSync
 alias scp-upload="do-scp-upload"
