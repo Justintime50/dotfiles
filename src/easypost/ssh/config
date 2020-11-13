@@ -3,8 +3,8 @@ Host */*
 
 Host admin
     User jhammond
-    HostName admin.easypo.net
     ForwardAgent yes
+    HostName admin.easypo.net
 
 Host ep-vm*
     User vagrant
@@ -14,14 +14,15 @@ Host *.easypo.net
     User jhammond
     ForwardAgent yes
 
-Host *sj
+Host *sj *wdc *nuq
     User jhammond
     ForwardAgent yes
     ProxyJump admin.easypo.net
+    ProxyCommand ssh -qax admin nc6 -q 1 -w 1 %h %p
 
 Host *
     VisualHostKey yes
+    ForwardAgent no
     UserKnownHostsFile ~/.ssh/known_hosts
     SendEnv TZ
     ServerAliveInterval 180
-    ForwardAgent no
