@@ -8,11 +8,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Run ShellCheck on /src/scripts
-        uses: ludeeus/action-shellcheck@1.0.0
-        env:
-          SHELLCHECK_OPTS: -e SC2148 -e SC1090
-      - name: Run ShellCheck on /src/core
+      - name: Run ShellCheck
         uses: ludeeus/action-shellcheck@1.0.0
         env:
           SHELLCHECK_OPTS: -e SC2148 -e SC1090
