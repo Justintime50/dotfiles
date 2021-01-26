@@ -18,7 +18,7 @@ This project makes keeping dotfiles synced between machines a breeze. All dotfil
 ## Install
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/justintime50/dotfiles/master/src/scripts/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/justintime50/dotfiles/main/src/scripts/install.sh)
 ```
 
 **Personal Installation**
