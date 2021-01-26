@@ -16,10 +16,10 @@ AWS_UPLOADS_DIR="/home/$AWS_DEVVM_USER/uploads"
 ## Aliases ##
 
 # SSH
-alias ssh-devvm="ssh -A $AWS_DEVVM_USER@$AWS_DEVVM.$EP_USERNAME.$AWS_DEVVM_HOST"
-alias ssh-devvm-jump="ssh -A -J `whoami`@$AWS_DEVVM_BASTION_HOST $AWS_DEVVM_USER@$AWS_DEVVM.`whoami`.devvm.easypo.net"
-alias ssh-teamvm="ssh -A $AWS_DEVVM_USER@team.jontsai.$AWS_DEVVM_HOST"
-alias ssh-admin="ssh -A admin.easypo.net"
+alias ssh-devvm='ssh -A $AWS_DEVVM_USER@$AWS_DEVVM.$EP_USERNAME.$AWS_DEVVM_HOST'
+alias ssh-devvm-jump='ssh -A -J `whoami`@$AWS_DEVVM_BASTION_HOST $AWS_DEVVM_USER@$AWS_DEVVM.`whoami`.devvm.easypo.net'
+alias ssh-teamvm='ssh -A $AWS_DEVVM_USER@team.jontsai.$AWS_DEVVM_HOST'
+alias ssh-admin='ssh -A admin.easypo.net'
 
 # Proxies
 alias eztunnel='ssh -L 1080:proxy.local.easypo.net:1080 -N -C ${EP_USERNAME}@${ADMIN_HOST}'

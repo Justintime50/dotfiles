@@ -3,7 +3,7 @@
 
 ##########
 ## Path ##
-path=(
+export path=(
 	/usr/local/opt/ruby/bin
 	/usr/local/lib/ruby/gems/2.7.0/bin
 	/Users/jhammond/.composer/vendor/bin
@@ -15,13 +15,13 @@ path=(
 	/sbin
 	/opt/X11/bin
 	/Users/jhammond/bin/gam
-	$(go env GOPATH)/bin
+	"$(go env GOPATH)"/bin
 )
 
 ############
 ## Prompt ##
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
-PROMPT="%n@%C $ "
+export PROMPT="%n@%C $ "
 HOSTNAME=$(hostname)
 
 #############
@@ -33,12 +33,12 @@ alias emacs="emacs -nw"
 
 ## Internet/Networking
 ECHO_IP_URL='ifconfig.co'
-alias check-ip="curl ${ECHO_IP_URL}"
-alias check-ipv4="curl -4 ${ECHO_IP_URL}"
-alias check-ipv6="curl -6 ${ECHO_IP_URL}"
-alias check-proxy-ip="curl -x socks5h://localhost:1080 ${ECHO_IP_URL}"
-alias check-proxy-ipv4="curl -4 -x socks5h://localhost:1080 ${ECHO_IP_URL}"
-alias check-proxy-ipv6="curl -6 -x socks5h://localhost:1080 ${ECHO_IP_URL}"
+alias check-ip='curl ${ECHO_IP_URL}'
+alias check-ipv4='curl -4 ${ECHO_IP_URL}'
+alias check-ipv6='curl -6 ${ECHO_IP_URL}'
+alias check-proxy-ip='curl -x socks5h://localhost:1080 ${ECHO_IP_URL}'
+alias check-proxy-ipv4='curl -4 -x socks5h://localhost:1080 ${ECHO_IP_URL}'
+alias check-proxy-ipv6='curl -6 -x socks5h://localhost:1080 ${ECHO_IP_URL}'
 
 # Custom
 alias cg="cd ~/git"
