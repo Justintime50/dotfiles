@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck disable=SC1090
 
-DOTFILES_DIR="$HOME/dotfiles"
+DOTFILES_DIR="$HOME/.dotfiles"
 
 install_core() {
     # Pull the dotfiles project if it exists, clone if it does not
@@ -127,7 +127,7 @@ install_emacs_module() {
 }
 
 install_server_module() {
-    cat "$DOTFILES_DIR"/src/server/crontab | crontab -
+    crontab - < "$DOTFILES_DIR"/src/server/crontab
     echo "* Server" >> "$LOADED_MODULES_FILE"
     echo "Server dotfiles installed!"
 }
