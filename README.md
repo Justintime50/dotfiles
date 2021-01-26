@@ -4,7 +4,7 @@
 
 My personal dotfiles. Automated push/pull changes and sync warning.
 
-[![Build Status](https://travis-ci.com/Justintime50/dotfiles.svg?branch=master)](https://travis-ci.com/Justintime50/dotfiles)
+[![Build Status](https://github.com/Justintime50/dotfiles/workflows/build/badge.svg)](https://github.com/Justintime50/dotfiles/actions)
 [![Licence](https://img.shields.io/github/license/justintime50/dotfiles)](LICENSE)
 
 <img src="assets/showcase.png" alt="Showcase">
