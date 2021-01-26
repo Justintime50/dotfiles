@@ -10,7 +10,7 @@ export PATH
 
 # Import dotfiles core
 DOTFILES_DIR="$HOME/.dotfiles"
-source "$DOTFILES_DIR"/src/core/functions.sh
+. "$DOTFILES_DIR"/src/core/functions.sh
 
 # Import dotfiles below (Dotfiles intallation will automatically add imports here)
-# source /path/to/dotfiles/file
+# . /path/to/dotfiles/file
