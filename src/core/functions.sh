@@ -1,6 +1,6 @@
 # shellcheck disable=SC1090,SC2148
 
-DOTFILES_DIR="$HOME/dotfiles"
+DOTFILES_DIR="$HOME/.dotfiles"
 GITHUB_USER=Justintime50
 
 print_dotfiles_message() {
