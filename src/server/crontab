@@ -1,0 +1,33 @@
+# SERVER CRONTAB
+# NOTE: Do not store environment variables in this file!
+# They will be sent via email if a cron job fails which is a no-no
+# Instead, place them in `~/.env-crontab` and source that file on
+# cron jobs that require environment variables
+
+
+# GLOBAL SETUP
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+MAILTO=justinpaulhammond@gmail.com
+
+
+# Alchemist
+10 2 * * * alchemist --update > /dev/null
+20 2 * * * alchemist --backup > /dev/null
+
+# EasyPost API Troll Slackbot
+# 0 9,13 * * 1-5 cd ~/git/personal/harvey/projects/justintime50/easypost-troll-api-slackbot && ./start.sh
+
+# Forks
+9 2 * * 1 . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; GITHUB_TOKEN="$GITHUB_TOKEN" forks-sync > /dev/null
+
+# GitHub Archive
+15 0 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; GITHUB_ARCHIVE_ORGS="$GITHUB_ARCHIVE_ORGS" GITHUB_TOKEN="$GITHUB_TOKEN" github-archive -uc -up -oc -op -gc -gp > /dev/null
+
+# Pullbug
+5 9 * * 1 . "$HOME"/.env-crontab; GITHUB_TOKEN="$GITHUB_TOKEN" SLACK_BOT_TOKEN="$PULLBUG_SLACK_BOT_TOKEN" SLACK_CHANNEL="$PULLBUG_SLACK_CHANNEL" pullbug --github --github_context users --github_owner Justintime50 --slack > /dev/null
+
+# Rent Postage
+# 0 17 25 * * cd ~/git/personal/harvey/projects/justintime50/rent-postage && ./start.sh > /dev/null
+
+# Service
+0 9 * * 1 . "$HOME"/.env-crontab; SLACK_BOT_TOKEN="$SERVICE_SLACK_BOT_TOKEN" SLACK_CHANNEL="$SERVICE_SLACK_CHANNEL" service --disk --slack > /dev/null

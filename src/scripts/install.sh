@@ -25,6 +25,7 @@ prompt_dotfile_modules() {
     prompt_easypost_module
     prompt_easypost_aws_module
     prompt_emacs_module
+    prompt_server_module
 }
 
 prompt_personal_module() {
@@ -67,6 +68,16 @@ prompt_emacs_module() {
     esac
 }
 
+prompt_server_module() {
+    echo "Install Server dotfiles? (y/N)"
+    read -r SERVER_MODULE
+    case $SERVER_MODULE in
+        y|Y ) echo "Installing Server dotfiles..." ;;
+        n|N ) echo "Skipping Server dotfiles." ;;
+        * ) echo "Y or N input required"; exit 1 ;;
+    esac
+}
+
 install_modules() {
     # Based on input, install dotfiles
     case $PERSONAL_MODULE in y|Y )
@@ -80,6 +91,9 @@ install_modules() {
     esac
     case $EMACS_MODULE in y|Y )
         install_emacs_module ;;
+    esac
+    case $SERVER_MODULE in y|Y )
+        install_server_module ;;
     esac
 }
 
@@ -110,6 +124,12 @@ install_emacs_module() {
     ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
     echo "* Emacs" >> "$LOADED_MODULES_FILE"
     echo "Emacs dotfiles installed!"
+}
+
+install_server_module() {
+    cat "$DOTFILES_DIR"/src/server/crontab | crontab -
+    echo "* Server" >> "$LOADED_MODULES_FILE"
+    echo "Server dotfiles installed!"
 }
 
 cleanup() {
