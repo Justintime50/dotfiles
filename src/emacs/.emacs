@@ -3,8 +3,11 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
-; Set the theme to Monokai
-(load-theme 'monokai t)
+; Set up the theme
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'github-vscode t)
+; (load-theme 'monokai t)
+
 
 ; Use text mode as default
 (setq major-mode 'text-mode)
