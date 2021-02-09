@@ -20,8 +20,8 @@ MAILTO=justinpaulhammond@gmail.com
 # EasyPost API Troll Slackbot
 # 0 9,13 * * 1-5 cd ~/git/personal/harvey/projects/justintime50/easypost-troll-api-slackbot && ./start.sh > /dev/null
 
-# Forks
-9 2 * * 1 . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; GITHUB_TOKEN="$GITHUB_TOKEN" forks-sync > /dev/null
+# Forks Sync
+9 2 * * 1 . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; GITHUB_TOKEN="$GITHUB_TOKEN" forks-sync --branch master > /dev/null
 
 # GitHub Archive
 15 0 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; GITHUB_ARCHIVE_ORGS="$GITHUB_ARCHIVE_ORGS" GITHUB_TOKEN="$GITHUB_TOKEN" github-archive -uc -up -oc -op -gc -gp > /dev/null
@@ -32,5 +32,5 @@ MAILTO=justinpaulhammond@gmail.com
 # Rent Postage
 # 0 17 25 * * cd ~/git/personal/harvey/projects/justintime50/rent-postage && ./start.sh > /dev/null
 
-# Service
+# Service Stats
 0 9 * * 1 . "$HOME"/.env-crontab; SLACK_BOT_TOKEN="$SERVICE_SLACK_BOT_TOKEN" SLACK_CHANNEL="$SERVICE_SLACK_CHANNEL" service --disk --slack > /dev/null
