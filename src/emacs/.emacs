@@ -1,13 +1,14 @@
 ; Setup MELPA package manager for Emacs
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
+; Initialize all installed and default packages
 (package-initialize)
 
 ; Set up the theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'github-vscode t)
 ; (load-theme 'monokai t)
-
 
 ; Use text mode as default
 (setq major-mode 'text-mode)
@@ -19,8 +20,14 @@
 ; https://www.emacswiki.org/emacs/MenuBar
 (menu-bar-mode -1)
 
+; Prevent extraneous tabs
 (setq-default indent-tabs-mode nil)
+
+; Show line numbers
 (global-linum-mode t)
+
+; Set code auto-complete to "M-tab"
+(global-set-key (kbd "M-TAB") 'dabbrev-expand)
 
 ; Substitute yes/no responses to y/n
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -71,7 +78,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (monokai-pro-theme monokai-theme))))
+ '(package-selected-packages (quote (auto-complete monokai-pro-theme monokai-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
