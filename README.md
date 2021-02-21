@@ -31,7 +31,7 @@ My personal dotfiles require keychain to setup your SSH keys correctly.
 
 Emacs requires a bit more setup, install the following plugins after opening Emacs:
 
-1. You can install [monokai](https://github.com/oneKelvinSmith/monokai-emacs) with: `M-x package-install monokai-theme`.
+1. Install [GitHub VSCode Emacs](https://github.com/Justintime50/github-vscode-emacs) following the guide in the README. <s>Alternatively, you can install [monokai](https://github.com/oneKelvinSmith/monokai-emacs) with: `M-x package-install monokai-theme` and enable this theme in `~/.emacs`.</s>
 1. Install [iSort](https://github.com/paetzke/py-isort.el) with: `M-x package-install py-isort`.
 
 ## Usage
