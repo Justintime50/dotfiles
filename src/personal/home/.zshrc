@@ -5,7 +5,7 @@
 ## Path ##
 export path=(
 	/usr/local/opt/ruby/bin
-	/usr/local/lib/ruby/gems/2.7.0/bin
+	/usr/local/lib/ruby/gems/3.0.0/bin
 	/Users/jhammond/.composer/vendor/bin
 	/usr/local/bin
 	/usr/bin

@@ -3,6 +3,14 @@
 
 DOTFILES_DIR="$HOME/.dotfiles"
 
+main() {
+    # Run the installation script functions
+    install_core
+    prompt_dotfile_modules
+    install_modules
+    cleanup
+}
+
 install_core() {
     # Pull the dotfiles project if it exists, clone if it does not
     echo "Installing dotfiles..."
@@ -100,7 +108,6 @@ install_modules() {
 install_personal_module() {
     ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
     ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
-    # ln -sfn "$DOTFILES_DIR"/src/personal/misc/hosts /etc/hosts
     echo "source $DOTFILES_DIR/src/personal/home/.zshrc" >> "$HOME"/.zshrc
     echo "* Personal" >> "$LOADED_MODULES_FILE"
     echo "Personal dotfiles installed!"
@@ -137,8 +144,4 @@ cleanup() {
     . "$HOME"/.zshrc
 }
 
-# Run the installation script functions
-install_core
-prompt_dotfile_modules
-install_modules
-cleanup
+main
