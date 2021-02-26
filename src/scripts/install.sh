@@ -114,7 +114,8 @@ install_personal_module() {
 }
 
 install_easypost_module() {
-    ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost "$HOME"/.gitconfig-easypost
+    # ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost "$HOME"/.gitconfig-easypost  # install personal instead
+    ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
     ln -sfn "$DOTFILES_DIR"/src/easypost/ssh/config "$HOME"/.ssh/config
     echo "source $DOTFILES_DIR/src/easypost/.zshrc" >> "$HOME"/.zshrc
     echo "* EasyPost" >> "$LOADED_MODULES_FILE"        
@@ -123,6 +124,7 @@ install_easypost_module() {
 
 install_easypost_aws_module() {
     ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost-aws "$HOME"/.gitconfig
+    echo "source $DOTFILES_DIR/src/easypost/.zshrc-aws" >> "$HOME"/.zshrc
     echo "* EasyPost AWS" >> "$LOADED_MODULES_FILE"        
     echo "EasyPost AWS dotfiles installed!"
 }
