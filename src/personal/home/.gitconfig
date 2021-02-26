@@ -2,7 +2,7 @@
 	editor = emacs
 [user]
 	name = Justintime50
-	email = justinpaulhammond@gmail.com
+	email = 39606064+Justintime50@users.noreply.github.com
 [includeIf "gitdir:~/git/easypost/"]
   	path = ~/.gitconfig-easypost
 [pull]
