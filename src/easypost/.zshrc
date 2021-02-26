@@ -21,9 +21,6 @@ alias ssh-devvm-jump='ssh -A -J `whoami`@$AWS_DEVVM_BASTION_HOST $AWS_DEVVM_USER
 alias ssh-teamvm='ssh -A $AWS_DEVVM_USER@team.jontsai.$AWS_DEVVM_HOST'
 alias ssh-admin='ssh -A admin.easypo.net'
 
-# Proxies
-alias eztunnel='ssh -L 1080:proxy.local.easypo.net:1080 -N -C ${EP_USERNAME}@${ADMIN_HOST}'
-
 # SCP/RSync
 alias scp-upload="do-scp-upload"
 function do-scp-upload {

@@ -1,0 +1,11 @@
+#############################
+## EasyPost AWS ZSH Config ##
+
+###########
+## Setup ##
+
+EP_USERNAME="jhammond"
+ADMIN_HOST="admin.easypo.net"
+
+# Proxies
+alias eztunnel='ssh -L 1080:proxy.local.easypo.net:1080 -N -C ${EP_USERNAME}@${ADMIN_HOST}'

@@ -1,9 +1,0 @@
-[core]
-	editor = emacs
-[user]
-	name = Justintime50
-	email = jhammond@easypost.com
-[pull]
-	rebase = true
-[submodule]
-	recurse = true
