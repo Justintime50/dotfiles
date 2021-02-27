@@ -5,7 +5,7 @@
 ## Setup ##
 
 EP_USERNAME="jhammond"
-ADMIN_HOST="admin.easypo.net"
+# ADMIN_HOST="admin.easypo.net"
 AWS_DEVVM="oregon1"
 AWS_DEVVM_USER="vagrant"
 AWS_DEVVM_HOST="devvm.easypo.net"
