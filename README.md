@@ -17,8 +17,16 @@ This project makes keeping dotfiles synced between machines a breeze. All dotfil
 
 ## Install
 
+**macOS and Linux**
+
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/justintime50/dotfiles/main/src/scripts/install.sh)
+```
+
+**Windows**
+
+```batch
+curl -LJOs https://raw.githubusercontent.com/justintime50/dotfiles/main/src/personal/home/.gitconfig
 ```
 
 **Personal Installation**
