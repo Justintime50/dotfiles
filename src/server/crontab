@@ -34,3 +34,6 @@ MAILTO=justinpaulhammond@gmail.com
 
 # Service Stats
 0 9 * * 1 . "$HOME"/.env-crontab; SLACK_BOT_TOKEN="$SERVICE_SLACK_BOT_TOKEN" SLACK_CHANNEL="$SERVICE_SLACK_CHANNEL" service --disk --slack > /dev/null
+
+# Unifi Config Backups
+0 4 * * 0 ~/git/personal/harvey/projects/justintime50/os-scripting/src/ubios/backups/download_backups.sh /Volumes/D1-HD2-Nextcloud/nextcloud-data/justinhammond/files/Unifi/backups > /dev/null
