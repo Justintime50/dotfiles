@@ -16,6 +16,7 @@ export path=(
 	/opt/X11/bin
 	/Users/jhammond/bin/gam
 	"$(go env GOPATH)"/bin
+        /Users/jhammond/.dotnet/tools
 )
 
 ############
