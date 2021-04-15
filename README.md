@@ -25,6 +25,8 @@ bash <(curl -s https://raw.githubusercontent.com/justintime50/dotfiles/main/src/
 
 **Windows**
 
+Not much here except the `.gitconfig` file:
+
 ```batch
 curl -LJOs https://raw.githubusercontent.com/justintime50/dotfiles/main/src/personal/home/.gitconfig
 ```
