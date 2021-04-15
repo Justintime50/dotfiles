@@ -9,9 +9,9 @@ print_dotfiles_message() {
 	echo "Powered by $GITHUB_USER's Dotfiles"
 	echo "Loaded modules:"
 	cat "$DOTFILES_DIR"/src/core/loaded-modules.txt
-	# check that dotfiles are up to date each time a terminal starts
 	echo ""
 	echo "Dotfiles status: "
+	# check that dotfiles are up to date each time a terminal starts
 	git -C "$DOTFILES_DIR" remote update > /dev/null 2>&1 || { echo "Error updating from remote Dotfiles"; exit 1; }
 	git -C "$DOTFILES_DIR" status -s -b || { echo "Couldn't check remote Dotfiles"; exit 1; }
 	echo "##################################################"
@@ -38,17 +38,18 @@ clean-dotfiles() {
 	# Personal
 	rm -i "$HOME"/.gitconfig
 	rm -i "$HOME"/.zlogin
-	# rm -i /etc/hosts
 	
 	# EasyPost
-	rm -i "$HOME"/.gitconfig-easypost
-    rm -i -rf "$HOME"/.ssh/config
+	rm -i -rf "$HOME"/.ssh/config
 
 	# EasyPost AWS
-	rm -i 	rm -i "$HOME"/.gitconfig-easypost-aws
+	rm -i "$HOME"/.gitconfig
 	
 	# Emacs
 	rm -i "$HOME"/.emacs
+
+	# Server
+	crontab - < "# Empty cron"
 
 	echo "Dotfiles cleaned!"
 }

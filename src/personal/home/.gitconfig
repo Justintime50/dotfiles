@@ -1,13 +1,19 @@
 [core]
 	editor = emacs
+
 [user]
 	name = Justintime50
 	email = 39606064+Justintime50@users.noreply.github.com
+
+# Work git config
 # [includeIf "gitdir:~/git/easypost/"]
 #   	path = ~/.gitconfig-easypost
+
 [pull]
 	rebase = true
+
 [submodule]
 	recurse = true
+
 [init]
 	defaultBranch = main
