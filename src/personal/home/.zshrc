@@ -55,7 +55,11 @@ do_check_git_branches() {
     cd "$1" || echo "Could not 'cd' into directory"
     for DIR in */ ; do
         printf '%s\n' "$DIR"
-        cd "$DIR" && git branch || "Could not 'cd' into directory"
-        cd .. || "Could not 'cd' out of directory"
+        if cd "$DIR"; then
+			git branch 
+		else
+			echo "Could not 'cd' into directory"
+		fi
+        cd .. || echo "Could not 'cd' out of directory"
     done
 }
