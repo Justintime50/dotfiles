@@ -33,9 +33,8 @@ curl -LJOs https://raw.githubusercontent.com/justintime50/dotfiles/main/src/pers
 
 **Personal Installation**
 
-My personal dotfiles require keychain to setup your SSH keys correctly.
-
-1. You can install [keychain](https://github.com/funtoo/keychain) with: `brew install keychain`.
+1. My personal dotfiles require keychain to setup your SSH keys correctly. You can install [keychain](https://github.com/funtoo/keychain) with: `brew install keychain`.
+1. Load iTerm2 preferences by pointing iTerm2 to the `plist` found in the `personal/iterm2` directory.
 
 **Emacs Installation**
 
