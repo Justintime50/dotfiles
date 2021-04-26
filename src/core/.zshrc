@@ -1,3 +1,4 @@
+# shellcheck disable=SC1091
 #####################
 ## Core ZSH Config ##
 
