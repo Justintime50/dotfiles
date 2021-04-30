@@ -9,10 +9,11 @@ dots_config_up() {
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >> "$HOME"/.zshrc
     # EasyPost local
     elif [[ "$HOSTNAME" == "MacBook-Pro-Justin-EasyPost" ]] ; then
-        # ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost "$HOME"/.gitconfig-easypost  # install personal instead
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
+        ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
         ln -sfn "$DOTFILES_DIR"/src/easypost/ssh/config "$HOME"/.ssh/config
         ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
+        echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >> "$HOME"/.zshrc
         echo ". $DOTFILES_DIR/src/easypost/.zshrc" >> "$HOME"/.zshrc
     # EasyPost AWS
     elif [[ "$HOSTNAME" == "oregon1" ]] ; then
@@ -38,6 +39,7 @@ dots_config_down() {
     # EasyPost local
     elif [[ "$HOSTNAME" == "MacBook-Pro-Justin-EasyPost" ]] ; then
         rm -i "$HOME"/.gitconfig
+        rm -i "$HOME"/.zlogin
 	    rm -i -rf "$HOME"/.ssh/config
         rm "$HOME"/.emacs
         # .zshrc taken care of by Dots
