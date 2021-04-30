@@ -22,8 +22,11 @@ dots_config_up() {
         echo ". $DOTFILES_DIR/src/easypost/.zshrc-aws" >> "$HOME"/.zshrc
     # Mac mini Server
     elif [[ "$HOSTNAME" == "Server" ]] ; then
+        ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
+        ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
         crontab - < "$DOTFILES_DIR"/src/server/crontab
         ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
+        echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >> "$HOME"/.zshrc
     else
         echo "HOSTNAME doesn't match any config."
     fi
@@ -50,8 +53,11 @@ dots_config_down() {
         # .zshrc taken care of by Dots
     # Mac mini Server
     elif [[ "$HOSTNAME" == "Server" ]] ; then
+        rm -i "$HOME"/.gitconfig
+        rm -i "$HOME"/.zlogin
     	crontab -r
         rm "$HOME"/.emacs
+        # .zshrc taken care of by Dots
     else
         echo "HOSTNAME doesn't match any config."
     fi
