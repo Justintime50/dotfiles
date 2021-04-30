@@ -1,14 +1,11 @@
 #########################
 ## Personal ZSH Config ##
 
-USERNAME=jhammond
-
 ##########
 ## Path ##
 export path=(
 	/usr/local/opt/ruby/bin
 	/usr/local/lib/ruby/gems/3.0.0/bin
-	/Users/"$USERNAME"/.composer/vendor/bin
 	/usr/local/bin
 	/usr/bin
 	/bin
@@ -16,9 +13,9 @@ export path=(
 	/usr/sbin
 	/sbin
 	/opt/X11/bin
-	/Users/"$USERNAME"/bin/gam
+	/Users/"$USER"/bin/gam
 	"$(go env GOPATH)"/bin
-	/Users/"$USERNAME"/.dotnet/tools
+	/Users/"$USER"/.dotnet/tools
 )
 
 ############
