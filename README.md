@@ -19,13 +19,14 @@ Dotfiles are the configuration files that make your OS and tools do their magic.
 
 ```bash
 # 1) Clone the project
-git clone https://github.com/Justintime50/dotfiles.git
+git clone https://github.com/Justintime50/dotfiles.git "$HOME/.dotfiles"
+cd "$HOME/.dotfiles" && git submodule update
 
 # 2) Source Dots
 echo ". $HOME/.dotfiles/dots/src/dots.sh" >> "$HOME/.zshrc"
 
 # 3) Run Dots initially specifying the Dotfiles URL
-DOTFILES_URL="https://github.com/Justintime50/dotfiles.git" dots_sync
+exec "$SHELL" && DOTFILES_URL="https://github.com/Justintime50/dotfiles.git" dots_sync
 ```
 
 **Windows**
