@@ -48,7 +48,7 @@ dots_config_down() {
         # .zshrc taken care of by Dots
     # Mac mini Server
     elif [[ "$HOSTNAME" == "Server" ]] ; then
-    	crontab - < ""
+    	crontab -r
         rm "$HOME"/.emacs
     else
         echo "HOSTNAME doesn't match any config."
