@@ -34,7 +34,7 @@ exec "$SHELL" && DOTFILES_URL="https://github.com/Justintime50/dotfiles.git" dot
 Not much here except the `.gitconfig` file:
 
 ```batch
-curl -LJOs https://raw.githubusercontent.com/justintime50/dotfiles/main/src/personal/home/.gitconfig
+curl -LJs https://raw.githubusercontent.com/justintime50/dotfiles/main/src/personal/home/.gitconfig -o %HOMEPATH%
 ```
 
 **Personal Installation**
@@ -48,6 +48,7 @@ Emacs requires a bit more setup, install the following plugins after opening Ema
 
 1. Install the [GitHub Dark Visual Studio Code Emacs Theme](https://github.com/Justintime50/github-dark-vscode-emacs-theme) following the guide in its README. <s>Alternatively, you can install [monokai](https://github.com/oneKelvinSmith/monokai-emacs) with: `M-x package-install monokai-theme` and enable this theme in `~/.emacs`.</s>
 1. Install [iSort](https://github.com/paetzke/py-isort.el) with: `M-x package-install py-isort`.
+1. Install [TransposeFrame](https://www.emacswiki.org/emacs/TransposeFrame) with `curl -LJs "https://raw.githubusercontent.com/emacsorphanage/transpose-frame/master/transpose-frame.el" -o "$HOME"/.emacs.d/packages/transpose-frame.el`.
 
 ## Usage
 
