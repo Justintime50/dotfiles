@@ -5,15 +5,12 @@
 ; Initialize all installed and default packages
 (package-initialize)
 
-; Load paths
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(add-to-list 'load-path "~/.emacs.d/packages")
-
-; Package list
+; Emacs Package List
 (require 'py-isort)
 (require 'transpose-frame)
 
-; Themes
+; Set up the theme
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'github-vscode t)
 ; (load-theme 'monokai t)
 
@@ -44,8 +41,6 @@
 
 ; Add a newline to the end of files on save if there is no newline
 (setq require-final-newline t)
-
-;;;;;;;;;;;;;;;;;;;;
 
 ; Setup Python iSort
 (add-hook 'before-save-hook 'py-isort-before-save)
