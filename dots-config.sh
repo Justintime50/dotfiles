@@ -1,31 +1,37 @@
 # Up/Down Dotfile "Migrations" via Dots
 
+PERSONAL_HOSTNAME="MacBook-Pro-Justin"
+EASYPOST_HOSTNAME="MacBook-Pro-Justin-EasyPost"
+EASYPOST_AWS_HOSTNAME="oregon1"
+SERVER_HOSTNAME="Server"
+
 dots_config_up() {
-    # Personal
-    if [[ "$HOSTNAME" == "MacBook-Pro-Justin" ]] ; then
+    if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]] ; then
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
         ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
+        
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >> "$HOME"/.zshrc
-    # EasyPost local
-    elif [[ "$HOSTNAME" == "MacBook-Pro-Justin-EasyPost" ]] ; then
+    elif [[ "$HOSTNAME" == "$EASYPOST_HOSTNAME" ]] ; then
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
         ln -sfn "$DOTFILES_DIR"/src/easypost/ssh/config "$HOME"/.ssh/config
         ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
+        
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >> "$HOME"/.zshrc
         echo ". $DOTFILES_DIR/src/easypost/.zshrc" >> "$HOME"/.zshrc
-    # EasyPost AWS
-    elif [[ "$HOSTNAME" == "oregon1" ]] ; then
+    elif [[ "$HOSTNAME" == "$EASYPOST_AWS_HOSTNAME" ]] ; then
         ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost-aws "$HOME"/.gitconfig
         ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
+        
         echo ". $DOTFILES_DIR/src/easypost/.zshrc-aws" >> "$HOME"/.zshrc
-    # Mac mini Server
-    elif [[ "$HOSTNAME" == "Server" ]] ; then
+    elif [[ "$HOSTNAME" == "$SERVER_HOSTNAME" ]] ; then
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
-        crontab - < "$DOTFILES_DIR"/src/server/crontab
         ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
+        
+        crontab - < "$DOTFILES_DIR"/src/server/crontab
+        
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >> "$HOME"/.zshrc
     else
         echo "HOSTNAME doesn't match any config."
@@ -33,31 +39,25 @@ dots_config_up() {
 }
 
 dots_config_down() {
-    # Personal
-    if [[ "$HOSTNAME" == "MacBook-Pro-Justin" ]] ; then
+    # `.zshrc` taken care of by Dots for all of these
+    if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]] ; then
         rm -i "$HOME"/.gitconfig
         rm -i "$HOME"/.zlogin
         rm -i "$HOME"/.emacs
-        # .zshrc taken care of by Dots
-    # EasyPost local
-    elif [[ "$HOSTNAME" == "MacBook-Pro-Justin-EasyPost" ]] ; then
+    elif [[ "$HOSTNAME" == "$EASYPOST_HOSTNAME" ]] ; then
         rm -i "$HOME"/.gitconfig
         rm -i "$HOME"/.zlogin
 	    rm -i -rf "$HOME"/.ssh/config
         rm "$HOME"/.emacs
-        # .zshrc taken care of by Dots
-    # EasyPost AWS
-    elif [[ "$HOSTNAME" == "oregon1" ]] ; then
+    elif [[ "$HOSTNAME" == "$EASYPOST_AWS_HOSTNAME" ]] ; then
 	    rm -i "$HOME"/.gitconfig
         rm "$HOME"/.emacs
-        # .zshrc taken care of by Dots
-    # Mac mini Server
-    elif [[ "$HOSTNAME" == "Server" ]] ; then
+    elif [[ "$HOSTNAME" == "$SERVER_HOSTNAME" ]] ; then
         rm -i "$HOME"/.gitconfig
         rm -i "$HOME"/.zlogin
-    	crontab -r
         rm "$HOME"/.emacs
-        # .zshrc taken care of by Dots
+        
+        crontab -r
     else
         echo "HOSTNAME doesn't match any config."
     fi
