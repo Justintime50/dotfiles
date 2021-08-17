@@ -14,10 +14,11 @@ MAILTO=justinpaulhammond@gmail.com
 10 2 * * * alchemist --update > /dev/null
 30 2 * * * alchemist --backup > /dev/null
 
-# Docker Healthcheck
+# Healthchecks
 */5 * * * * cd ~/git/personal/harvey/projects/justintime50/server-infra && ./src/scripts/docker-healthcheck.sh > /dev/null
+1 * * * * cd ~/git/personal/harvey/projects/justintime50/server-infra && ./src/scripts/harvey-healthcheck.sh > /dev/null
 
-# EasyPost API Troll Slackbot
+# OFF: EasyPost API Troll Slackbot
 # 0 9,13 * * 1-5 cd ~/git/personal/harvey/projects/justintime50/easypost-troll-api-slackbot && ./start.sh > /dev/null
 
 # Forks Sync
@@ -29,10 +30,10 @@ MAILTO=justinpaulhammond@gmail.com
 # Pullbug
 5 9 * * 1 . "$HOME"/.env-crontab; GITHUB_TOKEN="$GITHUB_TOKEN" SLACK_BOT_TOKEN="$PULLBUG_SLACK_BOT_TOKEN" SLACK_CHANNEL="$PULLBUG_SLACK_CHANNEL" pullbug --github --github_context users --github_owner Justintime50 --slack > /dev/null
 
-# Rent Postage
+# OFF: Rent Postage
 # 0 17 25 * * cd ~/git/personal/harvey/projects/justintime50/rent-postage && ./start.sh > /dev/null
 
-# Service Stats
+# OFF: Service Stats
 # 0 9 * * 1 . "$HOME"/.env-crontab; SLACK_BOT_TOKEN="$SERVICE_SLACK_BOT_TOKEN" SLACK_CHANNEL="$SERVICE_SLACK_CHANNEL" service-stats --disk --slack > /dev/null
 
 # Unifi Config Backups
