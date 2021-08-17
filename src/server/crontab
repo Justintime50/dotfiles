@@ -16,7 +16,7 @@ MAILTO=justinpaulhammond@gmail.com
 
 # Healthchecks
 */5 * * * * cd ~/git/personal/harvey/projects/justintime50/server-infra && ./src/scripts/docker-healthcheck.sh > /dev/null
-1 * * * * cd ~/git/personal/harvey/projects/justintime50/server-infra && ./src/scripts/harvey-healthcheck.sh > /dev/null
+*/1 * * * * cd ~/git/personal/harvey/projects/justintime50/server-infra && ./src/scripts/harvey-healthcheck.sh > /dev/null
 
 # OFF: EasyPost API Troll Slackbot
 # 0 9,13 * * 1-5 cd ~/git/personal/harvey/projects/justintime50/easypost-troll-api-slackbot && ./start.sh > /dev/null
