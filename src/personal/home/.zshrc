@@ -63,8 +63,8 @@ do_check_git_branches() {
 
 alias kill-port=do_kill_port
 do_kill_port() {
-    pids_array=($(lsof -t -i:$1 | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g'))
-    if [ "$pids_array" ] ; then
+    pids_array=("$(lsof -t -i:"$1" | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g')")
+    if [ "${pids_array[0]}" ] ; then
         for pid in "${pids_array[@]}"; do
             echo "Killing process $pid..."
             kill "$pid"
