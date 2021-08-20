@@ -63,6 +63,13 @@ do_check_git_branches() {
 
 alias kill-port=do_kill_port
 do_kill_port() {
-    kill "$(lsof -t -i:$1)"
-    echo "Command sent to kill port $1"
+    pids_array=($(lsof -t -i:$1 | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g'))
+    if [ "$pids_array" ] ; then
+        for pid in "${pids_array[@]}"; do
+            echo "Killing process $pid..."
+            kill "$pid"
+        done
+    else
+        echo "No process running on port $1"
+    fi
 }
