@@ -60,3 +60,9 @@ do_check_git_branches() {
         cd .. || echo "Could not 'cd' out of directory"
     done
 }
+
+alias kill-port=do_kill_port
+do_kill_port() {
+    kill "$(lsof -t -i:$1)"
+    echo "Command sent to kill port $1"
+}

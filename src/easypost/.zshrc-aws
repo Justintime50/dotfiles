@@ -7,6 +7,9 @@
 EP_USERNAME="jhammond"
 ADMIN_HOST="admin.easypo.net"
 
+#############
+## Aliases ##
+
 # Proxies
 alias eztunnel='ssh -L 1080:proxy.local.easypo.net:1080 -N -C ${EP_USERNAME}@${ADMIN_HOST}'
 
@@ -15,3 +18,12 @@ ECHO_IP_URL='ifconfig.co'
 alias check-proxy-ip='curl -x socks5h://localhost:1080 ${ECHO_IP_URL}'
 alias check-proxy-ipv4='curl -4 -x socks5h://localhost:1080 ${ECHO_IP_URL}'
 alias check-proxy-ipv6='curl -6 -x socks5h://localhost:1080 ${ECHO_IP_URL}'
+
+###############
+## Functions ##
+
+alias kill-port=do_kill_port
+do_kill_port() {
+    kill "$(lsof -t -i:$1)"
+    echo "Command sent to kill port $1"
+}
