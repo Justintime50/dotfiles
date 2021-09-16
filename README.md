@@ -7,7 +7,7 @@ My personal Dotfiles managed via [Dots](https://github.com/Justintime50/dots).
 [![Build Status](https://github.com/Justintime50/dotfiles/workflows/build/badge.svg)](https://github.com/Justintime50/dotfiles/actions)
 [![Licence](https://img.shields.io/github/license/justintime50/dotfiles)](LICENSE)
 
-<img src="assets/showcase.png" alt="Showcase">
+<img src="https://raw.githubusercontent.com/justintime50/assets/main/src/dotfiles/showcase.png" alt="Showcase">
 
 </div>
 
