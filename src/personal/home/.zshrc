@@ -42,6 +42,7 @@ alias cg="cd ~/git"
 alias cgp="cd ~/git/personal"
 alias cge="cd ~/git/easypost"
 alias lsa="ls -la"
+alias vscode_settings="emacs $HOME/Library/Application\ Support/Code/User/settings.json"
 
 ###############
 ## Functions ##
