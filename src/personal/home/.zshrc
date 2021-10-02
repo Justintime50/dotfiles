@@ -38,11 +38,11 @@ alias check-ipv4='curl -4 ${ECHO_IP_URL}'
 alias check-ipv6='curl -6 ${ECHO_IP_URL}'
 
 # Custom
-alias cg="cd ~/git"
-alias cgp="cd ~/git/personal"
-alias cge="cd ~/git/easypost"
+alias cg='cd $HOME/git'
+alias cgp='cd $HOME/git/personal'
+alias cge='cd $HOME/git/easypost'
 alias lsa="ls -la"
-alias vscode_settings="emacs $HOME/Library/Application\ Support/Code/User/settings.json"
+alias vscode_settings='emacs $HOME/Library/Application\ Support/Code/User/settings.json'
 
 ###############
 ## Functions ##
