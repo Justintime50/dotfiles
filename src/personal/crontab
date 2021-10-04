@@ -1,0 +1,15 @@
+# PERSONAL CRONTAB
+# NOTE: Do not store environment variables in this file!
+# They will be sent via email if a cron job fails which could expose sensitive creds
+# Instead, place them in `~/.env-crontab` and source that file on
+# cron jobs that require environment variables
+
+
+# GLOBAL SETUP
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+
+# Alchemist
+0 */4 * * * alchemist --update > /dev/null
+15 */4 * * * alchemist --backup > /dev/null
+20 */4 * * * cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/personal/Brewfile"

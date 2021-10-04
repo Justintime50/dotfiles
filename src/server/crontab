@@ -1,6 +1,6 @@
 # SERVER CRONTAB
 # NOTE: Do not store environment variables in this file!
-# They will be sent via email if a cron job fails which is a no-no
+# They will be sent via email if a cron job fails which could expose sensitive creds
 # Instead, place them in `~/.env-crontab` and source that file on
 # cron jobs that require environment variables
 
@@ -13,16 +13,17 @@ MAILTO=justinpaulhammond@gmail.com
 # Alchemist
 10 2 * * * alchemist --update > /dev/null
 30 2 * * * alchemist --backup > /dev/null
+45 2 * * * cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/server/Brewfile"
 
 # Healthchecks
 */5 * * * * cd ~/git/personal/harvey/projects/justintime50/server-infra && ./src/scripts/docker-healthcheck.sh > /dev/null
 */5 * * * * cd ~/git/personal/harvey/projects/justintime50/server-infra && ./src/scripts/harvey-healthcheck.sh > /dev/null
 
 # Forks Sync
-5 2 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; GITHUB_TOKEN="$GITHUB_TOKEN" forks-sync --branch master > /dev/null
+5 2 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; GITHUB_TOKEN="$GITHUB_TOKEN" forks-sync > /dev/null
 
 # GitHub Archive
-25 0 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; github-archive -u justintime50 -o tuneuptechnology,ncr4 -g justintime50 -c -p -f -t "$GITHUB_TOKEN" > /dev/null
+25 0 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; github-archive -u justintime50 -o tuneuptechnology -g justintime50 -c -p -f -t "$GITHUB_TOKEN" > /dev/null
 
 # Pullbug
 5 9 * * 1 . "$HOME"/.env-crontab; GITHUB_TOKEN="$GITHUB_TOKEN" SLACK_BOT_TOKEN="$PULLBUG_SLACK_BOT_TOKEN" SLACK_CHANNEL="$PULLBUG_SLACK_CHANNEL" pullbug --github --github_context users --github_owner Justintime50 --slack > /dev/null
