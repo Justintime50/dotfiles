@@ -26,7 +26,7 @@ MAILTO=justinpaulhammond@gmail.com
 25 0 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; github-archive -u justintime50 -o tuneuptechnology -g justintime50 -c -p -f -t "$GITHUB_TOKEN" > /dev/null
 
 # Pullbug
-5 9 * * 1 . "$HOME"/.env-crontab; GITHUB_TOKEN="$GITHUB_TOKEN" SLACK_BOT_TOKEN="$PULLBUG_SLACK_BOT_TOKEN" SLACK_CHANNEL="$PULLBUG_SLACK_CHANNEL" pullbug --github --github_context users --github_owner Justintime50 --slack > /dev/null
+5 9 * * 1 . "$HOME"/.env-crontab; pullbug --pulls --issues --drafts --github_token "$GITHUB_TOKEN" --github_context users --github_owner Justintime50 --slack --slack_token "$PULLBUG_SLACK_BOT_TOKEN" --slack_channel "$PULLBUG_SLACK_CHANNEL" > /dev/null
 
 # Unifi Config Backups
 0 4 * * 0 . "$HOME"/.keychain/${HOSTNAME}-sh; ~/git/personal/harvey/projects/justintime50/os-scripting/src/ubios/backups/download_config_backups.sh /Volumes/D1-HD2-Nextcloud/nextcloud-data/justinhammond/files/Unifi/backups > /dev/null
