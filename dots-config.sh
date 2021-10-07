@@ -38,22 +38,22 @@ dots_config_up() {
 dots_config_down() {
     # `.zshrc` taken care of by Dots for all of these
     if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]] ; then
-        rm -i "$HOME"/.gitconfig
-        rm -i "$HOME"/.zlogin
-        rm -i "$HOME"/.emacs
+        rm "$HOME"/.gitconfig
+        rm "$HOME"/.zlogin
+        rm "$HOME"/.emacs
         crontab -r
     elif [[ "$HOSTNAME" == "$EASYPOST_HOSTNAME" ]] ; then
-        rm -i "$HOME"/.gitconfig
-        rm -i "$HOME"/.zlogin
-	    rm -i -rf "$HOME"/.ssh/config
+        rm "$HOME"/.gitconfig
+        rm "$HOME"/.zlogin
+        rm -rf "$HOME"/.ssh/config
         rm "$HOME"/.emacs
         crontab -r
     elif [[ "$HOSTNAME" == "$EASYPOST_AWS_HOSTNAME" ]] ; then
-	    rm -i "$HOME"/.gitconfig
+        rm "$HOME"/.gitconfig
         rm "$HOME"/.emacs
     elif [[ "$HOSTNAME" == "$SERVER_HOSTNAME" ]] ; then
-        rm -i "$HOME"/.gitconfig
-        rm -i "$HOME"/.zlogin
+        rm "$HOME"/.gitconfig
+        rm "$HOME"/.zlogin
         rm "$HOME"/.emacs
         crontab -r
     else
