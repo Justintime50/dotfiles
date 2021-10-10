@@ -24,7 +24,7 @@ dots_config_up() {
         ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost-aws "$HOME"/.gitconfig
         ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
         echo ". $DOTFILES_DIR/src/easypost/.zshrc-aws" >> "$HOME"/.zshrc
-    elif [[ "$HOSTNAME" == "$SERVER_HOSTNAME" ]] ; then
+    elif [[ "$HOSTNAME" == *"$SERVER_HOSTNAME"* ]] ; then
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
         ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
@@ -51,7 +51,7 @@ dots_config_down() {
     elif [[ "$HOSTNAME" == "$EASYPOST_AWS_HOSTNAME" ]] ; then
         rm "$HOME"/.gitconfig
         rm "$HOME"/.emacs
-    elif [[ "$HOSTNAME" == "$SERVER_HOSTNAME" ]] ; then
+    elif [[ "$HOSTNAME" == *"$SERVER_HOSTNAME"* ]] ; then
         rm "$HOME"/.gitconfig
         rm "$HOME"/.zlogin
         rm "$HOME"/.emacs
