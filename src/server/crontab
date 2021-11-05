@@ -20,10 +20,10 @@ MAILTO=justinpaulhammond@gmail.com
 */5 * * * * cd ~/git/personal/harvey/projects/justintime50/os-scripting && ./src/macos/healthchecks/harvey-healthcheck.sh > /dev/null
 
 # Forks Sync
-5 2 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; GITHUB_TOKEN="$GITHUB_TOKEN" forks-sync > /dev/null
+5 2 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; forks-sync --token "$GITHUB_TOKEN" --force > /dev/null
 
 # GitHub Archive
-25 0 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; github-archive -u justintime50 -o tuneuptechnology -g justintime50 -c -p -f -t "$GITHUB_TOKEN" > /dev/null
+25 0 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; github-archive --users justintime50 --orgs tuneuptechnology --gists justintime50 --clone --pull --forks --token "$GITHUB_TOKEN" > /dev/null
 
 # Pullbug
 5 9 * * 1 . "$HOME"/.env-crontab; pullbug --pulls --issues --drafts --github_token "$GITHUB_TOKEN" --github_context users --github_owner Justintime50 --slack --slack_token "$PULLBUG_SLACK_BOT_TOKEN" --slack_channel "$PULLBUG_SLACK_CHANNEL" > /dev/null
