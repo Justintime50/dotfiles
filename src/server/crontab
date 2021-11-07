@@ -13,14 +13,14 @@ MAILTO=justinpaulhammond@gmail.com
 # Alchemist
 10 2 * * * alchemist --update > /dev/null
 30 2 * * * alchemist --backup > /dev/null
-45 2 * * * cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/server/Brewfile"
+45 2 * * * cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/server/Brewfile" > /dev/null
 
 # Database Backups
 # TODO: Look into `--defaults-extra-file` for mysql conf file (passwords)
 # TODO: Encrypt backup files instead of saving them as plain text
 # TODO: Clean up database backups after 30-60 days
 # TODO: Add other services once we setup database replication
-0 3 * * * . "$HOME"/.env-crontab; srvinfra export_database laraview-laraview-db-replica-1 "$LARAVIEW_DB_ROOT_PASSWORD" "$HOME"/sqldumps/laraview/"$(date +%F_%H-%M-%S)".sql
+0 3 * * * . "$HOME"/.env-crontab; srvinfra export_database laraview-laraview-db-replica-1 "$LARAVIEW_DB_ROOT_PASSWORD" "$HOME"/sqldumps/laraview/"$(date +%F_%H-%M-%S)".sql > /dev/null
 
 # Healthchecks
 */5 * * * * cd ~/git/personal/harvey/projects/justintime50/os-scripting && ./src/macos/healthchecks/docker-healthcheck.sh > /dev/null
