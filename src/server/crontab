@@ -20,7 +20,7 @@ MAILTO=justinpaulhammond@gmail.com
 # TODO: Encrypt backup files instead of saving them as plain text
 # TODO: Clean up database backups after 30-60 days
 # TODO: Add other services once we setup database replication
-0 3 * * * . "$HOME"/.env-crontab; srvinfra export_database laraview-laraview-db-replica-1 "$LARAVIEW_DB_ROOT_PASSWORD" "$HOME/sqldumps/laraview/$(date +%F_%H-%M-%S).sql" > /dev/null
+0 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure laraview-laraview-db-replica-1 "$LARAVIEW_DB_ROOT_PASSWORD" "$HOME/sqldumps/laraview/$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
 
 # Healthchecks
 */5 * * * * cd ~/git/personal/harvey/projects/justintime50/os-scripting && ./src/macos/healthchecks/docker-healthcheck.sh > /dev/null

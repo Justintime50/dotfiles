@@ -28,8 +28,9 @@ dots_config_up() {
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
         ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
-        crontab - < "$DOTFILES_DIR"/src/server/crontab
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >> "$HOME"/.zshrc
+    elif [[ "$HOSTNAME" == "$SERVER_HOSTNAME"2 ]] ; then
+	crontab - < "$DOTFILES_DIR"/src/server/crontab
     else
         echo "HOSTNAME doesn't match any config."
     fi
