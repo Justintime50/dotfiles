@@ -4,6 +4,7 @@ PERSONAL_HOSTNAME="MacBook-Pro-Justin"
 EASYPOST_HOSTNAME="MacBook-Pro-Justin-EasyPost"
 EASYPOST_AWS_HOSTNAME="oregon1"
 SERVER_HOSTNAME="Server"
+SERVER2_HOSTNAME="Server2"
 
 dots_config_up() {
     if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]] ; then
@@ -29,8 +30,9 @@ dots_config_up() {
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
         ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >> "$HOME"/.zshrc
-    elif [[ "$HOSTNAME" == "$SERVER_HOSTNAME"2 ]] ; then
-	crontab - < "$DOTFILES_DIR"/src/server/crontab
+	if [[ "$HOSTNAME" == "$SERVER2_HOSTNAME" ]] ; then
+	    crontab - < "$DOTFILES_DIR"/src/server/crontab
+	fi
     else
         echo "HOSTNAME doesn't match any config."
     fi
