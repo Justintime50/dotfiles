@@ -22,7 +22,7 @@ MAILTO=justinpaulhammond@gmail.com
 # TODO: Add other services once we setup database replication
 0 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure laraview-laraview-db-replica-1 "$LARAVIEW_DB_ROOT_PASSWORD" "$HOME/sqldumps/laraview/$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
 1 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure tuneapp-tuneapp-db-replica-1 "$TUNEAPP_DB_ROOT_PASSWORD" "$HOME/sqldumps/tuneapp/$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
-
+2 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure all-the-invites-alltheinvites-db-replica-1 "$ALLTHEINVITES_DB_ROOT_PASSWORD" "$HOME/sqldumps/alltheinvites/$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
 
 # Healthchecks
 */5 * * * * cd ~/git/personal/harvey/projects/justintime50/os-scripting && ./src/macos/healthchecks/docker-healthcheck.sh > /dev/null
