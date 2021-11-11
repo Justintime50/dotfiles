@@ -16,13 +16,12 @@ MAILTO=justinpaulhammond@gmail.com
 45 2 * * * cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/server/Brewfile" > /dev/null
 
 # Database Backups
-# TODO: Look into `--defaults-extra-file` for mysql conf file (passwords)
-# TODO: Encrypt backup files instead of saving them as plain text
 # TODO: Clean up database backups after 30-60 days
-# TODO: Add other services once we setup database replication
 0 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure laraview-laraview-db-replica-1 "$LARAVIEW_DB_ROOT_PASSWORD" "$HOME/sqldumps/laraview/$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
 1 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure tuneapp-tuneapp-db-replica-1 "$TUNEAPP_DB_ROOT_PASSWORD" "$HOME/sqldumps/tuneapp/$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
 2 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure all-the-invites-alltheinvites-db-replica-1 "$ALLTHEINVITES_DB_ROOT_PASSWORD" "$HOME/sqldumps/alltheinvites/$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
+3 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure el-gozo-de-jesus-elgozodejesus-db-replica-1 "$ELGOZODEJESUS_DB_ROOT_PASSWORD" "$HOME/sqldumps/elgozodejesus/$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
+
 
 # Healthchecks
 */5 * * * * cd ~/git/personal/harvey/projects/justintime50/os-scripting && ./src/macos/healthchecks/docker-healthcheck.sh > /dev/null
