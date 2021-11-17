@@ -43,7 +43,7 @@ curl -LJs https://raw.githubusercontent.com/justintime50/dotfiles/main/src/perso
     1. Load iTerm2 preferences by pointing iTerm2 to the `plist` found in the `personal/iterm2` directory.
 * **Emacs**
     1. Install the [GitHub Dark Visual Studio Code Emacs Theme](https://github.com/Justintime50/github-dark-vscode-emacs-theme) following the guide in its README.
-    1. Run the following to install all Emacs packages: `M-x package-install-selected-packages`
+    1. Run the following to install all Emacs packages: `M-x package-refresh-contents` then `M-x package-install-selected-packages`
 
 ## Usage
 
