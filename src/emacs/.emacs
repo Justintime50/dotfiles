@@ -1,6 +1,10 @@
-; Setup MELPA package manager for Emacs
+; Import the main package
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
+; Setup package archives for Emacs
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+;; TODO: The following should work but doesn't, fix when possible
+;; (add-to-list 'package-archives '("myelpa" . "https://raw.githubusercontent.com/Justintime50/myelpa/main/"))
 
 ; Initialize all installed and default packages
 (package-initialize)
@@ -11,6 +15,11 @@
 
 ; Themes
 (load-theme 'github-dark-vscode t)
+
+;; There are a plethora of articles on how Emacs is broken with TLS, disable v1.3 as needed
+(when (and (equal emacs-version "27.2")
+           (eql system-type 'darwin))
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 ; Use text mode as default
 (setq major-mode 'text-mode)
