@@ -9,13 +9,8 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (add-to-list 'load-path "~/.emacs.d/packages")
 
-; Package list
-(require 'py-isort)
-(require 'transpose-frame)
-
 ; Themes
-(load-theme 'github-vscode t)
-; (load-theme 'monokai t)
+(load-theme 'github-dark-vscode t)
 
 ; Use text mode as default
 (setq major-mode 'text-mode)
@@ -33,7 +28,7 @@
 ; Show line numbers
 (global-linum-mode t)
 
-; Set code auto-complete to "M-tab"
+; Set code auto-complete to "M-tab" (TODO: Can this be done with Ivy)
 (global-set-key (kbd "M-TAB") 'dabbrev-expand)
 
 ; Substitute yes/no responses to y/n
@@ -44,11 +39,6 @@
 
 ; Add a newline to the end of files on save if there is no newline
 (setq require-final-newline t)
-
-;;;;;;;;;;;;;;;;;;;;
-
-; Setup Python iSort
-(add-hook 'before-save-hook 'py-isort-before-save)
 
 ;; https://www.emacswiki.org/emacs/AutoSave
 ;;
@@ -81,12 +71,29 @@
 (defvar backup-dir (concat user-emacs-directory "backups"))
 (setq backup-directory-alist (list (cons "." backup-dir)))
 
+;;;;;;;;;;;;;;;;;;;;;
+; Configure Packages
+;;;;;;;;;;;;;;;;;;;;;
+
+; Setup Ivy
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(setq ivy-count-format "(%d/%d) ")
+
+; Setup Python iSort
+(require 'py-isort)
+(add-hook 'before-save-hook 'py-isort-before-save)
+
+;;;;;;;;;;;;;;;;;;;;;
+; Automatic Additions
+;;;;;;;;;;;;;;;;;;;;;
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (auto-complete monokai-pro-theme monokai-theme))))
+ '(package-selected-packages '(package-lint ivy py-isort transpose-frame)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

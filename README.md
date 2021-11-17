@@ -15,7 +15,7 @@ Dotfiles are the configuration files that make your OS and tools do their magic.
 
 ## Install
 
-**macOS and Linux**
+### macOS and Linux
 
 ```bash
 # 1) Clone the project
@@ -29,7 +29,7 @@ echo ". $HOME/.dotfiles/dots/src/dots.sh" >> "$HOME/.zshrc" && . "$HOME/.zshrc"
 DOTFILES_URL="https://github.com/Justintime50/dotfiles.git" dots_sync
 ```
 
-**Windows**
+### Windows
 
 Not much here except the `.gitconfig` file:
 
@@ -37,18 +37,13 @@ Not much here except the `.gitconfig` file:
 curl -LJs https://raw.githubusercontent.com/justintime50/dotfiles/main/src/personal/home/.gitconfig -o %HOMEPATH%
 ```
 
-**Personal Installation**
+### Additional Setup
 
-1. My personal dotfiles require keychain to setup your SSH keys correctly. You can install [keychain](https://github.com/funtoo/keychain) with: `brew install keychain`.
-1. Load iTerm2 preferences by pointing iTerm2 to the `plist` found in the `personal/iterm2` directory.
-
-**Emacs Installation**
-
-Emacs requires a bit more setup, install the following plugins after opening Emacs:
-
-1. Install the [GitHub Dark Visual Studio Code Emacs Theme](https://github.com/Justintime50/github-dark-vscode-emacs-theme) following the guide in its README. <s>Alternatively, you can install [monokai](https://github.com/oneKelvinSmith/monokai-emacs) with: `M-x package-install monokai-theme` and enable this theme in `~/.emacs`.</s>
-1. Install [iSort](https://github.com/paetzke/py-isort.el) with: `M-x package-install py-isort`.
-1. Install [TransposeFrame](https://www.emacswiki.org/emacs/TransposeFrame) with `curl -LJs "https://raw.githubusercontent.com/emacsorphanage/transpose-frame/master/transpose-frame.el" -o "$HOME"/.emacs.d/packages/transpose-frame.el`.
+* **iTerm2**
+    1. Load iTerm2 preferences by pointing iTerm2 to the `plist` found in the `personal/iterm2` directory.
+* **Emacs**
+    1. Install the [GitHub Dark Visual Studio Code Emacs Theme](https://github.com/Justintime50/github-dark-vscode-emacs-theme) following the guide in its README.
+    1. Run the following to install all Emacs packages: `M-x package-install-selected-packages`
 
 ## Usage
 
