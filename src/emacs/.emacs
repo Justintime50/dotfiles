@@ -85,9 +85,13 @@
 ;;;;;;;;;;;;;;;;;;;;;
 
 ; Setup Flycheck
+; TODO: Remove require when package manager is working again (this is done for manually included packages)
+(require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ; Setup Ivy
+; TODO: Remove require when package manager is working again (this is done for manually included packages)
+(require 'ivy)
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
 (setq ivy-count-format "(%d/%d) ")
