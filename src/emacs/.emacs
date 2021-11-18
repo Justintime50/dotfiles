@@ -1,25 +1,33 @@
+;;;;;;;;;;;;;;;;
+; Initialization
+;;;;;;;;;;;;;;;;
+
 ; Import the main package
 (require 'package)
 
 ; Setup package archives for Emacs
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-;; TODO: The following should work but doesn't, fix when possible
-;; (add-to-list 'package-archives '("myelpa" . "https://raw.githubusercontent.com/Justintime50/myelpa/main/"))
+(setq package-enable-at-startup nil)
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("myelpa" . "https://raw.githubusercontent.com/Justintime50/myelpa/main/src/")))
 
 ; Initialize all installed and default packages
 (package-initialize)
+(require 'use-package)
+
+;;;;;;;;;;;;;;;;
+; Emacs Settings
+;;;;;;;;;;;;;;;;
 
 ; Load paths
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (add-to-list 'load-path "~/.emacs.d/packages")
 
-; Themes
+; Setup theme
 (load-theme 'github-dark-vscode t)
 
 ;; There are a plethora of articles on how Emacs is broken with TLS, disable v1.3 as needed
-(when (and (equal emacs-version "27.2")
-           (eql system-type 'darwin))
-  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+;; TODO: In the future, maybe this won't be needed and it can be removed
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 ; Use text mode as default
 (setq major-mode 'text-mode)
@@ -48,6 +56,9 @@
 
 ; Add a newline to the end of files on save if there is no newline
 (setq require-final-newline t)
+
+; Remove trailing whitespaces on file save
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; https://www.emacswiki.org/emacs/AutoSave
 ;;
@@ -80,25 +91,24 @@
 (defvar backup-dir (concat user-emacs-directory "backups"))
 (setq backup-directory-alist (list (cons "." backup-dir)))
 
-;;;;;;;;;;;;;;;;;;;;;
-; Configure Packages
-;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;
+; Package Configurations
+;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Setup Flycheck
-; TODO: Remove require when package manager is working again (this is done for manually included packages)
-(require 'flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
+(use-package flycheck
+  :init
+  (add-hook 'after-init-hook #'global-flycheck-mode))
 
-; Setup Ivy
-; TODO: Remove require when package manager is working again (this is done for manually included packages)
-(require 'ivy)
-(ivy-mode 1)
-(setq ivy-use-virtual-buffers t)
-(setq ivy-count-format "(%d/%d) ")
+(use-package ivy
+  :init
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
+  :config
+  (ivy-mode 1))
 
-; Setup Python iSort
-(require 'py-isort)
-(add-hook 'before-save-hook 'py-isort-before-save)
+(use-package py-isort
+  :init
+  (add-hook 'before-save-hook 'py-isort-before-save))
 
 ;;;;;;;;;;;;;;;;;;;;;
 ; Automatic Additions
@@ -109,7 +119,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(flycheck package-lint ivy py-isort transpose-frame)))
+ '(package-selected-packages
+   '(transpose-frame py-isort use-package package-lint ivy flycheck)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
