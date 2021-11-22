@@ -1,63 +1,77 @@
-;;;;;;;;;;;;;;;;
-; Initialization
-;;;;;;;;;;;;;;;;
+;;; .emacs --- Emacs configuration file
 
-; Import the main package
+;; Copyright (C) 2021, Justintime50
+
+;; Homepage: https://github.com/justintime50/dotfiles
+;; Version: 0.1.0
+;; Package-Requires: ((emacs "24.1"))
+
+;;; Commentary:
+
+;; My personal Emacs configuration file
+
+;;; Code:
+
+;;;;;;;;;;;;;;;;;
+;; Initialization
+;;;;;;;;;;;;;;;;;
+
+;; Import the main package
 (require 'package)
 
-; Setup package archives for Emacs
+;; Setup package archives for Emacs
 (setq package-enable-at-startup nil)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("myelpa" . "https://raw.githubusercontent.com/Justintime50/myelpa/main/src/")))
 
-; Initialize all installed and default packages
+;; Initialize all installed and default packages
 (package-initialize)
 (require 'use-package)
 
-;;;;;;;;;;;;;;;;
-; Emacs Settings
-;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;
+;; Emacs Settings
+;;;;;;;;;;;;;;;;;
 
-; Load paths
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(add-to-list 'load-path "~/.emacs.d/packages")
+;; Load paths
+(add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes"))
+(add-to-list 'load-path (concat user-emacs-directory "packages"))
 
-; Setup theme
+;; Setup theme
 (load-theme 'github-dark-vscode t)
 
 ;; There are a plethora of articles on how Emacs is broken with TLS, disable v1.3 as needed
 ;; TODO: In the future, maybe this won't be needed and it can be removed
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
-; Use text mode as default
+;; Use text mode as default
 (setq major-mode 'text-mode)
 
-; Number of kills to keep in memory
+;; Number of kills to keep in memory
 (setq kill-ring-max 50)
 
-; disable menu-bar-mode for extra screen real estate
-; https://www.emacswiki.org/emacs/MenuBar
+;; disable menu-bar-mode for extra screen real estate
+;; https://www.emacswiki.org/emacs/MenuBar
 (menu-bar-mode -1)
 
-; Prevent extraneous tabs
+;; Prevent extraneous tabs
 (setq-default indent-tabs-mode nil)
 
-; Show line numbers
+;; Show line numbers
 (global-linum-mode t)
 
-; Set code auto-complete to "M-tab" (TODO: Can this be done with Ivy)
+;; Set code auto-complete to "M-tab" (TODO: Can this be done with Ivy)
 (global-set-key (kbd "M-TAB") 'dabbrev-expand)
 
-; Substitute yes/no responses to y/n
+;; Substitute yes/no responses to y/n
 (fset 'yes-or-no-p 'y-or-n-p)
 
-; Make searches non-case-sensitive
+;; Make searches non-case-sensitive
 (set-default 'case-fold-search t)
 
-; Add a newline to the end of files on save if there is no newline
+;; Add a newline to the end of files on save if there is no newline
 (setq require-final-newline t)
 
-; Remove trailing whitespaces on file save
+;; Remove trailing whitespaces on file save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; https://www.emacswiki.org/emacs/AutoSave
@@ -91,9 +105,9 @@
 (defvar backup-dir (concat user-emacs-directory "backups"))
 (setq backup-directory-alist (list (cons "." backup-dir)))
 
-;;;;;;;;;;;;;;;;;;;;;;;;
-; Package Configurations
-;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Package Configurations
+;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package flycheck
   :init
@@ -110,9 +124,13 @@
   :init
   (add-hook 'before-save-hook 'py-isort-before-save))
 
-;;;;;;;;;;;;;;;;;;;;;
-; Automatic Additions
-;;;;;;;;;;;;;;;;;;;;;
+(use-package shfmt
+  :init
+  (add-hook 'sh-mode-hook 'shfmt-on-save-mode))
+
+;;;;;;;;;;;;;;;;;;;;;;
+;; Automatic Additions
+;;;;;;;;;;;;;;;;;;;;;;
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -120,10 +138,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(transpose-frame py-isort use-package package-lint ivy flycheck)))
+   '(shfmt transpose-frame py-isort use-package package-lint ivy flycheck)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;;; .emacs ends here
