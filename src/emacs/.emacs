@@ -41,7 +41,7 @@
 
 ;; There are a plethora of articles on how Emacs is broken with TLS, disable v1.3 as needed
 ;; TODO: In the future, maybe this won't be needed and it can be removed
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+;; (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 ;; Use text mode as default
 (setq major-mode 'text-mode)
