@@ -26,7 +26,7 @@ alias ssh-admin='ssh -A admin.easypo.net'
 
 alias scp-upload="do_scp_upload"
 do_scp_upload() {
-    if [ -z "$1" ] ; then
+    if [ -z "$1" ]; then
         echo "You must provide a filename to use SCP."
     else
         scp "$@" "$AWS_DEVVM_USER"@"$AWS_DEVVM"."$EP_USERNAME"."$AWS_DEVVM_HOST":"$AWS_UPLOADS_DIR" || echo "Couldn't copy file."
@@ -35,7 +35,7 @@ do_scp_upload() {
 
 alias scp-download="do_scp_download"
 do_scp_download() {
-    if [ -z "$1" ] ; then
+    if [ -z "$1" ]; then
         echo "You must provide a filename to use SCP."
     else
         scp "$AWS_DEVVM_USER"@"$AWS_DEVVM"."$EP_USERNAME"."$AWS_DEVVM_HOST":"$1" "$HOME"/Downloads/ || echo "Couldn't copy file."

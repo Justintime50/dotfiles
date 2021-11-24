@@ -12,3 +12,14 @@ jobs:
         uses: ludeeus/action-shellcheck@1.0.0
         env:
           SHELLCHECK_OPTS: -e SC2148 -e SC1090
+  # TODO: Switch from `shellcheck` to `sh-checker` once https://github.com/foxundermoon/vs-shell-format/issues/258 is resolved
+  # sh-checker:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout Repository
+  #       uses: actions/checkout@v2
+  #     - name: Run sh-checker
+  #       uses: luizm/action-sh-checker@master
+  #       env:
+  #         SHFMT_OPTS: -i 4 -d
+  #         SHELLCHECK_OPTS: -e SC2148 -e SC1090

@@ -7,32 +7,32 @@ SERVER_HOSTNAME="Server"
 SERVER2_HOSTNAME="Server2"
 
 dots_config_up() {
-    if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]] ; then
+    if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]]; then
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
         ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
-        crontab - < "$DOTFILES_DIR"/src/personal/crontab
-        echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >> "$HOME"/.zshrc
-    elif [[ "$HOSTNAME" == "$EASYPOST_HOSTNAME" ]] ; then
+        crontab - <"$DOTFILES_DIR"/src/personal/crontab
+        echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
+    elif [[ "$HOSTNAME" == "$EASYPOST_HOSTNAME" ]]; then
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
         ln -sfn "$DOTFILES_DIR"/src/easypost/ssh/config "$HOME"/.ssh/config
         ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
-        crontab - < "$DOTFILES_DIR"/src/easypost/crontab
-        echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >> "$HOME"/.zshrc
-        echo ". $DOTFILES_DIR/src/easypost/.zshrc" >> "$HOME"/.zshrc
-    elif [[ "$HOSTNAME" == "$EASYPOST_AWS_HOSTNAME" ]] ; then
+        crontab - <"$DOTFILES_DIR"/src/easypost/crontab
+        echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
+        echo ". $DOTFILES_DIR/src/easypost/.zshrc" >>"$HOME"/.zshrc
+    elif [[ "$HOSTNAME" == "$EASYPOST_AWS_HOSTNAME" ]]; then
         ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost-aws "$HOME"/.gitconfig
         ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
-        echo ". $DOTFILES_DIR/src/easypost/.zshrc-aws" >> "$HOME"/.zshrc
-    elif [[ "$HOSTNAME" == *"$SERVER_HOSTNAME"* ]] ; then
+        echo ". $DOTFILES_DIR/src/easypost/.zshrc-aws" >>"$HOME"/.zshrc
+    elif [[ "$HOSTNAME" == *"$SERVER_HOSTNAME"* ]]; then
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
         ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
-        echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >> "$HOME"/.zshrc
-	if [[ "$HOSTNAME" == "$SERVER2_HOSTNAME" ]] ; then
-	    crontab - < "$DOTFILES_DIR"/src/server/crontab
-	fi
+        echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
+        if [[ "$HOSTNAME" == "$SERVER2_HOSTNAME" ]]; then
+            crontab - <"$DOTFILES_DIR"/src/server/crontab
+        fi
     else
         echo "HOSTNAME doesn't match any config."
     fi
@@ -40,21 +40,21 @@ dots_config_up() {
 
 dots_config_down() {
     # `.zshrc` taken care of by Dots for all of these
-    if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]] ; then
+    if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]]; then
         rm "$HOME"/.gitconfig
         rm "$HOME"/.zlogin
         rm "$HOME"/.emacs
         crontab -r
-    elif [[ "$HOSTNAME" == "$EASYPOST_HOSTNAME" ]] ; then
+    elif [[ "$HOSTNAME" == "$EASYPOST_HOSTNAME" ]]; then
         rm "$HOME"/.gitconfig
         rm "$HOME"/.zlogin
         rm -rf "$HOME"/.ssh/config
         rm "$HOME"/.emacs
         crontab -r
-    elif [[ "$HOSTNAME" == "$EASYPOST_AWS_HOSTNAME" ]] ; then
+    elif [[ "$HOSTNAME" == "$EASYPOST_AWS_HOSTNAME" ]]; then
         rm "$HOME"/.gitconfig
         rm "$HOME"/.emacs
-    elif [[ "$HOSTNAME" == *"$SERVER_HOSTNAME"* ]] ; then
+    elif [[ "$HOSTNAME" == *"$SERVER_HOSTNAME"* ]]; then
         rm "$HOME"/.gitconfig
         rm "$HOME"/.zlogin
         rm "$HOME"/.emacs
