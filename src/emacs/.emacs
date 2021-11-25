@@ -14,6 +14,12 @@
 
 ;;;;;;;;;;;;;;;;;
 ;; Initialization
+;;
+;; Must load in the following order:
+;; 1. require package
+;; 2. setup package archives
+;; 3. initialize package
+;; 4. setup everything else
 ;;;;;;;;;;;;;;;;;
 
 ;; Import the main package
@@ -26,7 +32,18 @@
 
 ;; Initialize all installed and default packages
 (package-initialize)
+
+;; Setup `use-package` for package management
 (require 'use-package)
+ ;; Always install missing packages on startup
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
+;; Keep installed packages up to date automatically
+(use-package auto-package-update
+  :config
+  (setq auto-package-update-delete-old-versions t)
+  (setq auto-package-update-hide-results t)
+  (auto-package-update-maybe))
 
 ;;;;;;;;;;;;;;;;;
 ;; Emacs Settings
@@ -113,12 +130,16 @@
   :init
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
+(use-package github-dark-vscode-theme)
+
 (use-package ivy
   :init
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
   :config
   (ivy-mode 1))
+
+(use-package package-lint)
 
 (use-package py-isort
   :init
@@ -127,6 +148,8 @@
 (use-package shfmt
   :init
   (add-hook 'sh-mode-hook 'shfmt-on-save-mode))
+
+(use-package transpose-frame)
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; Automatic Additions
@@ -138,7 +161,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(shfmt transpose-frame py-isort use-package package-lint ivy flycheck)))
+   '(github-dark-vscode-theme shfmt transpose-frame py-isort use-package package-lint ivy flycheck)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
