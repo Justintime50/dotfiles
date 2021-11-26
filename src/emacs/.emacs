@@ -139,7 +139,7 @@
   :config
   (ivy-mode 1))
 
-(use-package package-lint)
+;; (use-package package-lint)
 
 (use-package py-isort
   :init
