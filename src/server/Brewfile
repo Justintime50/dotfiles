@@ -138,7 +138,7 @@ brew "zeromq"
 brew "zimg"
 brew "zstd"
 # Casks
-cask_args appdir: "~/Applications", require_sha: true
+cask_args appdir: "~/Applications"
 cask "backblaze"
 cask "ccleaner"
 cask "docker"
@@ -148,3 +148,4 @@ cask "iterm2"
 cask "makemkv"
 cask "smcfancontrol"
 cask "sublime-text"
+cask "teamviewer"
