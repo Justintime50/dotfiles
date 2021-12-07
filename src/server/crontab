@@ -20,7 +20,7 @@ MAILTO=justinpaulhammond@gmail.com
 1 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure tuneapp-tuneapp-db-replica-1 "$TUNEAPP_DB_ROOT_PASSWORD" tuneapp "$HOME/sqldumps/tuneapp/$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
 2 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure all-the-invites-alltheinvites-db-replica-1 "$ALLTHEINVITES_DB_ROOT_PASSWORD" alltheinvites "$HOME/sqldumps/alltheinvites/$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
 3 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure el-gozo-de-jesus-elgozodejesus-db-replica-1 "$ELGOZODEJESUS_DB_ROOT_PASSWORD" elgozodejesus "$HOME/sqldumps/elgozodejesus/$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
-4 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure easypost-tools-ui-easypost-tools-db-replica-1 "EASYPOSTTOOLS_DB_ROOT_PASSWORD" easypost_tools "$HOME/sqldumps/easyposttools/$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
+4 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure easypost-tools-ui-easypost-tools-db-replica-1 "$EASYPOSTTOOLS_DB_ROOT_PASSWORD" easypost_tools "$HOME/sqldumps/easyposttools/$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
 # Cleanup backups older than 30 days
 10 3 * * * find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -delete >/dev/null
 
