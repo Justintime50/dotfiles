@@ -25,8 +25,8 @@ MAILTO=justinpaulhammond@gmail.com
 10 3 * * * find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -delete >/dev/null
 
 # Healthchecks
-*/5 * * * * cd ~/git/personal/harvey/projects/justintime50/os-scripting && ./src/macos/healthchecks/docker-healthcheck.sh > /dev/null
-*/5 * * * * cd ~/git/personal/harvey/projects/justintime50/os-scripting && ./src/macos/healthchecks/harvey-healthcheck.sh > /dev/null
+*/5 * * * * cd ~/harvey/projects/justintime50/os-scripting && ./src/macos/healthchecks/docker-healthcheck.sh > /dev/null
+*/5 * * * * cd ~/harvey/projects/justintime50/os-scripting && ./src/macos/healthchecks/harvey-healthcheck.sh > /dev/null
 
 # Forks Sync
 0 2 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; forks-sync --token "$GITHUB_TOKEN" --force > /dev/null
