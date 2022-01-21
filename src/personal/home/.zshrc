@@ -4,20 +4,21 @@
 ##########
 ## Path ##
 export path=(
-    /opt/homebrew/bin
-    /opt/homebrew/sbin
-    /usr/local/opt/ruby/bin
-    /usr/local/lib/ruby/gems/3.0.0/bin
-    /usr/local/bin
-    /usr/bin
-    /bin
-    /usr/local/sbin
-    /usr/sbin
-    /sbin
-    /opt/X11/bin
-    /Users/"$USER"/bin/gam
-    "$(go env GOPATH)"/bin
-    /Users/"$USER"/.dotnet/tools
+	/opt/homebrew/bin
+	/opt/homebrew/sbin
+	/usr/local/opt/ruby/bin
+	/usr/local/lib/ruby/gems/3.0.0/bin
+	/usr/local/bin
+	/usr/bin
+	/bin
+	/usr/local/sbin
+	/usr/sbin
+	/sbin
+	/opt/X11/bin
+	/Users/"$USER"/bin/gam
+	"$(go env GOPATH)"/bin
+	/Users/"$USER"/.dotnet/tools
+	/usr/local/Cellar/mono/6.12.0.122_1/bin
 )
 
 ############
@@ -52,29 +53,29 @@ alias vscode_settings='emacs $HOME/Library/Application\ Support/Code/User/settin
 # Recursively prints each git branch of each repo in a specified directory (first argument)
 alias check-git-branches=do_check_git_branches
 do_check_git_branches() {
-    cd "$1" || echo "Could not 'cd' into directory"
-    for DIR in */; do
-        printf '%s\n' "$DIR"
-        if cd "$DIR"; then
-            git branch
-        else
-            echo "Could not 'cd' into directory"
-        fi
-        cd .. || echo "Could not 'cd' out of directory"
-    done
+	cd "$1" || echo "Could not 'cd' into directory"
+	for DIR in */; do
+		printf '%s\n' "$DIR"
+		if cd "$DIR"; then
+			git branch
+		else
+			echo "Could not 'cd' into directory"
+		fi
+		cd .. || echo "Could not 'cd' out of directory"
+	done
 }
 
 alias kill-port=do_kill_port
 do_kill_port() {
-    # shellcheck disable=SC2207
-    pids_array=($(lsof -t -i:"$1" | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g'))
-    # shellcheck disable=SC2128
-    if [ "$pids_array" ]; then
-        for pid in "${pids_array[@]}"; do
-            echo "Killing process $pid..."
-            kill "$pid"
-        done
-    else
-        echo "No process running on port $1"
-    fi
+	# shellcheck disable=SC2207
+	pids_array=($(lsof -t -i:"$1" | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g'))
+	# shellcheck disable=SC2128
+	if [ "$pids_array" ]; then
+		for pid in "${pids_array[@]}"; do
+			echo "Killing process $pid..."
+			kill "$pid"
+		done
+	else
+		echo "No process running on port $1"
+	fi
 }
