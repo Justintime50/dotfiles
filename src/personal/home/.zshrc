@@ -16,7 +16,6 @@ export path=(
 	/sbin
 	/opt/X11/bin
 	/Users/"$USER"/bin/gam
-	"$(go env GOPATH)"/bin
 	/Users/"$USER"/.dotnet/tools
 	/usr/local/Cellar/mono/6.12.0.122_1/bin
 )
