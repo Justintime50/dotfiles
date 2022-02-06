@@ -26,6 +26,11 @@ export path=(
 export PROMPT="%n@%C $ "
 HOSTNAME=$(hostname)
 
+###############
+## Variables ##
+export SRVINFRA_WEBSITES_DIR="$HOME/harvey/projects"
+export SRVINFRA_SERVICES_DIR="$HOME/harvey/projects/justintime50/server-infra/src"
+
 #############
 ## Aliases ##
 
