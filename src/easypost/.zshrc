@@ -12,6 +12,12 @@ AWS_DEVVM_HOST="devvm.easypo.net"
 AWS_DEVVM_BASTION_HOST="admin.dev.easypo.net"
 AWS_UPLOADS_DIR="/home/$AWS_DEVVM_USER/uploads"
 
+###############
+## Variables ##
+# See the following for Java releasing variables: https://issues.sonatype.org/browse/NEXUS-27902 & https://github.com/keybase/keybase-issues/issues/2798
+export JDK_JAVA_OPTIONS='--add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED --add-opens java.base/java.text=ALL-UNNAMED --add-opens java.desktop/java.awt.font=ALL-UNNAMED'
+export GPG_TTY=$(tty)
+
 #############
 ## Aliases ##
 
