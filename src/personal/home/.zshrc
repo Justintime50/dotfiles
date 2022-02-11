@@ -4,21 +4,21 @@
 ##########
 ## Path ##
 export path=(
-	/opt/homebrew/bin
-	/opt/homebrew/sbin
-	/usr/local/opt/ruby@2.7/bin
-	/usr/local/opt/ruby/bin
-	/usr/local/lib/ruby/gems/3.0.0/bin
-	/usr/local/bin
-	/usr/bin
-	/bin
-	/usr/local/sbin
-	/usr/sbin
-	/sbin
-	/opt/X11/bin
-	/Users/"$USER"/bin/gam
-	/Users/"$USER"/.dotnet/tools
-	/usr/local/Cellar/mono/6.12.0.122_1/bin
+    /opt/homebrew/bin
+    /opt/homebrew/sbin
+    /usr/local/opt/ruby@2.7/bin
+    /usr/local/opt/ruby/bin
+    /usr/local/lib/ruby/gems/3.0.0/bin
+    /usr/local/bin
+    /usr/bin
+    /bin
+    /usr/local/sbin
+    /usr/sbin
+    /sbin
+    /opt/X11/bin
+    /Users/"$USER"/bin/gam
+    /Users/"$USER"/.dotnet/tools
+    /usr/local/Cellar/mono/6.12.0.122_1/bin
 )
 
 ############
@@ -29,8 +29,21 @@ HOSTNAME=$(hostname)
 
 ###############
 ## Variables ##
+# srvinfra
 export SRVINFRA_WEBSITES_DIR="$HOME/harvey/projects"
 export SRVINFRA_SERVICES_DIR="$HOME/harvey/projects/justintime50/server-infra/src"
+
+# Java
+# See the following for Java releasing variables: https://issues.sonatype.org/browse/NEXUS-27902 & https://github.com/keybase/keybase-issues/issues/2798
+export JDK_JAVA_OPTIONS='--add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED --add-opens java.base/java.text=ALL-UNNAMED --add-opens java.desktop/java.awt.font=ALL-UNNAMED'
+gpg_tty=GPG_TTY="$(tty)"
+export gpg_tty
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+# EasyPost
+# Use dummy API keys here so running VCR tests won't require needing to punch these in on the command line
+export EASYPOST_TEST_API_KEY=123
+export EASYPOST_PROD_API_KEY=123
 
 #############
 ## Aliases ##
@@ -58,29 +71,29 @@ alias vscode_settings='emacs $HOME/Library/Application\ Support/Code/User/settin
 # Recursively prints each git branch of each repo in a specified directory (first argument)
 alias check-git-branches=do_check_git_branches
 do_check_git_branches() {
-	cd "$1" || echo "Could not 'cd' into directory"
-	for DIR in */; do
-		printf '%s\n' "$DIR"
-		if cd "$DIR"; then
-			git branch
-		else
-			echo "Could not 'cd' into directory"
-		fi
-		cd .. || echo "Could not 'cd' out of directory"
-	done
+    cd "$1" || echo "Could not 'cd' into directory"
+    for DIR in */; do
+        printf '%s\n' "$DIR"
+        if cd "$DIR"; then
+            git branch
+        else
+            echo "Could not 'cd' into directory"
+        fi
+        cd .. || echo "Could not 'cd' out of directory"
+    done
 }
 
 alias kill-port=do_kill_port
 do_kill_port() {
-	# shellcheck disable=SC2207
-	pids_array=($(lsof -t -i:"$1" | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g'))
-	# shellcheck disable=SC2128
-	if [ "$pids_array" ]; then
-		for pid in "${pids_array[@]}"; do
-			echo "Killing process $pid..."
-			kill "$pid"
-		done
-	else
-		echo "No process running on port $1"
-	fi
+    # shellcheck disable=SC2207
+    pids_array=($(lsof -t -i:"$1" | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g'))
+    # shellcheck disable=SC2128
+    if [ "$pids_array" ]; then
+        for pid in "${pids_array[@]}"; do
+            echo "Killing process $pid..."
+            kill "$pid"
+        done
+    else
+        echo "No process running on port $1"
+    fi
 }
