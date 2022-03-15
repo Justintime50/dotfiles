@@ -18,6 +18,10 @@
 [init]
 	defaultBranch = main
 
+[http]
+        lowSpeedLimit = 1000
+        lowSpeedTime = 5
+
 [alias]
 	# Deletes merged branches that aren't the defaults or others specified
 	# NOTE: This will not show/delete branches squashed/merged via GitHub: https://stackoverflow.com/a/44762904/6064135
