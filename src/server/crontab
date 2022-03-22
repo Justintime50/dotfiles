@@ -24,6 +24,9 @@ MAILTO=justinpaulhammond@gmail.com
 # Cleanup backups older than 30 days
 10 3 * * * find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -delete >/dev/null
 
+# Docker
+0 3 * * 0 docker system prune -f
+
 # Healthchecks
 */5 * * * * cd ~/harvey/projects/justintime50/os-scripting && ./src/macos/healthchecks/docker-healthcheck.sh > /dev/null
 */5 * * * * cd ~/harvey/projects/justintime50/os-scripting && ./src/macos/healthchecks/harvey-healthcheck.sh > /dev/null
