@@ -54,6 +54,8 @@
 (add-to-list 'load-path (concat user-emacs-directory "packages"))
 
 ;; Setup theme
+;; TODO: Needs to be commented out on a first install until the remainder of the script can run and this
+;; theme gets installed. Conditionally check if the theme is installed and only load it if that's true
 (load-theme 'github-dark-vscode t)
 
 ;; There are a plethora of articles on how Emacs is broken with TLS, disable v1.3 as needed

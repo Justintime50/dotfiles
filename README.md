@@ -39,6 +39,9 @@ curl -LJs https://raw.githubusercontent.com/justintime50/dotfiles/main/src/perso
 
 ### Additional Setup
 
+* **Emacs**
+    1. Run `M-x package-install use-package` which will bootstrap the remaining packages on first start
+    1. You may need to comment out the line that loads the theme until the entire init script is run (which installs the theme) at which point you can uncomment the theme load line
 * **iTerm2**
     1. Load iTerm2 preferences by pointing iTerm2 to the `plist` found in the `personal/iterm2` directory.
 
