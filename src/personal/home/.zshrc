@@ -6,6 +6,7 @@
 export path=(
     /opt/homebrew/bin
     /opt/homebrew/sbin
+    /opt/homebrew/opt/ruby/bin
     /usr/local/opt/ruby/bin
     /usr/local/lib/ruby/gems/3.0.0/bin
     /usr/local/bin
