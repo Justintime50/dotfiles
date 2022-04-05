@@ -49,7 +49,6 @@ export EASYPOST_PROD_API_KEY=123
 ## Aliases ##
 
 # Tools
-alias composer="php /usr/local/bin/composer"
 alias emacs="emacs -nw"
 
 ## Internet/Networking

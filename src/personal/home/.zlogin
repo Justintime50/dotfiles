@@ -15,9 +15,8 @@ setup_homebrew_arm() {
 # Setup Keychain to keep ssh-agent info available across shells and sessions
 # Keychain: https://github.com/funtoo/keychain
 setup_keychain() {
-    "$(which keychain)" "$HOME/.ssh/id_rsa" && . "$HOME/.keychain/${HOSTNAME}-sh" || {
-        echo "Keychain is not installed or incorrectly configured!"
-    }
+    "$(which keychain)" "$HOME/.ssh/id_rsa" || echo "Keychain is not installed correctly!"
+    . "$HOME/.keychain/${HOSTNAME}-sh" || echo "Keychain is not configured correctly!"
 }
 
 zsh_login
