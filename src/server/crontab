@@ -23,16 +23,16 @@ MAILTO=justinpaulhammond@gmail.com
 4 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure easypost-tools-ui-easypost-tools-db-1 "$EASYPOSTTOOLS_DB_ROOT_PASSWORD" easypost_tools "$HOME/sqldumps/easyposttools/easyposttools_$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
 # Deep archive backups every 30 days, (must come before cleanup) - NEVER delete
 # TODO: This is just dumping all backups to a single dir, break them up into their own dirs
-10 3 1 * * find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -exec cp '{}' /"$HOME"/sqldumps_deep/ \;
+10 3 1 * * find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -exec cp '{}' /"$HOME"/sqldumps_deep/ \; >/dev/null
 # Cleanup backups older than 30 days (must come last)
 15 3 * * * find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -delete >/dev/null
 
 # Server Sync (requires SSH key to be present on Server1)
-0 * * * * rsync -a --delete ~/harvey/ admin@Server1.local:~/harvey
-30 3 * * * rsync -a --delete ~/sqldumps/ admin@Server1.local:~/sqldumps
+0 * * * * rsync -a --delete ~/harvey/ admin@Server1.local:~/harvey >/dev/null
+30 3 * * * rsync -a --delete ~/sqldumps/ admin@Server1.local:~/sqldumps >/dev/null
 
 # Docker
-0 3 * * 0 docker system prune -f
+0 3 * * 0 docker system prune -f >/dev/null
 
 # Healthchecks
 */5 * * * * cd ~/harvey/projects/justintime50/os-scripting && ./src/macos/healthchecks/docker-healthcheck.sh > /dev/null
