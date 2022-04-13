@@ -28,8 +28,8 @@ MAILTO=justinpaulhammond@gmail.com
 15 3 * * * find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -delete >/dev/null
 
 # Server Sync (requires SSH key to be present on Server1)
-0 * * * * rsync -a --delete ~/harvey/ admin@Server1.local:~/harvey >/dev/null
-30 3 * * * rsync -a --delete ~/sqldumps/ admin@Server1.local:~/sqldumps >/dev/null
+0 * * * * . "$HOME"/.keychain/${HOSTNAME}-sh; rsync -a --delete ~/harvey/ admin@Server1.local:~/harvey >/dev/null
+30 3 * * * . "$HOME"/.keychain/${HOSTNAME}-sh; rsync -a --delete ~/sqldumps/ admin@Server1.local:~/sqldumps >/dev/null
 
 # Docker
 0 3 * * 0 docker system prune -f >/dev/null
