@@ -42,11 +42,6 @@ export GPG_TTY
 JAVA_HOME=$(/usr/libexec/java_home)
 export JAVA_HOME
 
-# EasyPost
-# Use dummy API keys here so running VCR tests won't require needing to punch these in on the command line
-export EASYPOST_TEST_API_KEY=123
-export EASYPOST_PROD_API_KEY=123
-
 #############
 ## Aliases ##
 
