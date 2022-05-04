@@ -47,7 +47,7 @@ MAILTO=justinpaulhammond@gmail.com
 # Pullbug (Personal)
 0 9 * * 1 . "$HOME"/.env-crontab; pullbug --pulls --issues --drafts --github_token "$GITHUB_TOKEN" --github_context users --github_owner Justintime50 --slack --slack_token "$PULLBUG_SLACK_BOT_TOKEN" --slack_channel "$PULLBUG_SLACK_CHANNEL" > /dev/null
 # Pullbug (EasyPost)
-0 9,12,15 * * 1-5 . "$HOME"/.env-crontab; pullbug --pulls --github_token "$GITHUB_TOKEN" --github_context orgs --github_owner EasyPost --slack --slack_token "$EASYPOST_PULLBUG_SLACK_BOT_TOKEN" --slack_channel "$EASYPOST_PULLBUG_SLACK_CHANNEL" --repos easypost-php,easypost-node,easypost-python,easypost-ruby,easypost-java,easypost-csharp,easypost-go,easyvcr-csharp > /dev/null
+0 9,12,15 * * 1-5 . "$HOME"/.env-crontab; pullbug --pulls --github_token "$GITHUB_TOKEN" --github_context orgs --github_owner EasyPost --slack --slack_token "$EASYPOST_PULLBUG_SLACK_BOT_TOKEN" --slack_channel "$EASYPOST_PULLBUG_SLACK_CHANNEL" --repos easypost-php,easypost-node,easypost-python,easypost-ruby,easypost-java,easypost-csharp,easypost-go,easyvcr-csharp,easyvcr-java > /dev/null
 
 # Unifi Config Backups
 0 4 * * 0 . "$HOME"/.keychain/${HOSTNAME}-sh; "$HOME"/git/personal/harvey/projects/justintime50/os-scripting/src/ubios/backups/download_config_backups.sh /Volumes/D1-HD2-Nextcloud/nextcloud-data/justinhammond/files/Unifi/backups > /dev/null
