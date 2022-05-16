@@ -35,19 +35,19 @@ MAILTO=justinpaulhammond@gmail.com
 0 3 * * 0 cronic docker system prune -f
 
 # Healthchecks
-*/5 * * * * cronic cd ~/harvey/projects/justintime50/os-scripting && ./src/macos/healthchecks/docker-healthcheck.sh
-*/5 * * * * cronic cd ~/harvey/projects/justintime50/os-scripting && ./src/macos/healthchecks/harvey-healthcheck.sh
+*/5 * * * * cd ~/harvey/projects/justintime50/os-scripting && cronic ./src/macos/healthchecks/docker-healthcheck.sh
+*/5 * * * * cd ~/harvey/projects/justintime50/os-scripting && cronic ./src/macos/healthchecks/harvey-healthcheck.sh
 
 # Forks Sync
 # 0 2 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; cronic forks-sync --token "$GITHUB_TOKEN" --force
 
 # GitHub Archive
-0 1 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; cronic github-archive --users justintime50 --orgs tuneuptechnology --gists justintime50 --clone --pull --forks --token "$GITHUB_TOKEN"
+0 1 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; cronic github-archive --users justintime50 --orgs tuneuptechnology --gists justintime50 --clone --pull --forks --token "$GITHUB_TOKEN" --log_level warning
 
 # Pullbug (Personal)
-0 9 * * 1 . "$HOME"/.env-crontab; cronic pullbug --pulls --issues --drafts --github_token "$GITHUB_TOKEN" --github_context users --github_owner Justintime50 --slack --slack_token "$PULLBUG_SLACK_BOT_TOKEN" --slack_channel "$PULLBUG_SLACK_CHANNEL"
+0 9 * * 1 . "$HOME"/.env-crontab; cronic pullbug --pulls --issues --drafts --github_token "$GITHUB_TOKEN" --github_context users --github_owner Justintime50 --slack --slack_token "$PULLBUG_SLACK_BOT_TOKEN" --slack_channel "$PULLBUG_SLACK_CHANNEL" --log_level warning
 # Pullbug (EasyPost)
-0 9,12,15 * * 1-5 . "$HOME"/.env-crontab; cronic pullbug --pulls --github_token "$GITHUB_TOKEN" --github_context orgs --github_owner EasyPost --slack --slack_token "$EASYPOST_PULLBUG_SLACK_BOT_TOKEN" --slack_channel "$EASYPOST_PULLBUG_SLACK_CHANNEL" --repos easypost-php,easypost-node,easypost-python,easypost-ruby,easypost-java,easypost-csharp,easypost-go,easyvcr-csharp,easyvcr-java
+0 9,12,15 * * 1-5 . "$HOME"/.env-crontab; cronic pullbug --pulls --github_token "$GITHUB_TOKEN" --github_context orgs --github_owner EasyPost --slack --slack_token "$EASYPOST_PULLBUG_SLACK_BOT_TOKEN" --slack_channel "$EASYPOST_PULLBUG_SLACK_CHANNEL" --repos easypost-php,easypost-node,easypost-python,easypost-ruby,easypost-java,easypost-csharp,easypost-go,easyvcr-csharp,easyvcr-java --log_level warning
 
 # Unifi Config Backups
 0 4 * * 0 . "$HOME"/.keychain/${HOSTNAME}-sh; cronic "$HOME"/git/personal/harvey/projects/justintime50/os-scripting/src/ubios/backups/download_config_backups.sh /Volumes/D1-HD2-Nextcloud/nextcloud-data/justinhammond/files/Unifi/backups
