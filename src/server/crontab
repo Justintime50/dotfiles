@@ -11,43 +11,43 @@ MAILTO=justinpaulhammond@gmail.com
 
 
 # Alchemist
-10 2 * * * alchemist --update > /dev/null
-30 2 * * * alchemist --backup > /dev/null
-45 2 * * * cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/server/Brewfile" > /dev/null
+10 2 * * * cronic alchemist --update
+30 2 * * * cronic alchemist --backup
+45 2 * * * cronic cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/server/Brewfile"
 
 # Database Backups
-0 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure glass-glass-db-1 "$GLASS_DB_ROOT_PASSWORD" glass "$HOME/sqldumps/glass/glass_$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
-1 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure tuneapp-tuneapp-db-1 "$TUNEAPP_DB_ROOT_PASSWORD" tuneapp "$HOME/sqldumps/tuneapp/tuneapp_$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
-# 2 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure all-the-invites-alltheinvites-db-1 "$ALLTHEINVITES_DB_ROOT_PASSWORD" alltheinvites "$HOME/sqldumps/alltheinvites/alltheinvites_$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
-3 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure el-gozo-de-jesus-elgozodejesus-db-1 "$ELGOZODEJESUS_DB_ROOT_PASSWORD" elgozodejesus "$HOME/sqldumps/elgozodejesus/elgozodejesus_$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
-4 3 * * * . "$HOME"/.env-crontab; srvinfra export_database_secure easypost-tools-ui-easypost-tools-db-1 "$EASYPOSTTOOLS_DB_ROOT_PASSWORD" easypost_tools "$HOME/sqldumps/easyposttools/easyposttools_$(date +\%F_\%H-\%M-\%S).enc.gz" > /dev/null
+0 3 * * * . "$HOME"/.env-crontab; cronic srvinfra export_database_secure glass-glass-db-1 "$GLASS_DB_ROOT_PASSWORD" glass "$HOME/sqldumps/glass/glass_$(date +\%F_\%H-\%M-\%S).enc.gz"
+1 3 * * * . "$HOME"/.env-crontab; cronic srvinfra export_database_secure tuneapp-tuneapp-db-1 "$TUNEAPP_DB_ROOT_PASSWORD" tuneapp "$HOME/sqldumps/tuneapp/tuneapp_$(date +\%F_\%H-\%M-\%S).enc.gz"
+# 2 3 * * * . "$HOME"/.env-crontab; cronic srvinfra export_database_secure all-the-invites-alltheinvites-db-1 "$ALLTHEINVITES_DB_ROOT_PASSWORD" alltheinvites "$HOME/sqldumps/alltheinvites/alltheinvites_$(date +\%F_\%H-\%M-\%S).enc.gz"
+3 3 * * * . "$HOME"/.env-crontab; cronic srvinfra export_database_secure el-gozo-de-jesus-elgozodejesus-db-1 "$ELGOZODEJESUS_DB_ROOT_PASSWORD" elgozodejesus "$HOME/sqldumps/elgozodejesus/elgozodejesus_$(date +\%F_\%H-\%M-\%S).enc.gz"
+4 3 * * * . "$HOME"/.env-crontab; cronic srvinfra export_database_secure easypost-tools-ui-easypost-tools-db-1 "$EASYPOSTTOOLS_DB_ROOT_PASSWORD" easypost_tools "$HOME/sqldumps/easyposttools/easyposttools_$(date +\%F_\%H-\%M-\%S).enc.gz"
 # Deep archive backups every 30 days, (must come before cleanup) - NEVER delete
 # TODO: This is just dumping all backups to a single dir, break them up into their own dirs
-10 3 1 * * find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -exec cp '{}' /"$HOME"/sqldumps_deep/ \; >/dev/null
+10 3 1 * * cronic find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -exec cp '{}' /"$HOME"/sqldumps_deep/ \;
 # Cleanup backups older than 30 days (must come last)
-15 3 * * * find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -delete >/dev/null
+15 3 * * * cronic find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -delete
 
 # Server Sync (requires SSH key to be present on Server1)
-0 * * * * . "$HOME"/.keychain/${HOSTNAME}-sh; rsync -a --delete ~/harvey/ admin@Server1.local:~/harvey >/dev/null
-30 3 * * * . "$HOME"/.keychain/${HOSTNAME}-sh; rsync -a --delete ~/sqldumps/ admin@Server1.local:~/sqldumps >/dev/null
+0 * * * * . "$HOME"/.keychain/${HOSTNAME}-sh; cronic rsync -a --delete ~/harvey/ admin@Server1.local:~/harvey
+30 3 * * * . "$HOME"/.keychain/${HOSTNAME}-sh; cronic rsync -a --delete ~/sqldumps/ admin@Server1.local:~/sqldumps
 
 # Docker
-0 3 * * 0 docker system prune -f >/dev/null
+0 3 * * 0 cronic docker system prune -f
 
 # Healthchecks
-*/5 * * * * cd ~/harvey/projects/justintime50/os-scripting && ./src/macos/healthchecks/docker-healthcheck.sh > /dev/null
-*/5 * * * * cd ~/harvey/projects/justintime50/os-scripting && ./src/macos/healthchecks/harvey-healthcheck.sh > /dev/null
+*/5 * * * * cronic cd ~/harvey/projects/justintime50/os-scripting && ./src/macos/healthchecks/docker-healthcheck.sh
+*/5 * * * * cronic cd ~/harvey/projects/justintime50/os-scripting && ./src/macos/healthchecks/harvey-healthcheck.sh
 
 # Forks Sync
-0 2 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; forks-sync --token "$GITHUB_TOKEN" --force > /dev/null
+# 0 2 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; cronic forks-sync --token "$GITHUB_TOKEN" --force
 
 # GitHub Archive
-0 1 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; github-archive --users justintime50 --orgs tuneuptechnology --gists justintime50 --clone --pull --forks --token "$GITHUB_TOKEN" > /dev/null
+0 1 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; cronic github-archive --users justintime50 --orgs tuneuptechnology --gists justintime50 --clone --pull --forks --token "$GITHUB_TOKEN"
 
 # Pullbug (Personal)
-0 9 * * 1 . "$HOME"/.env-crontab; pullbug --pulls --issues --drafts --github_token "$GITHUB_TOKEN" --github_context users --github_owner Justintime50 --slack --slack_token "$PULLBUG_SLACK_BOT_TOKEN" --slack_channel "$PULLBUG_SLACK_CHANNEL" > /dev/null
+0 9 * * 1 . "$HOME"/.env-crontab; cronic pullbug --pulls --issues --drafts --github_token "$GITHUB_TOKEN" --github_context users --github_owner Justintime50 --slack --slack_token "$PULLBUG_SLACK_BOT_TOKEN" --slack_channel "$PULLBUG_SLACK_CHANNEL"
 # Pullbug (EasyPost)
-0 9,12,15 * * 1-5 . "$HOME"/.env-crontab; pullbug --pulls --github_token "$GITHUB_TOKEN" --github_context orgs --github_owner EasyPost --slack --slack_token "$EASYPOST_PULLBUG_SLACK_BOT_TOKEN" --slack_channel "$EASYPOST_PULLBUG_SLACK_CHANNEL" --repos easypost-php,easypost-node,easypost-python,easypost-ruby,easypost-java,easypost-csharp,easypost-go,easyvcr-csharp,easyvcr-java > /dev/null
+0 9,12,15 * * 1-5 . "$HOME"/.env-crontab; cronic pullbug --pulls --github_token "$GITHUB_TOKEN" --github_context orgs --github_owner EasyPost --slack --slack_token "$EASYPOST_PULLBUG_SLACK_BOT_TOKEN" --slack_channel "$EASYPOST_PULLBUG_SLACK_CHANNEL" --repos easypost-php,easypost-node,easypost-python,easypost-ruby,easypost-java,easypost-csharp,easypost-go,easyvcr-csharp,easyvcr-java
 
 # Unifi Config Backups
-0 4 * * 0 . "$HOME"/.keychain/${HOSTNAME}-sh; "$HOME"/git/personal/harvey/projects/justintime50/os-scripting/src/ubios/backups/download_config_backups.sh /Volumes/D1-HD2-Nextcloud/nextcloud-data/justinhammond/files/Unifi/backups > /dev/null
+0 4 * * 0 . "$HOME"/.keychain/${HOSTNAME}-sh; cronic "$HOME"/git/personal/harvey/projects/justintime50/os-scripting/src/ubios/backups/download_config_backups.sh /Volumes/D1-HD2-Nextcloud/nextcloud-data/justinhammond/files/Unifi/backups
