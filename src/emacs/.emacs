@@ -147,9 +147,10 @@
   :init
   (add-hook 'before-save-hook 'py-isort-before-save))
 
-(use-package shfmt
-  :init
-  (add-hook 'sh-mode-hook 'shfmt-on-save-mode))
+;; this package is too aggressive in formatting which is why its disabled
+;; (use-package shfmt
+;;   :init
+;;   (add-hook 'sh-mode-hook 'shfmt-on-save-mode))
 
 (use-package transpose-frame)
 
