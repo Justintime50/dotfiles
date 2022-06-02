@@ -37,6 +37,7 @@ MAILTO=justinpaulhammond@gmail.com
 # Healthchecks
 */5 * * * * cd ~/harvey/projects/justintime50/os-scripting && cronic ./src/macos/healthchecks/docker-healthcheck.sh
 */5 * * * * cd ~/harvey/projects/justintime50/os-scripting && cronic ./src/macos/healthchecks/harvey-healthcheck.sh
+*/10 * * * * . "$HOME"/.env-crontab; cd ~/harvey/projects/justintime50/os-scripting && venv/bin/python src/macos/healthchecks/docker_uptimerobot_healthcheck.py
 
 # Forks Sync
 # 0 2 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; cronic forks-sync --token "$GITHUB_TOKEN" --force
