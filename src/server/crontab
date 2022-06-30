@@ -52,7 +52,7 @@ MAILTO=justinpaulhammond@gmail.com
 
 # Unifi Config Backups
 # TODO: We need a cleanup task here for old backups
-0 4 * * 0 . "$HOME"/.keychain/${HOSTNAME}-sh; cronic "$HOME"/harvey/projects/justintime50/os-scripting/src/ubios/backups/download_config_backups.sh /Volumes/D1-HD2-Nextcloud/nextcloud-data/justinhammond/files/Backups/Unifi
+0 4 * * 0 . "$HOME"/.keychain/${HOSTNAME}-sh; cronic "$HOME"/harvey/projects/justintime50/os-scripting/src/ubios/backups/download_config_backups.sh /Volumes/home/Backups/Unifi
 
 # 1Password Backups
-0 5 * * * cronic rsync -a --delete "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/Library/Application Support/1Password/Data/" /Volumes/D1-HD2-Nextcloud/nextcloud-data/justinhammond/files/Backups/1Password/
+0 5 * * * cronic rsync -a --delete "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/Library/Application Support/1Password/Data/" /Volumes/home/Backups/1Password/
