@@ -156,6 +156,8 @@
 
 (use-package go-mode)
 
+(use-package php-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; Automatic Additions
 ;;;;;;;;;;;;;;;;;;;;;;
