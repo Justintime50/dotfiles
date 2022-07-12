@@ -28,8 +28,8 @@ MAILTO=justinpaulhammond@gmail.com
 15 3 * * * cronic find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -delete
 
 # Server Sync (requires SSH key to be present on Server1)
-0 * * * * . "$HOME"/.keychain/${HOSTNAME}-sh; cronic rsync -a --delete ~/harvey/ admin@Server1.local:~/harvey
-30 3 * * * . "$HOME"/.keychain/${HOSTNAME}-sh; cronic rsync -a --delete ~/sqldumps/ admin@Server1.local:~/sqldumps
+0 * * * * . "$HOME"/.keychain/${HOSTNAME}-sh; cronic rsync -a --no-perms --delete ~/harvey/ admin@Server1.local:~/harvey
+30 3 * * * . "$HOME"/.keychain/${HOSTNAME}-sh; cronic rsync -a --no-perms --delete ~/sqldumps/ admin@Server1.local:~/sqldumps
 
 # Docker
 0 3 * * 0 cronic docker system prune -f
@@ -55,4 +55,4 @@ MAILTO=justinpaulhammond@gmail.com
 0 4 * * 0 . "$HOME"/.keychain/${HOSTNAME}-sh; cronic "$HOME"/harvey/projects/justintime50/os-scripting/src/ubios/backups/download_config_backups.sh /Volumes/home/Backups/Unifi
 
 # 1Password Backups
-0 5 * * * cronic rsync -a --delete "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/Library/Application Support/1Password/Data/" /Volumes/home/Backups/1Password/
+0 5 * * * cronic rsync -a --no-perms --delete "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/Library/Application Support/1Password/Data/" /Volumes/home/Backups/1Password/
