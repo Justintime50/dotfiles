@@ -9,6 +9,9 @@
 # [includeIf "gitdir:~/git/easypost/"]
 #   	path = ~/.gitconfig-easypost
 
+[push]
+	autoSetupRemote = true
+
 [pull]
 	rebase = true
 
