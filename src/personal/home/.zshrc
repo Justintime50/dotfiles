@@ -28,6 +28,17 @@ export path=(
 export PROMPT="%n@%C $ "
 HOSTNAME=$(hostname)
 
+############
+## Editor ##
+unset EDITOR
+if [[ -s $(which nvim) ]]; then
+	export EDITOR=nvim
+elif [[ -s $(which vim) ]]; then
+	export EDITOR=vim
+else
+	export EDITOR=vi
+fi
+
 ###############
 ## Variables ##
 # srvinfra

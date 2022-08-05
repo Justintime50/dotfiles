@@ -30,6 +30,13 @@ set incsearch
 set number
 set relativenumber
 
+" Setup tabs
+:set tabstop=4
+:set shiftwidth=4
+:set expandtab
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+
 " Setup backup folders
 set undodir=$HOME/.vim/tmp/undo     " undo files
 set backupdir=$HOME/.vim/tmp/backup " backups
