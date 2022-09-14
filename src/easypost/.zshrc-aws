@@ -7,6 +7,17 @@
 EP_USERNAME="jhammond"
 ADMIN_HOST="admin.easypo.net"
 
+############
+## Editor ##
+unset EDITOR
+if [[ -s $(which nvim) ]]; then
+	export EDITOR=nvim
+elif [[ -s $(which vim) ]]; then
+	export EDITOR=vim
+else
+	export EDITOR=vi
+fi
+
 #############
 ## Aliases ##
 
