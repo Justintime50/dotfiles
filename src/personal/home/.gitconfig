@@ -33,3 +33,5 @@
 
 [credential "https://dev.azure.com"]
 	useHttpPath = true
+[credential "https://git.ncr4.com"]
+	provider = generic
