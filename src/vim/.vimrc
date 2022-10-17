@@ -68,3 +68,34 @@ augroup END
 if has('syntax') && has('eval')
   packadd! matchit
 endif
+
+call plug#begin()
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
+
+" Make sure you use single quotes
+
+Plug 'projekt0n/github-nvim-theme'
+
+" Initialize plugin system
+" - Automatically executes `filetype plugin indent on` and `syntax enable`.
+call plug#end()
+
+" Enable theme
+" NOTE: Configuration needs to be set BEFORE loading the color scheme with `colorscheme` command
+let g:github_function_style = "italic"
+let g:github_sidebars = ["qf", "vista_kind", "terminal", "packer"]
+
+" Change the "hint" color to the "orange" color, and make the "error" color bright red
+let g:github_colors = {
+  \ 'hint': 'orange',
+  \ 'error': '#ff0000'
+\ }
+
+" Load the colorscheme
+colorscheme github_dark
