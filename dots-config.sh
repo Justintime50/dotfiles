@@ -8,39 +8,71 @@ SERVER2_HOSTNAME="Server2"
 
 dots_config_up() {
     if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]]; then
-        ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
+        # Shell
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
-	ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
-        ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.vimrc
-	ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.config/nvim/init.vim
-        crontab - <"$DOTFILES_DIR"/src/personal/crontab
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
-    elif [[ "$HOSTNAME" == "$EASYPOST_HOSTNAME" ]]; then
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
-        ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
-        ln -sfn "$DOTFILES_DIR"/src/easypost/ssh/config "$HOME"/.ssh/config
-        ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
+        crontab - <"$DOTFILES_DIR"/src/personal/crontab
+
+        # Emacs
+	    ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
+        
+        # Vim
+        mkdir -p "$HOME"/.local/share/nvim/site/pack/packer/start
         ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.vimrc
-	ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.config/nvim/init.vim
-        crontab - <"$DOTFILES_DIR"/src/easypost/crontab
+	    ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.config/nvim/init.vim
+        ln -sfn "$DOTFILES_DIR"/src/vim/plugins.lua "$HOME"/.config/nvim/lua/plugins.lua
+        ln -sfn "$DOTFILES_DIR"/src/vim/pack/* "$HOME"/.local/share/nvim/site/pack/packer/start
+    elif [[ "$HOSTNAME" == "$EASYPOST_HOSTNAME" ]]; then
+        # Shell
+        ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
         echo ". $DOTFILES_DIR/src/easypost/.zshrc" >>"$HOME"/.zshrc
-    elif [[ "$HOSTNAME" == "$EASYPOST_AWS_HOSTNAME" ]]; then
-        ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost-aws "$HOME"/.gitconfig
-        ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
-        ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.vimrc
-	ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.config/nvim/init.vim
-        echo ". $DOTFILES_DIR/src/easypost/.zshrc-aws" >>"$HOME"/.zshrc
-    elif [[ "$HOSTNAME" == *"$SERVER_HOSTNAME"* ]]; then
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
-        ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
+        crontab - <"$DOTFILES_DIR"/src/easypost/crontab
+        ln -sfn "$DOTFILES_DIR"/src/easypost/ssh/config "$HOME"/.ssh/config
+
+        # Emacs
         ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
+
+        # Vim
+        mkdir -p "$HOME"/.local/share/nvim/site/pack/packer/start
         ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.vimrc
-	ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.config/nvim/init.vim
+	    ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.config/nvim/init.vim
+        ln -sfn "$DOTFILES_DIR"/src/vim/plugins.lua "$HOME"/.config/nvim/lua/plugins.lua
+        ln -sfn "$DOTFILES_DIR"/src/vim/pack/* "$HOME"/.local/share/nvim/site/pack/packer/start
+    elif [[ "$HOSTNAME" == "$EASYPOST_AWS_HOSTNAME" ]]; then
+        # Shell
+        echo ". $DOTFILES_DIR/src/easypost/.zshrc-aws" >>"$HOME"/.zshrc
+        ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost-aws "$HOME"/.gitconfig
+
+        # Emacs
+        ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
+
+        # Vim
+        mkdir -p "$HOME"/.local/share/nvim/site/pack/packer/start
+        ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.vimrc
+	    ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.config/nvim/init.vim
+        ln -sfn "$DOTFILES_DIR"/src/vim/plugins.lua "$HOME"/.config/nvim/lua/plugins.lua
+        ln -sfn "$DOTFILES_DIR"/src/vim/pack/* "$HOME"/.local/share/nvim/site/pack/packer/start
+    elif [[ "$HOSTNAME" == *"$SERVER_HOSTNAME"* ]]; then
+        # Shell
+        ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
+        ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
         if [[ "$HOSTNAME" == "$SERVER2_HOSTNAME" ]]; then
             crontab - <"$DOTFILES_DIR"/src/server/crontab
         fi
+
+        # Emacs
+        ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
+
+        # Vim
+        mkdir -p "$HOME"/.local/share/nvim/site/pack/packer/start
+        ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.vimrc
+	    ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.config/nvim/init.vim
+        ln -sfn "$DOTFILES_DIR"/src/vim/plugins.lua "$HOME"/.config/nvim/lua/plugins.lua
+        ln -sfn "$DOTFILES_DIR"/src/vim/pack/* "$HOME"/.local/share/nvim/site/pack/packer/start
     else
         echo "HOSTNAME doesn't match any config."
     fi

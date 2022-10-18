@@ -37,6 +37,11 @@ set relativenumber
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 
+" Setup mouse scrolling
+set mouse=a
+map <ScrollWheelDown> j
+map <ScrollWheelUp> k
+
 " Setup backup folders
 set undodir=$HOME/.vim/tmp/undo     " undo files
 set backupdir=$HOME/.vim/tmp/backup " backups
@@ -68,23 +73,6 @@ augroup END
 if has('syntax') && has('eval')
   packadd! matchit
 endif
-
-call plug#begin()
-" The default plugin directory will be as follows:
-"   - Vim (Linux/macOS): '~/.vim/plugged'
-"   - Vim (Windows): '~/vimfiles/plugged'
-"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
-" You can specify a custom plugin directory by passing it as the argument
-"   - e.g. `call plug#begin('~/.vim/plugged')`
-"   - Avoid using standard Vim directory names like 'plugin'
-
-" Make sure you use single quotes
-
-Plug 'projekt0n/github-nvim-theme'
-
-" Initialize plugin system
-" - Automatically executes `filetype plugin indent on` and `syntax enable`.
-call plug#end()
 
 " Enable theme
 " NOTE: Configuration needs to be set BEFORE loading the color scheme with `colorscheme` command
