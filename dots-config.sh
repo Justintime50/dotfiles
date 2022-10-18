@@ -15,14 +15,10 @@ dots_config_up() {
         crontab - <"$DOTFILES_DIR"/src/personal/crontab
 
         # Emacs
-	    ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
+	    _install_emacs
         
         # Vim
-        mkdir -p "$HOME"/.local/share/nvim/site/pack/packer/start
-        ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.vimrc
-	    ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.config/nvim/init.vim
-        ln -sfn "$DOTFILES_DIR"/src/vim/plugins.lua "$HOME"/.config/nvim/lua/plugins.lua
-        ln -sfn "$DOTFILES_DIR"/src/vim/pack/* "$HOME"/.local/share/nvim/site/pack/packer/start
+        _install_vim
     elif [[ "$HOSTNAME" == "$EASYPOST_HOSTNAME" ]]; then
         # Shell
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
@@ -33,28 +29,20 @@ dots_config_up() {
         ln -sfn "$DOTFILES_DIR"/src/easypost/ssh/config "$HOME"/.ssh/config
 
         # Emacs
-        ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
+        _install_emacs
 
         # Vim
-        mkdir -p "$HOME"/.local/share/nvim/site/pack/packer/start
-        ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.vimrc
-	    ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.config/nvim/init.vim
-        ln -sfn "$DOTFILES_DIR"/src/vim/plugins.lua "$HOME"/.config/nvim/lua/plugins.lua
-        ln -sfn "$DOTFILES_DIR"/src/vim/pack/* "$HOME"/.local/share/nvim/site/pack/packer/start
+        _install_vim
     elif [[ "$HOSTNAME" == "$EASYPOST_AWS_HOSTNAME" ]]; then
         # Shell
         echo ". $DOTFILES_DIR/src/easypost/.zshrc-aws" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost-aws "$HOME"/.gitconfig
 
         # Emacs
-        ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
+        _install_emacs
 
         # Vim
-        mkdir -p "$HOME"/.local/share/nvim/site/pack/packer/start
-        ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.vimrc
-	    ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.config/nvim/init.vim
-        ln -sfn "$DOTFILES_DIR"/src/vim/plugins.lua "$HOME"/.config/nvim/lua/plugins.lua
-        ln -sfn "$DOTFILES_DIR"/src/vim/pack/* "$HOME"/.local/share/nvim/site/pack/packer/start
+        _install_vim
     elif [[ "$HOSTNAME" == *"$SERVER_HOSTNAME"* ]]; then
         # Shell
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
@@ -65,14 +53,10 @@ dots_config_up() {
         fi
 
         # Emacs
-        ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
+        _install_emacs
 
         # Vim
-        mkdir -p "$HOME"/.local/share/nvim/site/pack/packer/start
-        ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.vimrc
-	    ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.config/nvim/init.vim
-        ln -sfn "$DOTFILES_DIR"/src/vim/plugins.lua "$HOME"/.config/nvim/lua/plugins.lua
-        ln -sfn "$DOTFILES_DIR"/src/vim/pack/* "$HOME"/.local/share/nvim/site/pack/packer/start
+        _install_vim
     else
         echo "HOSTNAME doesn't match any config."
     fi
@@ -81,33 +65,72 @@ dots_config_up() {
 dots_config_down() {
     # `.zshrc` taken care of by Dots for all of these
     if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]]; then
-        rm "$HOME"/.gitconfig
+        # Shell
         rm "$HOME"/.zlogin
-        rm "$HOME"/.emacs
-	rm "$HOME"/.vimrc
-	rm "$HOME"/.config/nvim/init.vim
+        rm "$HOME"/.gitconfig
         crontab -r
+
+        # Emacs
+        _uninstall_emacs
+
+        # Vim
+        _uninstall_vim
     elif [[ "$HOSTNAME" == "$EASYPOST_HOSTNAME" ]]; then
-        rm "$HOME"/.gitconfig
+        # Shell
         rm "$HOME"/.zlogin
-        rm -rf "$HOME"/.ssh/config
-        rm "$HOME"/.emacs
-       	rm "$HOME"/.vimrc
-	rm "$HOME"/.config/nvim/init.vim
-	 crontab -r
-    elif [[ "$HOSTNAME" == "$EASYPOST_AWS_HOSTNAME" ]]; then
         rm "$HOME"/.gitconfig
-        rm "$HOME"/.emacs
- 	rm "$HOME"/.vimrc
-	rm "$HOME"/.config/nvim/init.vim
-   elif [[ "$HOSTNAME" == *"$SERVER_HOSTNAME"* ]]; then
-        rm "$HOME"/.gitconfig
-        rm "$HOME"/.zlogin
-        rm "$HOME"/.emacs
-  	rm "$HOME"/.vimrc
-	rm "$HOME"/.config/nvim/init.vim
         crontab -r
+        rm -rf "$HOME"/.ssh/config
+
+        # Emacs
+        _uninstall_emacs
+
+        # Vim
+        _uninstall_vim
+    elif [[ "$HOSTNAME" == "$EASYPOST_AWS_HOSTNAME" ]]; then
+        # Shell
+        rm "$HOME"/.gitconfig
+
+        # Emacs
+        _uninstall_emacs
+
+        # Vim
+        _uninstall_vim
+    elif [[ "$HOSTNAME" == *"$SERVER_HOSTNAME"* ]]; then
+        # Shell
+        rm "$HOME"/.zlogin
+        rm "$HOME"/.gitconfig
+        crontab -r
+
+        # Emacs
+        _uninstall_emacs
+
+        # Vim
+        _uninstall_vim
     else
         echo "HOSTNAME doesn't match any config."
     fi
+}
+
+_install_emacs() {
+    ln -sfn "$DOTFILES_DIR"/src/emacs/.emacs "$HOME"/.emacs
+}
+
+_install_vim() {
+    mkdir -p "$HOME"/.local/share/nvim/site/pack/packer/start
+    ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.vimrc
+    ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.config/nvim/init.vim
+    ln -sfn "$DOTFILES_DIR"/src/vim/plugins.lua "$HOME"/.config/nvim/lua/plugins.lua
+    ln -sfn "$DOTFILES_DIR"/src/vim/pack/* "$HOME"/.local/share/nvim/site/pack/packer/start
+}
+
+_uninstall_emacs() {
+    rm "$HOME"/.emacs
+}
+
+_uninstall_vim() {
+    rm "$HOME"/.vimrc
+    rm "$HOME"/.config/nvim/init.vim
+    rm "$HOME"/.config/nvim/lua/plugins.lua
+    rm -rf "$HOME"/.local/share/nvim/site/pack/packer/start
 }
