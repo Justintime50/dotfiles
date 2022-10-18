@@ -6,7 +6,8 @@
 
 EP_USERNAME="jhammond"
 # ADMIN_HOST="admin.easypo.net"
-AWS_DEVVM="oregon1"
+AWS_DEVVM_EL6_INSTANCE_NAME="oregon1"
+AWS_DEVVM_EL8_INSTANCE_NAME="oregon2"
 AWS_DEVVM_USER="vagrant"
 AWS_DEVVM_HOST="devvm.easypo.net"
 AWS_DEVVM_BASTION_HOST="admin.dev.easypo.net"
@@ -16,9 +17,10 @@ AWS_UPLOADS_DIR="/home/$AWS_DEVVM_USER/uploads"
 ## Aliases ##
 
 # SSH
-alias ssh-devvm='ssh -A $AWS_DEVVM_USER@$AWS_DEVVM.$EP_USERNAME.$AWS_DEVVM_HOST'
-alias ssh-devvm-jump='ssh -A -J `whoami`@$AWS_DEVVM_BASTION_HOST $AWS_DEVVM_USER@$AWS_DEVVM.`whoami`.devvm.easypo.net'
-alias ssh-teamvm='ssh -A $AWS_DEVVM_USER@team.jontsai.$AWS_DEVVM_HOST'
+alias ssh-oregon1='ssh -A $AWS_DEVVM_USER@$AWS_DEVVM_EL6_INSTANCE_NAME.$EP_USERNAME.$AWS_DEVVM_HOST'
+alias ssh-oregon1-jump='ssh -A -J `whoami`@$AWS_DEVVM_BASTION_HOST $AWS_DEVVM_USER@$AWS_DEVVM_EL6_INSTANCE_NAME.`whoami`.devvm.easypo.net'
+alias ssh-oregon2='ssh -A $AWS_DEVVM_USER@$AWS_DEVVM_EL8_INSTANCE_NAME.$EP_USERNAME.$AWS_DEVVM_HOST'
+alias ssh-oregon2-jump='ssh -A -J `whoami`@$AWS_DEVVM_BASTION_HOST $AWS_DEVVM_USER@$AWS_DEVVM_EL8_INSTANCE_NAME.`whoami`.devvm.easypo.net'
 alias ssh-admin='ssh -A admin.easypo.net'
 
 ###############
