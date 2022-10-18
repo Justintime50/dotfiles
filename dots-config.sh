@@ -16,7 +16,7 @@ dots_config_up() {
         crontab - <"$DOTFILES_DIR"/src/personal/crontab
 
         # Emacs
-	    _install_emacs
+        _install_emacs
         
         # Vim
         _install_vim
