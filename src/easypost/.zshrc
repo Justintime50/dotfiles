@@ -61,3 +61,8 @@ do_scp_download_oregon2() {
         scp "$AWS_DEVVM_USER"@"$AWS_DEVVM_EL8_INSTANCE_NAME"."$EP_USERNAME"."$AWS_DEVVM_HOST":"$1" "$HOME"/Downloads/ || echo "Couldn't copy file."
     fi
 }
+
+alias kill-vscode-server="do_kill_vscode_server"
+do_kill_vscode_server() {
+    ps uxa | grep .vscode-server | awk '{print $2}' | xargs kill -9
+}
