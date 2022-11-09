@@ -64,5 +64,5 @@ do_scp_download_oregon2() {
 
 alias kill-vscode-server="do_kill_vscode_server"
 do_kill_vscode_server() {
-    ps uxa | grep .vscode-server | awk '{print $2}' | xargs kill -9
+    pgrep -f .vscode-server | xargs kill -9
 }
