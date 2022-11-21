@@ -9,6 +9,9 @@ SERVER2_HOSTNAME="Server2"
 
 dots_config_up() {
     if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]]; then
+        # Submodules
+        _install_submodules
+
         # Shell
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
@@ -17,10 +20,13 @@ dots_config_up() {
 
         # Emacs
         _install_emacs
-        
+
         # Vim
         _install_vim
     elif [[ "$HOSTNAME" == "$EASYPOST_HOSTNAME" ]]; then
+        # Submodules
+        _install_submodules
+
         # Shell
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
@@ -35,6 +41,9 @@ dots_config_up() {
         # Vim
         _install_vim
     elif [[ "$HOSTNAME" == "$EASYPOST_AWS_EL6_HOSTNAME" || "$HOSTNAME" == "$EASYPOST_AWS_EL8_HOSTNAME" ]]; then
+        # Submodules
+        _install_submodules
+
         # Shell
         echo ". $DOTFILES_DIR/src/easypost/.zshrc-aws" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost-aws "$HOME"/.gitconfig
@@ -45,6 +54,9 @@ dots_config_up() {
         # Vim
         _install_vim
     elif [[ "$HOSTNAME" == *"$SERVER_HOSTNAME"* ]]; then
+        # Submodules
+        _install_submodules
+
         # Shell
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
@@ -111,6 +123,11 @@ dots_config_down() {
     else
         echo "HOSTNAME doesn't match any config."
     fi
+}
+
+_install_submodules() {
+    git -C "$DOTFILES_DIR" submodule init
+    git -C "$DOTFILES_DIR" submodule update
 }
 
 _install_emacs() {

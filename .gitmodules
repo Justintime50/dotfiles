@@ -7,3 +7,6 @@
 [submodule "src/vim/pack/packer.nvim"]
 	path = src/vim/pack/packer.nvim
 	url = https://github.com/wbthomason/packer.nvim
+[submodule "src/personal/iterm2/github-vscode-theme-iterm"]
+	path = src/personal/iterm2/github-vscode-theme-iterm
+	url = https://github.com/cdalvaro/github-vscode-theme-iterm

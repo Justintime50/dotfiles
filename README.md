@@ -44,6 +44,9 @@ curl -LJs https://raw.githubusercontent.com/justintime50/dotfiles/main/src/perso
     1. You may need to comment out the line that loads the theme until the entire init script is run (which installs the theme) at which point you can uncomment the theme load line
 * **iTerm2**
     1. Load iTerm2 preferences by pointing iTerm2 to the `plist` found in the `personal/iterm2` directory.
+    2. Open the GitHub Dark theme file in `personal/iterm2/github-vscode-theme-iterm` and select it as the current theme
+* **Vim**
+    1. As long as submodules are initialized and updated locally, Vim should set itself up with `Packer`
 
 ## Usage
 
