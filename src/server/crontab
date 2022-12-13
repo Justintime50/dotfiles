@@ -28,8 +28,8 @@ MAILTO=justinpaulhammond@gmail.com
 15 3 * * * cronic find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -delete
 
 # Server Sync (requires SSH key to be present on Server1)
-0 * * * * . "$HOME"/.keychain/${HOSTNAME}-sh; cronic rsync -a --no-perms --delete ~/harvey/ admin@Server1.local:~/harvey
-30 3 * * * . "$HOME"/.keychain/${HOSTNAME}-sh; cronic rsync -a --no-perms --delete ~/sqldumps/ admin@Server1.local:~/sqldumps
+# 0 * * * * . "$HOME"/.keychain/${HOSTNAME}-sh; cronic rsync -a --no-perms --delete ~/harvey/ admin@Server1.local:~/harvey
+# 30 3 * * * . "$HOME"/.keychain/${HOSTNAME}-sh; cronic rsync -a --no-perms --delete ~/sqldumps/ admin@Server1.local:~/sqldumps
 
 # Docker
 0 3 * * 0 cronic docker system prune -f
