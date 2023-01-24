@@ -26,10 +26,10 @@
 	# NOTE: This will not show/delete branches squashed/merged via GitHub: https://stackoverflow.com/a/44762904/6064135
 	# TODO: Delete the branches from the remote in addition to locally, WARNING: get this right as it can be dangerous
 	dmb = !sh -c 'git branch -r --merged | egrep -v \"(^\\*|main|master|dev|develop)\" | xargs git branch -d'
-
-[credential]
-	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://git.ncr4.com"]
 	provider = generic
 [credential "https://dev.azure.com"]
 	useHttpPath = true
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
