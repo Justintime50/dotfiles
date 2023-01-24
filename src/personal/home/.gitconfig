@@ -28,6 +28,9 @@
 	dmb = !sh -c 'git branch -r --merged | egrep -v \"(^\\*|main|master|dev|develop)\" | xargs git branch -d'
 [credential "https://git.ncr4.com"]
 	provider = generic
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 [credential]
