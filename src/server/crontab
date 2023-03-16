@@ -21,6 +21,7 @@ MAILTO=justinpaulhammond@gmail.com
 # 2 3 * * * . "$HOME"/.env-crontab; cronic srvinfra export_database_secure all-the-invites-alltheinvites-db-1 "$ALLTHEINVITES_DB_ROOT_PASSWORD" alltheinvites "$HOME/sqldumps/alltheinvites/alltheinvites_$(date +\%F_\%H-\%M-\%S).enc.gz"
 3 3 * * * . "$HOME"/.env-crontab; cronic srvinfra export_database_secure el-gozo-de-jesus-elgozodejesus-db-1 "$ELGOZODEJESUS_DB_ROOT_PASSWORD" elgozodejesus "$HOME/sqldumps/elgozodejesus/elgozodejesus_$(date +\%F_\%H-\%M-\%S).enc.gz"
 4 3 * * * . "$HOME"/.env-crontab; cronic srvinfra export_database_secure easypost-tools-ui-easypost-tools-db-1 "$EASYPOSTTOOLS_DB_ROOT_PASSWORD" easypost_tools "$HOME/sqldumps/easyposttools/easyposttools_$(date +\%F_\%H-\%M-\%S).enc.gz"
+5 3 * * * . "$HOME"/.env-crontab; cronic srvinfra export_database_secure match-play-match-play-db-1 "$MATCHPLAY_DB_ROOT_PASSWORD" matchplay "$HOME/sqldumps/matchplay/matchplay_$(date +\%F_\%H-\%M-\%S).enc.gz"
 # Deep archive backups every 30 days, (must come before cleanup) - NEVER delete
 # TODO: This is just dumping all backups to a single dir, break them up into their own dirs
 10 3 1 * * cronic find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -exec cp '{}' /"$HOME"/sqldumps_deep/ \;
