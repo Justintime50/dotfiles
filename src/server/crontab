@@ -38,7 +38,6 @@ MAILTO=justinpaulhammond@gmail.com
 # Healthchecks
 */5 * * * * cd "$HOME"/harvey/projects/justintime50/os-scripting && cronic ./src/macos/healthchecks/docker-healthcheck.sh
 */5 * * * * cd "$HOME"/harvey/projects/justintime50/os-scripting && cronic ./src/macos/healthchecks/harvey-healthcheck.sh
-# */30 * * * * cd "$HOME"/harvey/projects/justintime50/os-scripting && cronic ./src/macos/healthchecks/harvey-reboot.sh
 */10 * * * * cd "$HOME"/harvey/projects/justintime50/os-scripting && . "$HOME"/.env-crontab; UPTIME_ROBOT_API_KEY="$UPTIME_ROBOT_API_KEY" cronic venv/bin/python src/macos/healthchecks/docker_uptimerobot_healthcheck.py
 
 # Forks Sync
