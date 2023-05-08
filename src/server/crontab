@@ -10,9 +10,9 @@ PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/sb
 MAILTO=justinpaulhammond@gmail.com
 
 
-# Alchemist
+# Alchemist (DO NOT use `--greedy` here since it will break Docker in prod)
 10 2 * * * cronic alchemist --update
-30 2 * * * cronic alchemist --backup
+30 2 * * * cronic alchemist --backup --force
 45 2 * * * cronic cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/server/Brewfile"
 
 # Database Backups
