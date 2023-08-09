@@ -55,8 +55,8 @@ MAILTO=justinpaulhammond@gmail.com
 # 1Password Backups
 # 0 5 * * * cronic rsync -a --no-perms --delete "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/Library/Application Support/1Password/Data/" /Volumes/home/Backups/1Password/
 
-# Logrotate
-0 0 * * * cronic logrotate -f "$HOME"/.dotfiles/src/server/logrotate-docker-nginx.conf
+# Logrotate (requires a manually create ~/.logrotate-state file)
+0 0 * * * cronic logrotate "$HOME"/.dotfiles/src/server/logrotate-docker-nginx.conf --state "$HOME"/.logrotate-state -f
 
 # EasyPost (take care that these are company resources and not personal)
 0 9,12,15 * * 1-5 . "$HOME"/.env-crontab; cronic pullbug --pulls --github_token "$GITHUB_TOKEN" --github_context orgs --github_owner EasyPost --slack --slack_token "$EASYPOST_PULLBUG_SLACK_BOT_TOKEN" --slack_channel "$EASYPOST_PULLBUG_SLACK_CHANNEL" --repos easypost-php,easypost-node,easypost-python,easypost-ruby,easypost-java,easypost-csharp,easypost-go,easyvcr-csharp,easyvcr-java,examples --log_level warning --disable_descriptions --quiet
