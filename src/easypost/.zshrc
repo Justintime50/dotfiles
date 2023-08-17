@@ -6,6 +6,7 @@
 
 EP_USERNAME="jhammond"
 ADMIN_HOST="admin.easypo.net"
+SHARED_DEV_HOST="admin.dev.easypo.net"
 AWS_DEVVM_EL8_INSTANCE_NAME="oregon2"
 AWS_DEVVM_USER="vagrant"
 AWS_DEVVM_HOST="devvm.easypo.net"
@@ -19,6 +20,7 @@ AWS_UPLOADS_DIR="/home/$AWS_DEVVM_USER/uploads"
 alias ssh-oregon2='ssh -A $AWS_DEVVM_USER@$AWS_DEVVM_EL8_INSTANCE_NAME.$EP_USERNAME.$AWS_DEVVM_HOST'
 alias ssh-oregon2-jump='ssh -A -J `whoami`@$AWS_DEVVM_BASTION_HOST $AWS_DEVVM_USER@$AWS_DEVVM_EL8_INSTANCE_NAME.`whoami`.devvm.easypo.net'
 alias ssh-admin='ssh -A $ADMIN_HOST'
+alias ssh-shared-dev='ssh -A $SHARED_DEV_HOST'
 
 ###############
 ## Functions ##
