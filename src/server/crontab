@@ -11,7 +11,7 @@ MAILTO=justinpaulhammond@gmail.com
 
 
 # Login commands
-@reboot cronic "$HOME"/login-commands.sh
+@reboot cronic ./login-commands.sh
 
 # Alchemist (DO NOT use `--greedy` here since it will break Docker in prod)
 10 2 * * * cronic alchemist --update
