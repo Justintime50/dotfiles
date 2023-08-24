@@ -61,6 +61,7 @@ dots_config_up() {
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
+        ln -sfn "$DOTFILES_DIR"/src/server/login-commands.sh "$HOME"/login-commands.sh
         if [[ "$HOSTNAME" == "$SERVER2_HOSTNAME" ]]; then
             crontab - <"$DOTFILES_DIR"/src/server/crontab
         fi
@@ -113,6 +114,7 @@ dots_config_down() {
         # Shell
         rm "$HOME"/.zlogin
         rm "$HOME"/.gitconfig
+        rm "$HOME"/login-commands.sh
         crontab -r
 
         # Emacs
