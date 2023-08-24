@@ -40,7 +40,7 @@ MAILTO=justinpaulhammond@gmail.com
 
 # Healthchecks
 */2 * * * * cd "$HOME"/harvey/projects/justintime50/os-scripting && cronic ./src/macos/healthchecks/docker-healthcheck.sh
-*/1 * * * * cd "$HOME"/harvey/projects/justintime50/os-scripting && cronic ./src/macos/healthchecks/harvey-healthcheck.sh
+*/2 * * * * cd "$HOME"/harvey/projects/justintime50/os-scripting && cronic ./src/macos/healthchecks/harvey-healthcheck.sh
 */10 * * * * cd "$HOME"/harvey/projects/justintime50/os-scripting && . "$HOME"/.env-crontab; UPTIME_ROBOT_API_KEY="$UPTIME_ROBOT_API_KEY" cronic venv/bin/python src/macos/healthchecks/docker_uptimerobot_healthcheck.py
 
 # Forks Sync
@@ -55,9 +55,6 @@ MAILTO=justinpaulhammond@gmail.com
 # Unifi Config Backups
 # TODO: We need a cleanup task here for old backups
 # 0 4 * * 0 . "$HOME"/.keychain/${HOSTNAME}-sh; cronic "$HOME"/harvey/projects/justintime50/os-scripting/src/ubios/backups/download_config_backups.sh /Volumes/home/Backups/Unifi
-
-# 1Password Backups
-# 0 5 * * * cronic rsync -a --no-perms --delete "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/Library/Application Support/1Password/Data/" /Volumes/home/Backups/1Password/
 
 # Logrotate (requires a manually create ~/.logrotate-state file)
 # 0 0 * * * cronic logrotate "$HOME"/.dotfiles/src/server/logrotate-docker-nginx.conf --state "$HOME"/.logrotate-state -f
