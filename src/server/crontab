@@ -53,8 +53,8 @@ MAILTO=justinpaulhammond@gmail.com
 0 9 * * 1 . "$HOME"/.env-crontab; cronic pullbug --pulls --issues --drafts --github_token "$GITHUB_TOKEN" --github_context users --github_owner Justintime50 --discord --discord_url "$PULLBUG_DISCORD_URL" --log_level warning
 
 # Unifi Config Backups
-# TODO: We need a cleanup task here for old backups
-0 4 * * 0 . "$HOME"/.keychain/${HOSTNAME}-sh; cronic "$HOME"/harvey/projects/justintime50/os-scripting/src/ubios/backups/download_config_backups.sh /Volumes/home/Backups/Unifi
+0 4 * * 0 . "$HOME"/.env-crontab; cronic python3 "$HOME"/harvey/projects/justintime50/os-scripting/src/ubios/backups/get_last_console_backup.py
+5 4 * * 0 . "$HOME"/.env-crontab; cronic find "$UNIFI_BACKUP_LOCATION" -mtime +90 -delete
 
 # Logrotate (requires a manually create ~/.logrotate-state file)
 # 0 0 * * * cronic logrotate "$HOME"/.dotfiles/src/server/logrotate-docker-nginx.conf --state "$HOME"/.logrotate-state -f
