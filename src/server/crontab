@@ -13,6 +13,9 @@ MAILTO=justinpaulhammond@gmail.com
 # Login commands
 @reboot cronic ./login-commands.sh
 
+# Ensure SSH Agent is loaded and authenticated (SSH is needed for various cron tasks)
+*/10 * * * * cronic ssh-add -l
+
 # Alchemist (DO NOT use `--greedy` here since it will break Docker in prod)
 10 2 * * * cronic alchemist --update
 30 2 * * * cronic alchemist --backup --force
@@ -44,16 +47,16 @@ MAILTO=justinpaulhammond@gmail.com
 */10 * * * * cd "$HOME"/harvey/projects/justintime50/os-scripting && . "$HOME"/.env-crontab; UPTIME_ROBOT_API_KEY="$UPTIME_ROBOT_API_KEY" cronic venv/bin/python src/macos/healthchecks/docker_uptimerobot_healthcheck.py
 
 # Forks Sync
-# 0 2 * * * . "$HOME"/.env-crontab; cronic forks-sync --token "$GITHUB_TOKEN" --https --force
+# 0 2 * * * . "$HOME"/.env-crontab; cronic forks-sync --token "$GITHUB_TOKEN" --force
 
 # GitHub Archive
-0 1 * * * . "$HOME"/.env-crontab; cronic github-archive --users justintime50 --orgs tuneuptechnology --gists justintime50 --clone --pull --forks --token "$GITHUB_TOKEN" --log_level warning --https
+0 1 * * * . "$HOME"/.env-crontab; cronic github-archive --users justintime50 --orgs tuneuptechnology --gists justintime50 --clone --pull --forks --token "$GITHUB_TOKEN" --log_level warning
 
 # Pullbug (Personal to Discord)
 0 9 * * 1 . "$HOME"/.env-crontab; cronic pullbug --pulls --issues --drafts --github_token "$GITHUB_TOKEN" --github_context users --github_owner Justintime50 --discord --discord_url "$PULLBUG_DISCORD_URL" --log_level warning
 
 # Unifi Config Backups
-0 4 * * 0 . "$HOME"/.env-crontab; UNIFI_USERNAME="$UNIFI_USERNAME" UNIFI_PASSWORD="$UNIFI_PASSWORD" UNIFI_BACKUP_LOCATION="$UNIFI_BACKUP_LOCATION" cronic python3 "$HOME"/harvey/projects/justintime50/os-scripting/src/ubios/backups/get_last_console_backup.py
+0 4 * * * . "$HOME"/.env-crontab; UNIFI_USERNAME="$UNIFI_USERNAME" UNIFI_PASSWORD="$UNIFI_PASSWORD" UNIFI_BACKUP_LOCATION="$UNIFI_BACKUP_LOCATION" cronic python3 "$HOME"/harvey/projects/justintime50/os-scripting/src/ubios/backups/get_last_console_backup.py
 5 4 * * 0 . "$HOME"/.env-crontab; cronic find "$UNIFI_BACKUP_LOCATION" -mtime +90 -delete
 
 # Logrotate (requires a manually create ~/.logrotate-state file)
