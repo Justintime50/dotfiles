@@ -13,9 +13,6 @@ MAILTO=justinpaulhammond@gmail.com
 # Login commands
 @reboot cronic ./login-commands.sh
 
-# Ensure SSH Agent is loaded and authenticated (SSH is needed for various cron tasks)
-*/10 * * * * . "$HOME"/.keychain/${HOSTNAME}-sh; cronic ssh-add -l
-
 # Alchemist (DO NOT use `--greedy` here since it will break Docker in prod)
 10 2 * * * cronic alchemist --update
 30 2 * * * cronic alchemist --backup --force
