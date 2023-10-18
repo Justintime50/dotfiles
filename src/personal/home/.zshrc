@@ -33,11 +33,11 @@ HOSTNAME=$(hostname)
 ## Editor ##
 unset EDITOR
 if [[ -s $(which nvim) ]]; then
-	export EDITOR=nvim
+    export EDITOR=nvim
 elif [[ -s $(which vim) ]]; then
-	export EDITOR=vim
+    export EDITOR=vim
 else
-	export EDITOR=vi
+    export EDITOR=vi
 fi
 
 ###############
@@ -55,6 +55,10 @@ export JAVA_HOME
 
 #############
 ## Aliases ##
+
+# SSH
+alias ssh-server1='ssh admin@192.168.1.3'
+alias ssh-server2='ssh admin@192.168.1.2'
 
 # Tools
 alias emacs="emacs -nw"
