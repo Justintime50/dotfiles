@@ -76,7 +76,9 @@
 (setq-default indent-tabs-mode nil)
 
 ;; Show line numbers
-(global-linum-mode t)
+;; <= emacs 28
+;; (global-linum-mode t)
+(global-display-line-numbers-mode 1)
 
 ;; Set code auto-complete to "M-tab" (TODO: Can this be done with Ivy)
 (global-set-key (kbd "M-TAB") 'dabbrev-expand)
