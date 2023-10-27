@@ -2,8 +2,8 @@
 
 PERSONAL_HOSTNAME="MacBook-Pro-Justin"
 EASYPOST_HOSTNAME="MacBook-Pro-Justin-EasyPost"
-EASYPOST_AWS_EL6_HOSTNAME="oregon1"
-EASYPOST_AWS_EL8_HOSTNAME="oregon2.jhammond.devvm.easypo.net"
+EASYPOST_AWS_OREGON2_HOSTNAME="oregon2.jhammond.devvm.easypo.net"
+EASYPOST_AWS_OREGON3_HOSTNAME="oregon3.jhammond.devvm.easypo.net"
 SERVER_HOSTNAME="Server"
 SERVER2_HOSTNAME="Server2"
 
@@ -40,7 +40,7 @@ dots_config_up() {
 
         # Vim
         _install_vim
-    elif [[ "$HOSTNAME" == "$EASYPOST_AWS_EL6_HOSTNAME" || "$HOSTNAME" == "$EASYPOST_AWS_EL8_HOSTNAME" ]]; then
+    elif [[ "$HOSTNAME" == "$EASYPOST_AWS_OREGON2_HOSTNAME" || "$HOSTNAME" == "$EASYPOST_AWS_OREGON3_HOSTNAME" ]]; then
         # Submodules
         _install_submodules
 
@@ -101,7 +101,7 @@ dots_config_down() {
 
         # Vim
         _uninstall_vim
-    elif [[ "$HOSTNAME" == "$EASYPOST_AWS_EL6_HOSTNAME" || "$HOSTNAME" == "$EASYPOST_AWS_EL8_HOSTNAME" ]]; then
+    elif [[ "$HOSTNAME" == "$EASYPOST_AWS_OREGON2_HOSTNAME" || "$HOSTNAME" == "$EASYPOST_AWS_OREGON3_HOSTNAME" ]]; then
         # Shell
         rm "$HOME"/.gitconfig
 

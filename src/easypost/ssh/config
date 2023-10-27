@@ -33,3 +33,10 @@ Host oregon2
     ForwardAgent yes
     ProxyJump jhammond@admin.dev.easypo.net
     IdentityFile ~/.ssh/config
+
+Host oregon3
+    HostName oregon3.jhammond.devvm.easypo.net
+    User vagrant
+    ForwardAgent yes
+    ProxyJump jhammond@admin.dev.easypo.net
+    IdentityFile ~/.ssh/config
