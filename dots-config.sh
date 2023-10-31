@@ -47,6 +47,9 @@ dots_config_up() {
         # Shell
         echo ". $DOTFILES_DIR/src/easypost/.zshrc-aws" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost-aws "$HOME"/.gitconfig
+        if [[ "$HOSTNAME" == "$EASYPOST_AWS_OREGON3_HOSTNAME" ]]; then
+            crontab - <"$DOTFILES_DIR"/src/easypost/crontab-devvm
+        fi
 
         # Emacs
         _install_emacs
