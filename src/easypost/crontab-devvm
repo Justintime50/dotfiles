@@ -1,20 +1,9 @@
-<<<<<<< HEAD
-# ALL TIMES IN UTC
-
-MAILTO=jhammond@easypost.com
-
-=======
->>>>>>> b7e2db4 (Updated dotfiles)
 # Notify Support Slackbot
 0 15-23 * * 1-5 . "$HOME"/.env-crontab; cd cron/notify_support_slackbot && venv/bin/python notify_support_slackbot.py --phab_token "%PHAB_API_KEY" --slack_token "$NOTIFY_SUPPORT_SLACKBOT_TOKEN" --slack_channel "$NOTIFY_SUPPORT_SLACK_CHANNEL"
 0 14 * * 1 rm notify_support_slackbot_seen_resolved_tickets.txt notify_support_slackbot_seen_in_review_tickets.txt
 
 # Pullbug
-<<<<<<< HEAD
-0 15,18,121 * * 1-5 . "$HOME"/.env-crontab; pullbug --pulls --github_token "$GITHUB_TOKEN" --github_context orgs --github_owner EasyPost --slack --slack_token "$PULLBUG_SLACKBOT_TOKEN" --slack_channel "$PULLBUG_SLACK_CHANNEL" --repos easypost-php,easypost-node,easypost-python,easypost-ruby,easypost-java,easypost-csharp,easypost-go,easyvcr-csharp,easyvcr-java,examples --log_level warning --disable_descriptions --quiet
-=======
 0 15,18,21 * * 1-5 . "$HOME"/.env-crontab; pullbug --pulls --github_token "$GITHUB_TOKEN" --github_context orgs --github_owner EasyPost --slack --slack_token "$PULLBUG_SLACKBOT_TOKEN" --slack_channel "$PULLBUG_SLACK_CHANNEL" --repos easypost-php,easypost-node,easypost-python,easypost-ruby,easypost-java,easypost-csharp,easypost-go,easyvcr-csharp,easyvcr-java,examples --log_level warning --disable_descriptions --quiet
->>>>>>> b7e2db4 (Updated dotfiles)
 
 # Advent of Code Leaderboard
 # 0 15 * 12 * cd "$HOME"/git/playground/AdventOfCodeLeaderboard && cronic python3 leaderboard.py
