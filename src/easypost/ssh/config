@@ -27,13 +27,6 @@ Host *
     SendEnv TZ
     ServerAliveInterval 180
 
-Host oregon2
-    HostName oregon2.jhammond.devvm.easypo.net
-    User vagrant
-    ForwardAgent yes
-    ProxyJump jhammond@admin.dev.easypo.net
-    IdentityFile ~/.ssh/config
-
 Host oregon3
     HostName oregon3.jhammond.devvm.easypo.net
     User vagrant
