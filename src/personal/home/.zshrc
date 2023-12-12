@@ -39,6 +39,8 @@ elif [[ -s $(which vim) ]]; then
 else
     export EDITOR=vi
 fi
+# Vim bindings on the CLI breaks my flow, don't use them there
+bindkey -e
 
 ###############
 ## Variables ##

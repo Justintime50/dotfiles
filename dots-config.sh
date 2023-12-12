@@ -17,10 +17,8 @@ dots_config_up() {
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
         crontab - <"$DOTFILES_DIR"/src/personal/crontab
 
-        # Emacs
+        # Text Editors
         _install_emacs
-
-        # Vim
         _install_vim
     elif [[ "$HOSTNAME" == "$EASYPOST_HOSTNAME" ]]; then
         # Submodules
@@ -34,10 +32,8 @@ dots_config_up() {
         crontab - <"$DOTFILES_DIR"/src/easypost/crontab
         ln -sfn "$DOTFILES_DIR"/src/easypost/ssh/config "$HOME"/.ssh/config
 
-        # Emacs
+        # Text Editors
         _install_emacs
-
-        # Vim
         _install_vim
     elif [[ "$HOSTNAME" == "$EASYPOST_AWS_OREGON3_HOSTNAME" ]]; then
         # Submodules
@@ -50,10 +46,8 @@ dots_config_up() {
             crontab - <"$DOTFILES_DIR"/src/easypost/crontab-devvm
         fi
 
-        # Emacs
+        # Text Editors
         _install_emacs
-
-        # Vim
         _install_vim
     elif [[ "$HOSTNAME" == *"$SERVER_HOSTNAME"* ]]; then
         # Submodules
@@ -68,10 +62,8 @@ dots_config_up() {
             crontab - <"$DOTFILES_DIR"/src/server/crontab
         fi
 
-        # Emacs
+        # Text Editors
         _install_emacs
-
-        # Vim
         _install_vim
     else
         echo "HOSTNAME doesn't match any config."
@@ -86,10 +78,8 @@ dots_config_down() {
         rm "$HOME"/.gitconfig
         crontab -r
 
-        # Emacs
+        # Text Editors
         _uninstall_emacs
-
-        # Vim
         _uninstall_vim
     elif [[ "$HOSTNAME" == "$EASYPOST_HOSTNAME" ]]; then
         # Shell
@@ -98,19 +88,15 @@ dots_config_down() {
         crontab -r
         rm -rf "$HOME"/.ssh/config
 
-        # Emacs
+        # Text Editors
         _uninstall_emacs
-
-        # Vim
         _uninstall_vim
     elif [[ "$HOSTNAME" == "$EASYPOST_AWS_OREGON3_HOSTNAME" ]]; then
         # Shell
         rm "$HOME"/.gitconfig
 
-        # Emacs
+        # Text Editors
         _uninstall_emacs
-
-        # Vim
         _uninstall_vim
     elif [[ "$HOSTNAME" == *"$SERVER_HOSTNAME"* ]]; then
         # Shell
@@ -119,10 +105,8 @@ dots_config_down() {
         rm "$HOME"/login-commands.sh
         crontab -r
 
-        # Emacs
+        # Text Editors
         _uninstall_emacs
-
-        # Vim
         _uninstall_vim
     else
         echo "HOSTNAME doesn't match any config."

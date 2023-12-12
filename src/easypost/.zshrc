@@ -22,6 +22,19 @@ alias ssh-oregon3-jump='ssh -A -J `whoami`@$AWS_DEVVM_BASTION_HOST $AWS_DEVVM_US
 alias ssh-admin='ssh -A $ADMIN_HOST'
 alias ssh-shared-dev='ssh -A $SHARED_DEV_HOST'
 
+############
+## Editor ##
+unset EDITOR
+if [[ -s $(which nvim) ]]; then
+    export EDITOR=nvim
+elif [[ -s $(which vim) ]]; then
+    export EDITOR=vim
+else
+    export EDITOR=vi
+fi
+# Vim bindings on the CLI breaks my flow, don't use them there
+bindkey -e
+
 ###############
 ## Functions ##
 
