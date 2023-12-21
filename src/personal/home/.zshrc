@@ -75,8 +75,10 @@ alias check-ipv6='curl -6 ${ECHO_IP_URL}'
 alias cg='cd $HOME/git'
 alias cgp='cd $HOME/git/personal'
 alias cge='cd $HOME/git/easypost'
+alias cgsh='cd $HOME/git/shield-management'
 alias lsa="ls -la"
-alias vscode_settings='emacs $HOME/Library/Application\ Support/Code/User/settings.json'
+alias vscode_settings='code $HOME/Library/Application\ Support/Code/User/settings.json'
+alias dotfiles='code $HOME/.dotfiles'
 
 ###############
 ## Functions ##

@@ -21,9 +21,9 @@ MAILTO=justinpaulhammond@gmail.com
 # Database Backups
 0 3 * * * . "$HOME"/.env-crontab; SRVINFRA_DATABASE_EXECUTABLE="mariadb" cronic srvinfra export_database_secure easypost-tools-ui-easypost-tools-ui-db-1 "$EASYPOSTTOOLS_DB_ROOT_PASSWORD" easypost_tools "$HOME/sqldumps/easyposttools/easyposttools_$(date +\%F_\%H-\%M-\%S).enc.gz"
 2 3 * * * . "$HOME"/.env-crontab; SRVINFRA_DATABASE_EXECUTABLE="mariadb" cronic srvinfra export_database_secure glass-glass-db-1 "$GLASS_DB_ROOT_PASSWORD" glass "$HOME/sqldumps/glass/glass_$(date +\%F_\%H-\%M-\%S).enc.gz"
-3 3 * * * . "$HOME"/.env-crontab; cronic srvinfra export_database_secure jones-excavating-jones-excavating-db-1 "$JONESEXCAVATING_DB_ROOT_PASSWORD" jonesexcavating "$HOME/sqldumps/jonesexcavating/jonesexcavating_$(date +\%F_\%H-\%M-\%S).enc.gz"
-4 3 * * * . "$HOME"/.env-crontab; cronic srvinfra export_database_secure callus-fabrication-callus-fabrication-db-1 "$CALLUSFABRICATION_DB_ROOT_PASSWORD" callusfabrication "$HOME/sqldumps/callusfabrication/callusfabrication_$(date +\%F_\%H-\%M-\%S).enc.gz"
-5 3 * * * . "$HOME"/.env-crontab; cronic srvinfra export_database_secure match-play-match-play-db-1 "$MATCHPLAY_DB_ROOT_PASSWORD" matchplay "$HOME/sqldumps/matchplay/matchplay_$(date +\%F_\%H-\%M-\%S).enc.gz"
+3 3 * * * . "$HOME"/.env-crontab; SRVINFRA_DATABASE_EXECUTABLE="mariadb" cronic srvinfra export_database_secure jones-excavating-jones-excavating-db-1 "$JONESEXCAVATING_DB_ROOT_PASSWORD" jonesexcavating "$HOME/sqldumps/jonesexcavating/jonesexcavating_$(date +\%F_\%H-\%M-\%S).enc.gz"
+4 3 * * * . "$HOME"/.env-crontab; SRVINFRA_DATABASE_EXECUTABLE="mariadb" cronic srvinfra export_database_secure callus-fabrication-callus-fabrication-db-1 "$CALLUSFABRICATION_DB_ROOT_PASSWORD" callusfabrication "$HOME/sqldumps/callusfabrication/callusfabrication_$(date +\%F_\%H-\%M-\%S).enc.gz"
+5 3 * * * . "$HOME"/.env-crontab; SRVINFRA_DATABASE_EXECUTABLE="mariadb" cronic srvinfra export_database_secure match-play-match-play-db-1 "$MATCHPLAY_DB_ROOT_PASSWORD" matchplay "$HOME/sqldumps/matchplay/matchplay_$(date +\%F_\%H-\%M-\%S).enc.gz"
 # Deep archive backups every 30 days, (must come before cleanup) - NEVER delete
 # TODO: This is just dumping all backups to a single dir, break them up into their own dirs
 10 3 1 * * cronic find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -exec cp '{}' /"$HOME"/sqldumps_deep/ \;
