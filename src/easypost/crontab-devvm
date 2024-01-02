@@ -11,4 +11,4 @@
 0 15,18,21 * * 1-5 . "$HOME"/.env-crontab; ~/.venv/bin/pullbug --pulls --github_token "$GITHUB_TOKEN" --github_context orgs --github_owner EasyPost --slack --slack_token "$PULLBUG_SLACKBOT_TOKEN" --slack_channel "$PULLBUG_SLACK_CHANNEL" --repos easypost-php,easypost-node,easypost-python,easypost-ruby,easypost-java,easypost-csharp,easypost-go,easyvcr-csharp,easyvcr-java,examples --log_level warning --disable_descriptions --quiet
 
 # Advent of Code Leaderboard
-0 15 * 12 * cd advent_of_code_leaderboard && ~/.venv/bin/python leaderboard.py
+# 0 15 * 12 * cd advent_of_code_leaderboard && ~/.venv/bin/python leaderboard.py
