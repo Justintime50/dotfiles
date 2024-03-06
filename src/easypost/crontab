@@ -4,12 +4,11 @@
 # Instead, place them in `~/.env-crontab` and source that file on
 # cron jobs that require environment variables
 
-
 # GLOBAL SETUP
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-
+MAILTO=jhammond@easypost.com
 
 # Alchemist
-0 */4 * * * alchemist --update > /dev/null
-15 */4 * * * alchemist --backup > /dev/null
-20 */4 * * * cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/easypost/Brewfile"
+0 12 * * * cronic alchemist --update
+30 12 * * * cronic alchemist --backup --force
+35 12 * * * cronic cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/easypost/Brewfile"
