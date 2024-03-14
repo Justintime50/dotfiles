@@ -21,6 +21,7 @@ export path=(
     /Users/"$USER"/.dotnet/tools
     /usr/local/Cellar/mono/6.12.0.122_1/bin
     /Users/"$USER"/.cargo/bin
+    /Users/"$USER"/.local/bin
 )
 
 ############
