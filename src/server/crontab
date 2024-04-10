@@ -48,5 +48,5 @@ MAILTO=justinpaulhammond@gmail.com
 0 9 * * 1 . "$HOME"/.env-crontab; cronic pullbug --pulls --issues --drafts --github_token "$GITHUB_TOKEN" --github_context users --github_owner Justintime50 --discord --discord_url "$PULLBUG_DISCORD_URL" --log_level warning
 
 # Unifi Config Backups
-0 4 * * * . "$HOME"/.env-crontab; UNIFI_USERNAME="$UNIFI_USERNAME" UNIFI_PASSWORD="$UNIFI_PASSWORD" UNIFI_BACKUP_LOCATION="$UNIFI_BACKUP_LOCATION" cronic python3 "$HOME"/harvey/projects/justintime50/os-scripting/src/ubios/backups/get_last_console_backup.py
+0 4 * * * . "$HOME"/.env-crontab; UNIFI_USERNAME="$UNIFI_USERNAME" UNIFI_PASSWORD="$UNIFI_PASSWORD" UNIFI_BACKUP_LOCATION="$UNIFI_BACKUP_LOCATION" cronic venv/get_last_unifi_console_backup/bin/python "$HOME"/harvey/projects/justintime50/os-scripting/src/ubios/backups/get_last_console_backup.py
 5 4 * * 0 . "$HOME"/.env-crontab; cronic find "$UNIFI_BACKUP_LOCATION" -mtime +90 -delete
