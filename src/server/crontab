@@ -42,10 +42,10 @@ MAILTO=justinpaulhammond@gmail.com
 # 0 2 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; cronic forks-sync --token "$GITHUB_TOKEN" --force
 
 # GitHub Archive
-0 1 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; cronic github-archive --users justintime50 --orgs tuneuptechnology --gists justintime50 --clone --pull --forks --token "$GITHUB_TOKEN" --log_level warning
+0 1 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; cronic venv/github-archive/bin/github-archive --users justintime50 --orgs tuneuptechnology --gists justintime50 --clone --pull --forks --token "$GITHUB_TOKEN" --log_level warning
 
 # Pullbug (Personal to Discord)
-0 9 * * 1 . "$HOME"/.env-crontab; cronic pullbug --pulls --issues --drafts --github_token "$GITHUB_TOKEN" --github_context users --github_owner Justintime50 --discord --discord_url "$PULLBUG_DISCORD_URL" --log_level warning
+0 9 * * 1 . "$HOME"/.env-crontab; cronic venv/pullbug/bin/pullbug --pulls --issues --drafts --github_token "$GITHUB_TOKEN" --github_context users --github_owner Justintime50 --discord --discord_url "$PULLBUG_DISCORD_URL" --log_level warning
 
 # Unifi Config Backups
 0 4 * * * . "$HOME"/.env-crontab; UNIFI_USERNAME="$UNIFI_USERNAME" UNIFI_PASSWORD="$UNIFI_PASSWORD" UNIFI_BACKUP_LOCATION="$UNIFI_BACKUP_LOCATION" cronic venv/get_last_unifi_console_backup/bin/python "$HOME"/harvey/projects/justintime50/os-scripting/src/ubios/backups/get_last_console_backup.py
