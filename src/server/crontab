@@ -52,4 +52,4 @@ MAILTO=justinpaulhammond@gmail.com
 5 4 * * 0 . "$HOME"/.env-crontab; cronic find "$UNIFI_BACKUP_LOCATION" -mtime +90 -delete
 
 # Laravel
-* * * * * cronic docker exec golf-rocket-golf-rocket-1 /bin/sh -c "php artisan schedule:run"
+* * * * * docker exec golf-rocket-golf-rocket-1 sh -c "php artisan schedule:run"
