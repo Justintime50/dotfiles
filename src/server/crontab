@@ -51,5 +51,5 @@ MAILTO=justinpaulhammond@gmail.com
 0 4 * * * . "$HOME"/.env-crontab; UNIFI_USERNAME="$UNIFI_USERNAME" UNIFI_PASSWORD="$UNIFI_PASSWORD" UNIFI_BACKUP_LOCATION="$UNIFI_BACKUP_LOCATION" cronic venv/get_last_unifi_console_backup/bin/python "$HOME"/harvey/projects/justintime50/os-scripting/src/ubios/backups/get_last_console_backup.py
 5 4 * * 0 . "$HOME"/.env-crontab; cronic find "$UNIFI_BACKUP_LOCATION" -mtime +90 -delete
 
-# Laravel
+# Laravel (DO NOT us cronic for docker exec commands, it eats up the command)
 * * * * * docker exec golf-rocket-golf-rocket-1 sh -c "php artisan schedule:run"
