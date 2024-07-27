@@ -60,6 +60,7 @@ dots_config_up() {
         ln -sfn "$DOTFILES_DIR"/src/server/login-commands.sh "$HOME"/login-commands.sh
         if [[ "$HOSTNAME" == "$SERVER2_HOSTNAME" ]]; then
             crontab - <"$DOTFILES_DIR"/src/server/crontab
+            ln -sfn "$DOTFILES_DIR"/src/server/docker-cron-jobs.sh "$HOME"/docker-cron-jobs.sh
         fi
 
         # Text Editors
@@ -74,8 +75,8 @@ dots_config_down() {
     # `.zshrc` taken care of by Dots for all of these
     if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]]; then
         # Shell
-        rm "$HOME"/.zlogin
-        rm "$HOME"/.gitconfig
+        rm -f "$HOME"/.zlogin
+        rm -f "$HOME"/.gitconfig
         crontab -r
 
         # Text Editors
@@ -83,8 +84,8 @@ dots_config_down() {
         _uninstall_vim
     elif [[ "$HOSTNAME" == "$EASYPOST_HOSTNAME" ]]; then
         # Shell
-        rm "$HOME"/.zlogin
-        rm "$HOME"/.gitconfig
+        rm -f "$HOME"/.zlogin
+        rm -f "$HOME"/.gitconfig
         crontab -r
         rm -rf "$HOME"/.ssh/config
 
@@ -93,16 +94,17 @@ dots_config_down() {
         _uninstall_vim
     elif [[ "$HOSTNAME" == "$EASYPOST_AWS_OREGON3_HOSTNAME" ]]; then
         # Shell
-        rm "$HOME"/.gitconfig
+        rm -f "$HOME"/.gitconfig
 
         # Text Editors
         _uninstall_emacs
         _uninstall_vim
     elif [[ "$HOSTNAME" == *"$SERVER_HOSTNAME"* ]]; then
         # Shell
-        rm "$HOME"/.zlogin
-        rm "$HOME"/.gitconfig
-        rm "$HOME"/login-commands.sh
+        rm -f "$HOME"/.zlogin
+        rm -f "$HOME"/.gitconfig
+        rm -f "$HOME"/login-commands.sh
+        rm -f "$HOME"/docker-cron-jobs.sh
         crontab -r
 
         # Text Editors
@@ -135,12 +137,12 @@ _install_vim() {
 }
 
 _uninstall_emacs() {
-    rm "$HOME"/.emacs
+    rm -f "$HOME"/.emacs
 }
 
 _uninstall_vim() {
-    rm "$HOME"/.vimrc
-    rm "$HOME"/.config/nvim/init.vim
-    rm "$HOME"/.config/nvim/lua/plugins.lua
+    rm -f "$HOME"/.vimrc
+    rm -f "$HOME"/.config/nvim/init.vim
+    rm -f "$HOME"/.config/nvim/lua/plugins.lua
     rm -rf "$HOME"/.local/share/nvim/site/pack/packer/start
 }
