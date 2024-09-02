@@ -3,7 +3,7 @@
 PERSONAL_HOSTNAME="MacBook-Pro-Justin"
 EASYPOST_HOSTNAME="MacBook-Pro-Justin-EasyPost"
 EASYPOST_AWS_OREGON3_HOSTNAME="oregon3.jhammond.devvm.easypo.net"
-SERVER_HOSTNAME="Server"
+SERVER1_HOSTNAME="Server1"
 SERVER2_HOSTNAME="Server2"
 
 dots_config_up() {
@@ -49,7 +49,7 @@ dots_config_up() {
         # Text Editors
         _install_emacs
         _install_vim
-    elif [[ "$HOSTNAME" == *"$SERVER_HOSTNAME"* ]]; then
+    elif [[ "$HOSTNAME" == "Server"* ]]; then
         # Submodules
         _install_submodules
 
@@ -57,10 +57,14 @@ dots_config_up() {
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
-        ln -sfn "$DOTFILES_DIR"/src/server/login-commands.sh "$HOME"/login-commands.sh
+        if [[ "$HOSTNAME" == "$SERVER1_HOSTNAME" ]]; then
+            crontab - <"$DOTFILES_DIR"/src/server1/crontab
+            ln -sfn "$DOTFILES_DIR"/src/server1/login-commands.sh "$HOME"/login-commands.sh
+        fi
         if [[ "$HOSTNAME" == "$SERVER2_HOSTNAME" ]]; then
-            crontab - <"$DOTFILES_DIR"/src/server/crontab
-            ln -sfn "$DOTFILES_DIR"/src/server/docker-cron-jobs.sh "$HOME"/docker-cron-jobs.sh
+            crontab - <"$DOTFILES_DIR"/src/server2/crontab
+            ln -sfn "$DOTFILES_DIR"/src/server2/login-commands.sh "$HOME"/login-commands.sh
+            ln -sfn "$DOTFILES_DIR"/src/server2/docker-cron-jobs.sh "$HOME"/docker-cron-jobs.sh
         fi
 
         # Text Editors
@@ -99,7 +103,7 @@ dots_config_down() {
         # Text Editors
         _uninstall_emacs
         _uninstall_vim
-    elif [[ "$HOSTNAME" == *"$SERVER_HOSTNAME"* ]]; then
+    elif [[ "$HOSTNAME" == "Server"* ]]; then
         # Shell
         rm -f "$HOME"/.zlogin
         rm -f "$HOME"/.gitconfig

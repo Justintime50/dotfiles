@@ -16,7 +16,7 @@ MAILTO=justinpaulhammond@gmail.com
 # Alchemist (DO NOT use `--greedy` here since it will break Docker in prod)
 10 2 * * * cronic alchemist --update
 30 2 * * * cronic alchemist --backup --force
-45 2 * * * cronic cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/server/Brewfile"
+45 2 * * * cronic cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/server2/Brewfile"
 
 # Database Backups
 0 3 * * * . "$HOME"/.env-crontab; SRVINFRA_DATABASE_EXECUTABLE="mariadb" cronic srvinfra export_database_secure easypost-tools-ui-easypost-tools-ui-db-1 "$EASYPOSTTOOLS_DB_ROOT_PASSWORD" easypost_tools "$HOME/sqldumps/easyposttools/easyposttools_$(date +\%F_\%H-\%M-\%S).enc.gz"
