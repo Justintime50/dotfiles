@@ -50,11 +50,11 @@ export SRVINFRA_SERVICES_DIR="$HOME/harvey/projects"
 
 # Java
 # See the following for Java releasing variables: https://issues.sonatype.org/browse/NEXUS-27902 & https://github.com/keybase/keybase-issues/issues/2798
-export JDK_JAVA_OPTIONS='--add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED --add-opens java.base/java.text=ALL-UNNAMED --add-opens java.desktop/java.awt.font=ALL-UNNAMED'
-GPG_TTY="$(tty)"
-export GPG_TTY
-JAVA_HOME=$(/usr/libexec/java_home)
-export JAVA_HOME
+# export JDK_JAVA_OPTIONS='--add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED --add-opens java.base/java.text=ALL-UNNAMED --add-opens java.desktop/java.awt.font=ALL-UNNAMED'
+# GPG_TTY="$(tty)"
+# export GPG_TTY
+# JAVA_HOME=$(/usr/libexec/java_home)
+# export JAVA_HOME
 
 #############
 ## Aliases ##
