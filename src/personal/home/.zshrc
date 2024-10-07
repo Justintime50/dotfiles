@@ -61,8 +61,8 @@ export CPPFLAGS="-I/opt/homebrew/opt/openjdk@21/include"
 ## Aliases ##
 
 # SSH
-alias ssh-server1='ssh admin@192.168.1.3'
-alias ssh-server2='ssh admin@192.168.1.2'
+alias ssh-server1='ssh admin@192.168.7.2'
+alias ssh-server2='ssh admin@192.168.7.3'
 
 # Tools
 alias emacs="emacs -nw"
