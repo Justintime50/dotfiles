@@ -12,7 +12,7 @@ dots_config_up() {
         _install_submodules
 
         # Shell
-        ln -sfn "$DOTFILES_DIR"/src/personal/home/.zshenv "$HOME"/.zshenv
+        ln -sfn "$DOTFILES_DIR"/src/x86/.zshenv "$HOME"/.zshenv
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
         crontab - <"$DOTFILES_DIR"/src/personal/crontab
@@ -25,7 +25,7 @@ dots_config_up() {
         _install_submodules
 
         # Shell
-        ln -sfn "$DOTFILES_DIR"/src/personal/home/.zshenv "$HOME"/.zshenv
+        ln -sfn "$DOTFILES_DIR"/src/arm/.zshenv "$HOME"/.zshenv
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
         echo ". $DOTFILES_DIR/src/easypost/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
@@ -54,15 +54,16 @@ dots_config_up() {
         _install_submodules
 
         # Shell
-        ln -sfn "$DOTFILES_DIR"/src/personal/home/.zshenv "$HOME"/.zshenv
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
         if [[ "$HOSTNAME" == "$SERVER1_HOSTNAME" ]]; then
+            ln -sfn "$DOTFILES_DIR"/src/x86/.zshenv "$HOME"/.zshenv
             crontab - <"$DOTFILES_DIR"/src/server1/crontab
             ln -sfn "$DOTFILES_DIR"/src/server1/login-commands.sh "$HOME"/login-commands.sh
         fi
         if [[ "$HOSTNAME" == "$SERVER2_HOSTNAME" ]]; then
             crontab - <"$DOTFILES_DIR"/src/server2/crontab
+            ln -sfn "$DOTFILES_DIR"/src/arm/.zshenv "$HOME"/.zshenv
             ln -sfn "$DOTFILES_DIR"/src/server2/login-commands.sh "$HOME"/login-commands.sh
             ln -sfn "$DOTFILES_DIR"/src/server2/docker-cron-jobs.sh "$HOME"/docker-cron-jobs.sh
         fi
