@@ -12,7 +12,7 @@ dots_config_up() {
         _install_submodules
 
         # Shell
-        ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
+        ln -sfn "$DOTFILES_DIR"/src/personal/home/.zshenv "$HOME"/.zshenv
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
         crontab - <"$DOTFILES_DIR"/src/personal/crontab
@@ -25,7 +25,7 @@ dots_config_up() {
         _install_submodules
 
         # Shell
-        ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
+        ln -sfn "$DOTFILES_DIR"/src/personal/home/.zshenv "$HOME"/.zshenv
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
         echo ". $DOTFILES_DIR/src/easypost/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
@@ -54,7 +54,7 @@ dots_config_up() {
         _install_submodules
 
         # Shell
-        ln -sfn "$DOTFILES_DIR"/src/personal/home/.zlogin "$HOME"/.zlogin
+        ln -sfn "$DOTFILES_DIR"/src/personal/home/.zshenv "$HOME"/.zshenv
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
         if [[ "$HOSTNAME" == "$SERVER1_HOSTNAME" ]]; then
@@ -79,7 +79,7 @@ dots_config_down() {
     # `.zshrc` taken care of by Dots for all of these
     if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]]; then
         # Shell
-        rm -f "$HOME"/.zlogin
+        rm -f "$HOME"/.zshenv
         rm -f "$HOME"/.gitconfig
         crontab -r
 
@@ -88,7 +88,7 @@ dots_config_down() {
         _uninstall_vim
     elif [[ "$HOSTNAME" == "$EASYPOST_HOSTNAME" ]]; then
         # Shell
-        rm -f "$HOME"/.zlogin
+        rm -f "$HOME"/.zshenv
         rm -f "$HOME"/.gitconfig
         crontab -r
         rm -rf "$HOME"/.ssh/config
@@ -105,7 +105,7 @@ dots_config_down() {
         _uninstall_vim
     elif [[ "$HOSTNAME" == "Server"* ]]; then
         # Shell
-        rm -f "$HOME"/.zlogin
+        rm -f "$HOME"/.zshenv
         rm -f "$HOME"/.gitconfig
         rm -f "$HOME"/login-commands.sh
         rm -f "$HOME"/docker-cron-jobs.sh

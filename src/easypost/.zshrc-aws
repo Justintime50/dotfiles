@@ -11,12 +11,14 @@ ADMIN_HOST="admin.easypo.net"
 ## Editor ##
 unset EDITOR
 if [[ -s $(which nvim) ]]; then
-	export EDITOR=nvim
+    export EDITOR=nvim
 elif [[ -s $(which vim) ]]; then
-	export EDITOR=vim
+    export EDITOR=vim
 else
-	export EDITOR=vi
+    export EDITOR=vi
 fi
+# Vim bindings on the CLI breaks my flow, don't use them there
+bindkey -e
 
 #############
 ## Aliases ##
