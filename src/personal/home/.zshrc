@@ -24,10 +24,6 @@ export path=(
     /Users/"$USER"/.local/bin
 )
 
-####################
-## Setup keychain ##
-eval "$(keychain --eval --agents ssh --inherit any id_rsa)"
-
 ############
 ## Prompt ##
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
