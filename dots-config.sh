@@ -16,6 +16,7 @@ dots_config_up() {
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
         crontab - <"$DOTFILES_DIR"/src/personal/crontab
+        ln -sfn "$DOTFILES_DIR"/src/personal/ssh/config "$HOME"/.ssh/config
 
         # Text Editors
         _install_emacs
