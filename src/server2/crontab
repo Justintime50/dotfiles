@@ -29,8 +29,8 @@ MAILTO=justinpaulhammond@gmail.com
 10 3 1 * * cronic find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -exec cp '{}' /"$HOME"/sqldumps_deep/ \;
 # Cleanup backups older than 30 days (must come last)
 15 3 * * * cronic find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -delete
-20 3 * * * rsync -avz ~/sqldumps rsync@192.168.7.4:/volume1/MySQLBackups/
-21 3 * * * rsync -avz ~/sqldumps_deep rsync@192.168.7.4:/volume1/MySQLBackups/
+20 3 * * * . "$HOME"/.keychain/${HOSTNAME}-sh; cronic rsync -avz ~/sqldumps rsync@192.168.7.4:/volume1/MySQLBackups/
+21 3 * * * . "$HOME"/.keychain/${HOSTNAME}-sh; cronic rsync -avz ~/sqldumps_deep rsync@192.168.7.4:/volume1/MySQLBackups/
 
 # Docker
 0 3 * * 0 cronic docker system prune -f
