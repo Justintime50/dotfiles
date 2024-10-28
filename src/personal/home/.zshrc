@@ -60,6 +60,8 @@ export JAVA_HOME
 # SSH
 alias ssh-server1='ssh admin@192.168.7.2'
 alias ssh-server2='ssh admin@192.168.7.3'
+alias ssh-small-web-1='ssh admin@192.168.7.5'
+alias ssh-small-web-2='ssh admin@192.168.7.6'
 
 # Tools
 alias emacs="emacs -nw"
