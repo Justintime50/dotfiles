@@ -29,7 +29,6 @@ export path=(
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 export PROMPT="%n@%C $ "
 HOSTNAME=$(hostname)
-export DOTS_DISABLE_DOTFILES_STATUS=true
 
 ############
 ## Editor ##
@@ -59,7 +58,8 @@ export JAVA_HOME
 ## Aliases ##
 
 # SSH
-alias ssh-server1='ssh admin@192.168.7.2'
+# TODO: Unify the naming here and update machines
+alias ssh-md-db-1='ssh admin@192.168.7.2'
 alias ssh-server2='ssh admin@192.168.7.3'
 alias ssh-small-web-1='ssh sysadmin@192.168.7.5'
 alias ssh-small-web-2='ssh sysadmin@192.168.7.6'
