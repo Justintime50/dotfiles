@@ -29,6 +29,7 @@ export path=(
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 export PROMPT="%n@%C $ "
 HOSTNAME=$(hostname)
+export DOTS_DISABLE_DOTFILES_STATUS=true
 
 ############
 ## Editor ##
