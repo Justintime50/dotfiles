@@ -13,6 +13,12 @@ AWS_DEVVM_HOST="devvm.easypo.net"
 AWS_DEVVM_BASTION_HOST="admin.dev.easypo.net"
 AWS_UPLOADS_DIR="/home/$AWS_DEVVM_USER/uploads"
 
+# Java
+GPG_TTY="$(tty)"
+export GPG_TTY
+JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME
+
 #############
 ## Aliases ##
 
@@ -21,25 +27,6 @@ alias ssh-oregon3='ssh -A $AWS_DEVVM_USER@$AWS_DEVVM_OREGON3_INSTANCE_NAME.$EP_U
 alias ssh-oregon3-jump='ssh -A -J `whoami`@$AWS_DEVVM_BASTION_HOST $AWS_DEVVM_USER@$AWS_DEVVM_OREGON3_INSTANCE_NAME.`whoami`.devvm.easypo.net'
 alias ssh-admin='ssh -A $ADMIN_HOST'
 alias ssh-shared-dev='ssh -A $SHARED_DEV_HOST'
-
-############
-## Editor ##
-unset EDITOR
-if [[ -s $(which nvim) ]]; then
-    export EDITOR=nvim
-elif [[ -s $(which vim) ]]; then
-    export EDITOR=vim
-else
-    export EDITOR=vi
-fi
-# Vim bindings on the CLI breaks my flow, don't use them there
-bindkey -e
-
-###########
-## Shell ##
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=1000
 
 ###############
 ## Functions ##

@@ -1,11 +1,12 @@
-#############################
-## EasyPost AWS ZSH Config ##
+# General ZSH configuration (not machine specific)
 
 ###########
-## Setup ##
-
-EP_USERNAME="jhammond"
-ADMIN_HOST="admin.easypo.net"
+## Shell ##
+PROMPT='%(?.%F{green}⏺.%F{red}⏺)%f %F{blue}%3~%f %m $ '
+HOSTNAME=$(hostname)
+HISTFILE=~/.zsh_history
+HISTSIZE=5000
+SAVEHIST=1000
 
 ############
 ## Editor ##
@@ -20,26 +21,23 @@ fi
 # Vim bindings on the CLI breaks my flow, don't use them there
 bindkey -e
 
-###########
-## Shell ##
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=1000
-
-#############
-## Aliases ##
-
-# Proxies
-alias eztunnel='ssh -L 1080:proxy.local.easypo.net:1080 -N -C ${EP_USERNAME}@${ADMIN_HOST}'
-
-## Internet/Networking
-ECHO_IP_URL='ifconfig.co'
-alias check-proxy-ip='curl -x socks5h://localhost:1080 ${ECHO_IP_URL}'
-alias check-proxy-ipv4='curl -4 -x socks5h://localhost:1080 ${ECHO_IP_URL}'
-alias check-proxy-ipv6='curl -6 -x socks5h://localhost:1080 ${ECHO_IP_URL}'
-
 ###############
 ## Functions ##
+
+# Recursively prints each git branch of each repo in a specified directory (first argument)
+alias check-git-branches=do_check_git_branches
+do_check_git_branches() {
+    cd "$1" || echo "Could not 'cd' into directory"
+    for DIR in */; do
+        printf '%s\n' "$DIR"
+        if cd "$DIR"; then
+            git branch
+        else
+            echo "Could not 'cd' into directory"
+        fi
+        cd .. || echo "Could not 'cd' out of directory"
+    done
+}
 
 alias kill-port=do_kill_port
 do_kill_port() {

@@ -1,12 +1,15 @@
 # Up/Down Dotfile "Migrations" via Dots
 
 PERSONAL_HOSTNAME="MacBook-Pro-Justin"
-EASYPOST_HOSTNAME="MacBook-Pro-Justin-EasyPost"
+EASYPOST_HOSTNAME="mbp-justin-ep"
 EASYPOST_AWS_OREGON3_HOSTNAME="oregon3.jhammond.devvm.easypo.net"
 SERVER1_HOSTNAME="Server1"
 SERVER2_HOSTNAME="Server2"
 
 dots_config_up() {
+    # Always install general ZSH config
+    echo ". $DOTFILES_DIR/src/shell/.zshrc" >>"$HOME"/.zshrc
+
     if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]]; then
         # Submodules
         _install_submodules
@@ -27,7 +30,6 @@ dots_config_up() {
 
         # Shell
         ln -sfn "$DOTFILES_DIR"/src/arm/.zshenv "$HOME"/.zshenv
-        echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
         echo ". $DOTFILES_DIR/src/easypost/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
         crontab - <"$DOTFILES_DIR"/src/easypost/crontab
@@ -41,7 +43,6 @@ dots_config_up() {
         _install_submodules
 
         # Shell
-        echo ". $DOTFILES_DIR/src/easypost/.zshrc-aws" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost-aws "$HOME"/.gitconfig
         if [[ "$HOSTNAME" == "$EASYPOST_AWS_OREGON3_HOSTNAME" ]]; then
             crontab - <"$DOTFILES_DIR"/src/easypost/crontab-devvm
@@ -78,10 +79,11 @@ dots_config_up() {
 }
 
 dots_config_down() {
-    # `.zshrc` taken care of by Dots for all of these
+    # Remove `.zshrc` from all machines
+    rm -f "$HOME"/.zshenv
+
     if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]]; then
         # Shell
-        rm -f "$HOME"/.zshenv
         rm -f "$HOME"/.gitconfig
         crontab -r
 
@@ -90,7 +92,6 @@ dots_config_down() {
         _uninstall_vim
     elif [[ "$HOSTNAME" == "$EASYPOST_HOSTNAME" ]]; then
         # Shell
-        rm -f "$HOME"/.zshenv
         rm -f "$HOME"/.gitconfig
         crontab -r
         rm -rf "$HOME"/.ssh/config
@@ -107,7 +108,6 @@ dots_config_down() {
         _uninstall_vim
     elif [[ "$HOSTNAME" == "Server"* ]]; then
         # Shell
-        rm -f "$HOME"/.zshenv
         rm -f "$HOME"/.gitconfig
         rm -f "$HOME"/login-commands.sh
         rm -f "$HOME"/docker-cron-jobs.sh
