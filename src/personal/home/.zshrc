@@ -47,13 +47,3 @@ ECHO_IP_URL='ifconfig.co'
 alias check-ip='curl ${ECHO_IP_URL}'
 alias check-ipv4='curl -4 ${ECHO_IP_URL}'
 alias check-ipv6='curl -6 ${ECHO_IP_URL}'
-
-# Custom
-alias cg='cd $HOME/git'
-alias cgp='cd $HOME/git/personal'
-alias cge='cd $HOME/git/easypost'
-alias cgsh='cd $HOME/git/shield-management'
-alias cgfl='cd $HOME/git/fairway-logic'
-alias lsa="ls -la"
-alias vscode_settings='code $HOME/Library/Application\ Support/Code/User/settings.json'
-alias dotfiles='code $HOME/.dotfiles'
