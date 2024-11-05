@@ -29,11 +29,10 @@ export SRVINFRA_SERVICES_DIR="$HOME/harvey/projects"
 ## Aliases ##
 
 # SSH
-# TODO: Unify the naming here and update machines
-alias ssh-md-db-1='ssh sysadmin@192.168.7.2'
 alias ssh-server2='ssh admin@192.168.7.3'
-alias ssh-small-web-1='ssh sysadmin@192.168.7.5'
-alias ssh-small-web-2='ssh sysadmin@192.168.7.6'
+alias ssh-db1='ssh sysadmin@db1'
+alias ssh-web1='ssh sysadmin@web1'
+alias ssh-web2='ssh sysadmin@web2'
 
 # Tools
 alias emacs="emacs -nw"
