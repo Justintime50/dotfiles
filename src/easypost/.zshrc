@@ -35,6 +35,11 @@ fi
 # Vim bindings on the CLI breaks my flow, don't use them there
 bindkey -e
 
+###########
+## Shell ##
+HISTSIZE=10000
+SAVEHIST=1000
+
 ###############
 ## Functions ##
 

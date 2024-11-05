@@ -30,6 +30,11 @@ export path=(
 export PROMPT="%n@%C $ "
 HOSTNAME=$(hostname)
 
+###########
+## Shell ##
+HISTSIZE=10000
+SAVEHIST=1000
+
 ############
 ## Editor ##
 unset EDITOR
@@ -78,6 +83,7 @@ alias cg='cd $HOME/git'
 alias cgp='cd $HOME/git/personal'
 alias cge='cd $HOME/git/easypost'
 alias cgsh='cd $HOME/git/shield-management'
+alias cgfl='cd $HOME/git/fairway-logic'
 alias lsa="ls -la"
 alias vscode_settings='code $HOME/Library/Application\ Support/Code/User/settings.json'
 alias dotfiles='code $HOME/.dotfiles'
