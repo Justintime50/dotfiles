@@ -1,6 +1,6 @@
 # Up/Down Dotfile "Migrations" via Dots
 
-PERSONAL_HOSTNAME="MacBook-Pro-Justin"
+PERSONAL_HOSTNAME="mbp-justin"
 EASYPOST_HOSTNAME="mbp-justin-ep"
 EASYPOST_AWS_OREGON3_HOSTNAME="oregon3.jhammond.devvm.easypo.net"
 SERVER1_HOSTNAME="Server1"
