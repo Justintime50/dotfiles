@@ -2,7 +2,7 @@
 
 ###########
 ## Shell ##
-PROMPT='%(?.%F{green}⏺.%F{red}⏺)%f %F{blue}%3~%f %m $ '
+PROMPT='%(?.%F{green}⏺.%F{red}⏺)%f %F{green}%m%f:%F{blue}%3~%f $ '
 HOSTNAME=$(hostname)
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
