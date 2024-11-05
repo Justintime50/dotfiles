@@ -13,6 +13,28 @@ AWS_DEVVM_HOST="devvm.easypo.net"
 AWS_DEVVM_BASTION_HOST="admin.dev.easypo.net"
 AWS_UPLOADS_DIR="/home/$AWS_DEVVM_USER/uploads"
 
+##########
+## Path ##
+export path=(
+    # User-specific binaries
+    /Users/"$USER"/.cargo/bin
+    /Users/"$USER"/.local/bin
+    /Users/"$USER"/.dotnet/tools
+    # Homebrew binaries
+    /opt/homebrew/opt/ruby/bin
+    /opt/homebrew/bin
+    /opt/homebrew/sbin
+    # Mono binaries
+    /usr/local/Cellar/mono/6.12.0.122_1/bin
+    # System binaries
+    /usr/local/bin
+    /usr/bin
+    /bin
+    /usr/local/sbin
+    /usr/sbin
+    /sbin
+)
+
 # Java
 GPG_TTY="$(tty)"
 export GPG_TTY

@@ -4,24 +4,20 @@
 ##########
 ## Path ##
 export path=(
+    # User-specific binaries
+    /Users/"$USER"/.cargo/bin
+    /Users/"$USER"/.local/bin
+    # Homebrew binaries
+    /opt/homebrew/opt/ruby/bin
     /opt/homebrew/bin
     /opt/homebrew/sbin
-    /opt/homebrew/opt/ruby/bin
-    /opt/homebrew/lib/ruby/gems/3.1.0/bin
-    /usr/local/opt/ruby/bin
-    /usr/local/lib/ruby/gems/3.1.0/bin
+    # System binaries
     /usr/local/bin
     /usr/bin
     /bin
     /usr/local/sbin
     /usr/sbin
     /sbin
-    /opt/X11/bin
-    /Users/"$USER"/bin/gam
-    /Users/"$USER"/.dotnet/tools
-    /usr/local/Cellar/mono/6.12.0.122_1/bin
-    /Users/"$USER"/.cargo/bin
-    /Users/"$USER"/.local/bin
 )
 
 ###############
