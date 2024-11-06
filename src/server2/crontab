@@ -38,8 +38,8 @@ MAILTO=justinpaulhammond@gmail.com
 
 # Healthchecks
 */3 * * * * cd "$HOME"/harvey/projects/justintime50/server-infra && cronic ./healthchecks/docker-healthcheck.sh
-*/10 * * * * cd "$HOME"/harvey/projects/justintime50/server-infra && cronic ./healthchecks/harvey-healthcheck.sh
-*/10 * * * * cd "$HOME"/harvey/projects/justintime50/server-infra && . "$HOME"/.env-crontab; UPTIME_ROBOT_API_KEY="$UPTIME_ROBOT_API_KEY" cronic venv/bin/python healthchecks/docker_uptimerobot_healthcheck.py
+# */10 * * * * cd "$HOME"/harvey/projects/justintime50/server-infra && cronic ./healthchecks/harvey-healthcheck.sh
+# */10 * * * * cd "$HOME"/harvey/projects/justintime50/server-infra && . "$HOME"/.env-crontab; UPTIME_ROBOT_API_KEY="$UPTIME_ROBOT_API_KEY" cronic venv/bin/python healthchecks/docker_uptimerobot_healthcheck.py
 
 # Forks Sync
 # 0 2 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; cronic forks-sync --token "$GITHUB_TOKEN" --force
