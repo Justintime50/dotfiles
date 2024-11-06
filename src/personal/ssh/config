@@ -1,4 +1,4 @@
-Host 192.168.7.*
+Host 192.168.7.* web* db* lb*
     User jhammond
     IdentityFile ~/.ssh/id_rsa
     ForwardAgent yes
