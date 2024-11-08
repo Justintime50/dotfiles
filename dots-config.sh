@@ -7,8 +7,9 @@ SERVER1_HOSTNAME="Server1"
 SERVER2_HOSTNAME="Server2"
 
 dots_config_up() {
-    # Always install general ZSH config
+    # Always install general shell config
     echo ". $DOTFILES_DIR/src/shell/.zshrc" >>"$HOME"/.zshrc
+    echo ". $DOTFILES_DIR/src/shell/.tmux.conf" >>"$HOME"/.tmux.conf
 
     if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]]; then
         # Submodules
@@ -79,8 +80,9 @@ dots_config_up() {
 }
 
 dots_config_down() {
-    # Remove `.zshrc` from all machines
+    # Remove generic shell config from all machines
     rm -f "$HOME"/.zshenv
+    rm -f "$HOME"/.tmux.conf
 
     if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]]; then
         # Shell
