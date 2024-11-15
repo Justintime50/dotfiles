@@ -62,6 +62,7 @@ dots_config_up() {
         _install_submodules
 
         # Shell
+        echo ". $DOTFILES_DIR/src/servers/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
         # if [[ "$HOSTNAME" == "$LB1_HOSTNAME" ]]; then
         #     # TODO: Cron, login items, docker cron jobs
