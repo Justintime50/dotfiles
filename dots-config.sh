@@ -14,7 +14,7 @@ SERVER_HOSTNAMES=("$LB1_HOSTNAME" "$WEB1_HOSTNAME" "$WEB2_HOSTNAME" "$DB1_HOSTNA
 dots_config_up() {
     # Always install general shell config
     echo ". $DOTFILES_DIR/src/shell/.zshrc" >>"$HOME"/.zshrc
-    echo ". $DOTFILES_DIR/src/shell/.tmux.conf" >>"$HOME"/.tmux.conf
+    ln -sfn "$DOTFILES_DIR/src/shell/.tmux.conf" "$HOME"/.tmux.conf
 
     if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]]; then
         # Submodules
