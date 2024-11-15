@@ -3,8 +3,13 @@
 PERSONAL_HOSTNAME="mbp-justin"
 EASYPOST_HOSTNAME="mbp-justin-ep"
 EASYPOST_AWS_OREGON3_HOSTNAME="oregon3.jhammond.devvm.easypo.net"
-SERVER1_HOSTNAME="Server1"
-SERVER2_HOSTNAME="Server2"
+LB1_HOSTNAME="lb1"
+WEB1_HOSTNAME="web1"
+WEB2_HOSTNAME="web2"
+DB1_HOSTNAME="db1"
+DB2_HOSTNAME="db2"
+DEV1_HOSTNAME="dev1"
+SERVER_HOSTNAMES=("$LB1_HOSTNAME" "$WEB1_HOSTNAME" "$WEB2_HOSTNAME" "$DB1_HOSTNAME" "$DB2_HOSTNAME" "$DEV1_HOSTNAME")
 
 dots_config_up() {
     # Always install general shell config
@@ -52,25 +57,17 @@ dots_config_up() {
         # Text Editors
         _install_emacs
         _install_vim
-    elif [[ "$HOSTNAME" == "Server"* ]]; then
+    elif [[ " ${SERVER_HOSTNAMES[*]} " == *" ${HOSTNAME} "* ]]; then
         # Submodules
         _install_submodules
 
         # Shell
-        echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
-        if [[ "$HOSTNAME" == "$SERVER1_HOSTNAME" ]]; then
-            crontab - <"$DOTFILES_DIR"/src/server1/crontab
-            ln -sfn "$DOTFILES_DIR"/src/server1/login-commands.sh "$HOME"/login-commands.sh
-        fi
-        if [[ "$HOSTNAME" == "$SERVER2_HOSTNAME" ]]; then
-            crontab - <"$DOTFILES_DIR"/src/server2/crontab
-            ln -sfn "$DOTFILES_DIR"/src/server2/login-commands.sh "$HOME"/login-commands.sh
-            ln -sfn "$DOTFILES_DIR"/src/server2/docker-cron-jobs.sh "$HOME"/docker-cron-jobs.sh
-        fi
+        # if [[ "$HOSTNAME" == "$LB1_HOSTNAME" ]]; then
+        #     # TODO: Cron, login items, docker cron jobs
+        # fi
 
         # Text Editors
-        _install_emacs
         _install_vim
     else
         echo "HOSTNAME doesn't match any config."
@@ -106,15 +103,11 @@ dots_config_down() {
         # Text Editors
         _uninstall_emacs
         _uninstall_vim
-    elif [[ "$HOSTNAME" == "Server"* ]]; then
+    elif [[ " ${SERVER_HOSTNAMES[*]} " == *" ${HOSTNAME} "* ]]; then
         # Shell
         rm -f "$HOME"/.gitconfig
-        rm -f "$HOME"/login-commands.sh
-        rm -f "$HOME"/docker-cron-jobs.sh
-        crontab -r
 
         # Text Editors
-        _uninstall_emacs
         _uninstall_vim
     else
         echo "HOSTNAME doesn't match any config."
