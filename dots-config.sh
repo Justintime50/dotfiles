@@ -64,9 +64,18 @@ dots_config_up() {
         # Shell
         echo ". $DOTFILES_DIR/src/servers/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
-        # if [[ "$HOSTNAME" == "$LB1_HOSTNAME" ]]; then
-        #     # TODO: Cron, login items, docker cron jobs
-        # fi
+        ln -sfn "$DOTFILES_DIR"/src/servers/sshd_config /etc/ssh/sshd_config.d/50-server.conf
+        # TODO: Manually install polkit-rules where needed (they require sudo)
+        if [[ "$HOSTNAME" == "$LB1_HOSTNAME" ]]; then
+            crontab - <"$DOTFILES_DIR"/src/servers/lb1/lb1.crontab
+        fi
+        if [[ "$HOSTNAME" == "$WEB1_HOSTNAME" ]]; then
+            crontab - <"$DOTFILES_DIR"/src/servers/web1/web1.crontab
+            ln -sfn "$DOTFILES_DIR"/src/servers/docker-cron-jobs.sh "$HOME"/docker-cron-jobs.sh
+        fi
+        if [[ "$HOSTNAME" == "$DEV1_HOSTNAME" ]]; then
+            crontab - <"$DOTFILES_DIR"/src/servers/dev1/dev1.crontab
+        fi
 
         # Text Editors
         _install_vim

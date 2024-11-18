@@ -29,10 +29,13 @@ export SRVINFRA_SERVICES_DIR="$HOME/harvey/projects"
 ## Aliases ##
 
 # SSH
-alias ssh-server2='ssh admin@192.168.7.3'
-alias ssh-db1='ssh sysadmin@db1'
-alias ssh-web1='ssh sysadmin@web1'
-alias ssh-web2='ssh sysadmin@web2'
+alias ssh-lb1='ssh sysadmin@192.168.7.2'
+alias ssh-web1='ssh sysadmin@192.168.7.3'
+alias ssh-nas='ssh sysadmin@192.168.7.4'
+alias ssh-web2='ssh sysadmin@192.168.7.5'
+alias ssh-db1='ssh sysadmin@192.168.7.6'
+alias ssh-db2='ssh sysadmin@192.168.7.7'
+alias ssh-dev1='ssh sysadmin@192.168.7.8'
 
 # Tools
 alias emacs="emacs -nw"

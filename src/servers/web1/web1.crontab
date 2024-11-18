@@ -1,4 +1,4 @@
-# SERVER CRONTAB
+# web1 Crontab
 # NOTE: Do not store environment variables in this file!
 # They will be sent via email if a cron job fails which could expose sensitive creds
 # Instead, place them in `~/.env-crontab` and source that file on
@@ -6,20 +6,16 @@
 
 
 # GLOBAL SETUP
-PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-MAILTO=justinpaulhammond@gmail.com
+PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+MAILTO=39606064+Justintime50@users.noreply.github.com
 
-
-# Login commands
-@reboot cronic ./login-commands.sh
 
 # Alchemist (DO NOT use `--greedy` here since it will break Docker in prod)
 10 2 * * * cronic alchemist --update
 30 2 * * * cronic alchemist --backup --force
-45 2 * * * cronic cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/server2/Brewfile"
+45 2 * * * cronic cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/servers/$HOSTNAME/Brewfile"
 
 # Database Backups
-0 3 * * * . "$HOME"/.env-crontab; SRVINFRA_DATABASE_EXECUTABLE="mariadb" cronic srvinfra export_database_secure easypost-tools-ui-easypost-tools-ui-db-1 "$EASYPOSTTOOLS_DB_ROOT_PASSWORD" easypost_tools "$HOME/sqldumps/easyposttools/easyposttools_$(date +\%F_\%H-\%M-\%S).enc.gz"
 2 3 * * * . "$HOME"/.env-crontab; SRVINFRA_DATABASE_EXECUTABLE="mariadb" cronic srvinfra export_database_secure glass-glass-db-1 "$GLASS_DB_ROOT_PASSWORD" glass "$HOME/sqldumps/glass/glass_$(date +\%F_\%H-\%M-\%S).enc.gz"
 3 3 * * * . "$HOME"/.env-crontab; SRVINFRA_DATABASE_EXECUTABLE="mariadb" cronic srvinfra export_database_secure jones-excavating-jones-excavating-db-1 "$JONESEXCAVATING_DB_ROOT_PASSWORD" jonesexcavating "$HOME/sqldumps/jonesexcavating/jonesexcavating_$(date +\%F_\%H-\%M-\%S).enc.gz"
 4 3 * * * . "$HOME"/.env-crontab; SRVINFRA_DATABASE_EXECUTABLE="mariadb" cronic srvinfra export_database_secure callus-fabrication-callus-fabrication-db-1 "$CALLUSFABRICATION_DB_ROOT_PASSWORD" callusfabrication "$HOME/sqldumps/callusfabrication/callusfabrication_$(date +\%F_\%H-\%M-\%S).enc.gz"
@@ -38,18 +34,3 @@ MAILTO=justinpaulhammond@gmail.com
 
 # Healthchecks
 */3 * * * * cd "$HOME"/harvey/projects/justintime50/server-infra && cronic ./healthchecks/docker-healthcheck.sh
-# */10 * * * * cd "$HOME"/harvey/projects/justintime50/server-infra && cronic ./healthchecks/harvey-healthcheck.sh
-# */10 * * * * cd "$HOME"/harvey/projects/justintime50/server-infra && . "$HOME"/.env-crontab; UPTIME_ROBOT_API_KEY="$UPTIME_ROBOT_API_KEY" cronic venv/bin/python healthchecks/docker_uptimerobot_healthcheck.py
-
-# Forks Sync
-# 0 2 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; cronic forks-sync --token "$GITHUB_TOKEN" --force
-
-# GitHub Archive
-0 1 * * * . "$HOME"/.env-crontab; . "$HOME"/.keychain/${HOSTNAME}-sh; cronic venv/github-archive/bin/github-archive --users justintime50 --orgs tuneuptechnology --gists justintime50 --clone --pull --forks --token "$GITHUB_TOKEN" --log_level warning
-
-# Pullbug (Personal to Discord)
-0 9 * * 1 . "$HOME"/.env-crontab; cronic venv/pullbug/bin/pullbug --pulls --issues --drafts --github_token "$GITHUB_TOKEN" --github_context users --github_owner Justintime50 --discord --discord_url "$PULLBUG_DISCORD_URL" --log_level warning
-
-# Unifi Config Backups
-0 4 * * * . "$HOME"/.env-crontab; UNIFI_USERNAME="$UNIFI_USERNAME" UNIFI_PASSWORD="$UNIFI_PASSWORD" UNIFI_BACKUP_LOCATION="$UNIFI_BACKUP_LOCATION" cronic venv/get_last_unifi_console_backup/bin/python "$HOME"/harvey/projects/justintime50/os-scripting/src/ubios/backups/get_last_console_backup.py
-5 4 * * 0 . "$HOME"/.env-crontab; cronic find "$UNIFI_BACKUP_LOCATION" -mtime +90 -delete

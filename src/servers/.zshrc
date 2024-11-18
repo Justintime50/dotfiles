@@ -6,6 +6,7 @@
 export path=(
     # Homebrew binaries
     /home/linuxbrew/.linuxbrew/bin
+    /home/linuxbrew/.linuxbrew/sbin
     # System binaries
     /usr/local/bin
     /usr/bin
@@ -14,3 +15,9 @@ export path=(
     /usr/sbin
     /sbin
 )
+
+##################
+## Server Stats ##
+if [[ $- == *i* ]]; then
+    /usr/bin/landscape-sysinfo
+fi

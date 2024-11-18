@@ -1,2 +1,7 @@
+# Don't allow password authentication
 PasswordAuthentication no
 UsePAM no
+
+# Force close idle sessions
+ClientAliveInterval 1200
+ClientAliveCountMax 3

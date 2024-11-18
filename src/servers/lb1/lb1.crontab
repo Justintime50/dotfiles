@@ -1,0 +1,22 @@
+# lb1 Crontab
+# NOTE: Do not store environment variables in this file!
+# They will be sent via email if a cron job fails which could expose sensitive creds
+# Instead, place them in `~/.env-crontab` and source that file on
+# cron jobs that require environment variables
+
+
+# GLOBAL SETUP
+PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+MAILTO=39606064+Justintime50@users.noreply.github.com
+
+
+# Alchemist (DO NOT use `--greedy` here since it will break Docker in prod)
+10 2 * * * cronic alchemist --update
+30 2 * * * cronic alchemist --backup --force
+45 2 * * * cronic cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/$HOSTNAME/Brewfile"
+
+# Docker
+0 4 * * 0 cronic docker system prune -f
+
+# Healthchecks
+*/3 * * * * cd "$HOME"/git/server-infra && cronic ./healthchecks/docker-healthcheck.sh
