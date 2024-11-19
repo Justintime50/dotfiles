@@ -27,6 +27,9 @@ dots_config_up() {
         crontab - <"$DOTFILES_DIR"/src/personal/crontab
         ln -sfn "$DOTFILES_DIR"/src/personal/ssh/config "$HOME"/.ssh/config
 
+        # Docker
+        sudo ln -sfn "$DOTFILES_DIR"/src/personal/docker-daemon.json "$HOME"/.docker/daemon.json
+
         # Text Editors
         _install_emacs
         _install_vim
