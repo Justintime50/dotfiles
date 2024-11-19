@@ -1,0 +1,9 @@
+{
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-file": "3",
+    "max-size": "10m"
+  },
+  "insecure-registries": ["192.168.7.8:5000"],
+  "registry-mirrors": ["http://192.168.7.8:5000"]
+}

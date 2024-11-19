@@ -64,8 +64,15 @@ dots_config_up() {
         # Shell
         echo ". $DOTFILES_DIR/src/servers/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
+
+        # Config
         sudo ln -sfn "$DOTFILES_DIR"/src/servers/sshd_config /etc/ssh/sshd_config.d/50-server.conf
         sudo ln -sfn "$DOTFILES_DIR"/src/servers/polkit-rules /etc/polkit-1/rules.d
+
+        # Docker
+        sudo ln -sfn "$DOTFILES_DIR"/src/servers/docker-daemon.json /etc/docker/daemon.json
+
+        # Crontabs
         if [[ "$HOSTNAME" == "$LB1_HOSTNAME" ]]; then
             crontab - <"$DOTFILES_DIR"/src/servers/lb1/lb1.crontab
         fi
@@ -86,6 +93,7 @@ dots_config_up() {
 
 dots_config_down() {
     # Remove generic shell config from all machines
+    rm -f "$HOME"/.zshrc
     rm -f "$HOME"/.zshenv
     rm -f "$HOME"/.tmux.conf
 
@@ -116,6 +124,8 @@ dots_config_down() {
     elif [[ " ${SERVER_HOSTNAMES[*]} " == *" ${HOSTNAME} "* ]]; then
         # Shell
         rm -f "$HOME"/.gitconfig
+
+        # TODO: Clean up config and docker files
 
         # Text Editors
         _uninstall_vim
