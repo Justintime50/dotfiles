@@ -33,4 +33,4 @@ MAILTO=admin@shieldmanagement.net
 * * * * * cronic "$HOME/docker-cron-jobs.sh"
 
 # Healthchecks
-*/3 * * * * cd "$HOME"/harvey/projects/justintime50/server-infra && cronic ./healthchecks/docker-healthcheck.sh
+*/3 * * * * cd "$HOME"/git/server-infra && cronic ./healthchecks/docker-healthcheck.sh
