@@ -15,9 +15,3 @@ export path=(
     /usr/sbin
     /sbin
 )
-
-##################
-## Server Stats ##
-if [[ $- == *i* ]]; then
-    /usr/bin/landscape-sysinfo
-fi
