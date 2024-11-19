@@ -7,7 +7,7 @@
 
 # GLOBAL SETUP
 PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-MAILTO=39606064+Justintime50@users.noreply.github.com
+MAILTO=justinpaulhammond@gmail.com
 
 
 # Alchemist (DO NOT use `--greedy` here since it will break Docker in prod)
