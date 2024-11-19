@@ -64,8 +64,8 @@ dots_config_up() {
         # Shell
         echo ". $DOTFILES_DIR/src/servers/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
-        ln -sfn "$DOTFILES_DIR"/src/servers/sshd_config /etc/ssh/sshd_config.d/50-server.conf
-        # TODO: Manually install polkit-rules where needed (they require sudo)
+        sudo ln -sfn "$DOTFILES_DIR"/src/servers/sshd_config /etc/ssh/sshd_config.d/50-server.conf
+        sudo ln -sfn "$DOTFILES_DIR"/src/servers/polkit-rules /etc/polkit-1/rules.d
         if [[ "$HOSTNAME" == "$LB1_HOSTNAME" ]]; then
             crontab - <"$DOTFILES_DIR"/src/servers/lb1/lb1.crontab
         fi
