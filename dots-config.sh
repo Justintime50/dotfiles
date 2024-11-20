@@ -83,6 +83,15 @@ dots_config_up() {
             crontab - <"$DOTFILES_DIR"/src/servers/web1/web1.crontab
             ln -sfn "$DOTFILES_DIR"/src/servers/docker-cron-jobs.sh "$HOME"/docker-cron-jobs.sh
         fi
+        if [[ "$HOSTNAME" == "$WEB2_HOSTNAME" ]]; then
+            crontab - <"$DOTFILES_DIR"/src/servers/web2/web2.crontab
+        fi
+        if [[ "$HOSTNAME" == "$DB1_HOSTNAME" ]]; then
+            crontab - <"$DOTFILES_DIR"/src/servers/db1/db1.crontab
+        fi
+        if [[ "$HOSTNAME" == "$DB2_HOSTNAME" ]]; then
+            crontab - <"$DOTFILES_DIR"/src/servers/db2/db2.crontab
+        fi
         if [[ "$HOSTNAME" == "$DEV1_HOSTNAME" ]]; then
             crontab - <"$DOTFILES_DIR"/src/servers/dev1/dev1.crontab
         fi
