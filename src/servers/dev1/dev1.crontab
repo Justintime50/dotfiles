@@ -13,7 +13,7 @@ MAILTO=admin@shieldmanagement.net
 # Alchemist (DO NOT use `--greedy` here since it will break Docker in prod)
 10 2 * * * cronic alchemist --update
 30 2 * * * cronic alchemist --backup --force
-45 2 * * * cronic cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/$HOSTNAME/Brewfile"
+45 2 * * * cronic cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/$(hostname)/Brewfile"
 
 # Docker
 0 3 * * 0 cronic docker system prune -f
@@ -22,7 +22,7 @@ MAILTO=admin@shieldmanagement.net
 */3 * * * * cd "$HOME"/git/server-infra && cronic ./healthchecks/docker-healthcheck.sh
 
 # GitHub Archive
-0 1 * * * . "$HOME"/.env-crontab; . "$HOME/.keychain/$HOSTNAME-sh"; cronic venv/github-archive/bin/github-archive --users justintime50 --orgs "$GITHUB_ARCHIVE_ORGS" --gists justintime50 --clone --pull --forks --token "$GITHUB_TOKEN" --log_level warning
+0 1 * * * . "$HOME"/.env-crontab; . "$HOME/.keychain/$(hostname)-sh"; cronic venv/github-archive/bin/github-archive --users justintime50 --orgs "$GITHUB_ARCHIVE_ORGS" --gists justintime50 --clone --pull --forks --token "$GITHUB_TOKEN" --log_level warning
 
 # Pullbug
 0 9 * * 1 . "$HOME"/.env-crontab; cronic venv/pullbug/bin/pullbug --pulls --issues --drafts --github_token "$GITHUB_TOKEN" --github_context users --github_owner Justintime50 --discord --discord_url "$PULLBUG_DISCORD_URL" --log_level warning

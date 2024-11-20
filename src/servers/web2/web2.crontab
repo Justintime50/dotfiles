@@ -13,7 +13,7 @@ MAILTO=admin@shieldmanagement.net
 # Alchemist (DO NOT use `--greedy` here since it will break Docker in prod)
 10 2 * * * cronic alchemist --update
 30 2 * * * cronic alchemist --backup --force
-45 2 * * * cronic cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/$HOSTNAME/Brewfile"
+45 2 * * * cronic cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/$(hostname)/Brewfile"
 
 # Docker
 0 4 * * 0 cronic docker system prune -f
