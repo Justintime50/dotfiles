@@ -11,12 +11,25 @@ MAILTO=admin@shieldmanagement.net
 
 
 # Alchemist (DO NOT use `--greedy` here since it will break Docker in prod)
-10 2 * * * cronic alchemist --update
-30 2 * * * cronic alchemist --backup --force
-45 2 * * * cronic cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/$HOSTNAME/Brewfile"
+10 9 * * * cronic alchemist --update
+30 9 * * * cronic alchemist --backup --force
+45 9 * * * cronic cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/servers/$(hostname)/Brewfile"
 
 # Docker
-0 4 * * 0 cronic docker system prune -f
+0 10 * * 0 cronic docker system prune -f
+
+# Database Backups
+2 11 * * * . "$HOME"/.env-crontab; SRVINFRA_DATABASE_EXECUTABLE="mariadb" cronic srvinfra export_database_secure glass-glass-db-1 "$GLASS_DB_ROOT_PASSWORD" glass "$HOME/sqldumps/glass/glass_$(date +\%F_\%H-\%M-\%S).enc.gz"
+3 11 * * * . "$HOME"/.env-crontab; SRVINFRA_DATABASE_EXECUTABLE="mariadb" cronic srvinfra export_database_secure jones-excavating-jones-excavating-db-1 "$JONESEXCAVATING_DB_ROOT_PASSWORD" jonesexcavating "$HOME/sqldumps/jonesexcavating/jonesexcavating_$(date +\%F_\%H-\%M-\%S).enc.gz"
+4 11 * * * . "$HOME"/.env-crontab; SRVINFRA_DATABASE_EXECUTABLE="mariadb" cronic srvinfra export_database_secure callus-fabrication-callus-fabrication-db-1 "$CALLUSFABRICATION_DB_ROOT_PASSWORD" callusfabrication "$HOME/sqldumps/callusfabrication/callusfabrication_$(date +\%F_\%H-\%M-\%S).enc.gz"
+5 11 * * * . "$HOME"/.env-crontab; SRVINFRA_DATABASE_EXECUTABLE="mariadb" cronic srvinfra export_database_secure golf-rocket-golf-rocket-db-1 "$GOLFROCKET_DB_ROOT_PASSWORD" golfrocket "$HOME/sqldumps/golfrocket/golfrocket_$(date +\%F_\%H-\%M-\%S).enc.gz"
+# Deep archive backups every 30 days, (must come before cleanup) - NEVER delete
+# TODO: This is just dumping all backups to a single dir, break them up into their own dirs
+10 11 1 * * cronic find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -exec cp '{}' /"$HOME"/sqldumps_deep/ \;
+# Cleanup backups older than 30 days (must come last)
+15 11 * * * cronic find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -delete
+20 11 * * * . "$HOME/.keychain/$(hostname)-sh"; cronic rsync -avz ~/sqldumps rsync@192.168.7.4:/volume1/MySQLBackups/
+21 11 * * * . "$HOME/.keychain/$(hostname)-sh"; cronic rsync -avz ~/sqldumps_deep rsync@192.168.7.4:/volume1/MySQLBackups/
 
 # Healthchecks
 */3 * * * * cd "$HOME"/git/server-infra && cronic ./healthchecks/docker-healthcheck.sh
