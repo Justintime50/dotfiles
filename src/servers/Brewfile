@@ -1,9 +1,0 @@
-# Taps
-tap "justintime50/formulas"
-# Packages
-brew "alchemist"
-brew "cronic"
-brew "keychain"
-brew "srvinfra"
-# Casks
-cask_args appdir: "~/Applications"

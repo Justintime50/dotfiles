@@ -24,7 +24,7 @@ dots_config_up() {
         ln -sfn "$DOTFILES_DIR"/src/shell/.zshenv "$HOME"/.zshenv
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
-        crontab - <"$DOTFILES_DIR"/src/personal/crontab
+        crontab - <"$DOTFILES_DIR"/src/personal/mbp-justin.crontab
         ln -sfn "$DOTFILES_DIR"/src/personal/ssh/config "$HOME"/.ssh/config
 
         # Docker
@@ -41,7 +41,7 @@ dots_config_up() {
         ln -sfn "$DOTFILES_DIR"/src/shell/.zshenv "$HOME"/.zshenv
         echo ". $DOTFILES_DIR/src/easypost/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
-        crontab - <"$DOTFILES_DIR"/src/easypost/crontab
+        crontab - <"$DOTFILES_DIR"/src/easypost/mbp-justin-ep.crontab
         ln -sfn "$DOTFILES_DIR"/src/easypost/ssh/config "$HOME"/.ssh/config
 
         # Text Editors
@@ -54,7 +54,7 @@ dots_config_up() {
         # Shell
         ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost-aws "$HOME"/.gitconfig
         if [[ "$HOSTNAME" == "$EASYPOST_AWS_OREGON3_HOSTNAME" ]]; then
-            crontab - <"$DOTFILES_DIR"/src/easypost/crontab-devvm
+            crontab - <"$DOTFILES_DIR"/src/easypost/devvm.crontab
         fi
 
         # Text Editors
