@@ -22,7 +22,6 @@ export path=(
 
 ###############
 ## Variables ##
-# srvinfra
 export SRVINFRA_SERVICES_DIR="$HOME/harvey/projects"
 
 #############
@@ -31,7 +30,6 @@ export SRVINFRA_SERVICES_DIR="$HOME/harvey/projects"
 # SSH
 alias ssh-lb1='ssh sysadmin@192.168.7.2'
 alias ssh-web1='ssh sysadmin@192.168.7.3'
-alias ssh-nas='ssh sysadmin@192.168.7.4'
 alias ssh-web2='ssh sysadmin@192.168.7.5'
 alias ssh-db1='ssh sysadmin@192.168.7.6'
 alias ssh-db2='ssh sysadmin@192.168.7.7'
