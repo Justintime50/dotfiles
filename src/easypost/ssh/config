@@ -1,6 +1,14 @@
 Host */*
     ProxyCommand ssh -qax $(dirname %h) nc6 -q 1 -w 1 $(basename %h) %p
 
+Host *
+    SetEnv TERM=xterm-256color
+    VisualHostKey yes
+    ForwardAgent no
+    UserKnownHostsFile ~/.ssh/known_hosts
+    SendEnv TZ
+    ServerAliveInterval 180
+
 Host admin
     User jhammond
     ForwardAgent yes
@@ -19,13 +27,6 @@ Host *sj *wdc *nuq
     ForwardAgent yes
     ProxyJump admin.easypo.net
     ProxyCommand ssh -qax admin nc6 -q 1 -w 1 %h %p
-
-Host *
-    VisualHostKey yes
-    ForwardAgent no
-    UserKnownHostsFile ~/.ssh/known_hosts
-    SendEnv TZ
-    ServerAliveInterval 180
 
 Host oregon3
     HostName oregon3.jhammond.devvm.easypo.net
