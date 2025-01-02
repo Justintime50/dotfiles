@@ -24,7 +24,7 @@ dots_config_up() {
         ln -sfn "$DOTFILES_DIR"/src/shell/.zshenv "$HOME"/.zshenv
         echo ". $DOTFILES_DIR/src/personal/home/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
-        ln -sfn "$DOTFILES_DIR"/src/personal/home/ghostty.conf "$HOME/Library/Application\ Support/com.mitchellh.ghostty/config"
+        ln -sfn "$DOTFILES_DIR"/src/shell/ghostty.conf "$HOME/Library/Application\ Support/com.mitchellh.ghostty/config"
         crontab - <"$DOTFILES_DIR"/src/personal/mbp-justin.crontab
         ln -sfn "$DOTFILES_DIR"/src/personal/ssh/config "$HOME"/.ssh/config
 
@@ -42,6 +42,7 @@ dots_config_up() {
         ln -sfn "$DOTFILES_DIR"/src/shell/.zshenv "$HOME"/.zshenv
         echo ". $DOTFILES_DIR/src/easypost/.zshrc" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/personal/home/.gitconfig "$HOME"/.gitconfig
+        ln -sfn "$DOTFILES_DIR"/src/shell/ghostty.conf "$HOME/Library/Application\ Support/com.mitchellh.ghostty/config"
         crontab - <"$DOTFILES_DIR"/src/easypost/mbp-justin-ep.crontab
         ln -sfn "$DOTFILES_DIR"/src/easypost/ssh/config "$HOME"/.ssh/config
 
