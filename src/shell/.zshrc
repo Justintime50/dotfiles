@@ -71,3 +71,8 @@ alias kill-vscode-server="do_kill_vscode_server"
 do_kill_vscode_server() {
     pgrep -f .vscode-server | xargs kill -9
 }
+
+alias clean-branches="do_clean_branches"
+do_clean_branches() {
+    git branch --v | grep "\[gone\]" | awk '{print $1}' | xargs git branch -D
+}

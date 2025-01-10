@@ -23,9 +23,3 @@
 
 [init]
 	defaultBranch = main
-
-[alias]
-	# Deletes merged branches that aren't the defaults or others specified
-	# NOTE: This will not show/delete branches squashed/merged via GitHub: https://stackoverflow.com/a/44762904/6064135
-	# TODO: Delete the branches from the remote in addition to locally, WARNING: get this right as it can be dangerous
-	dmb = !sh -c 'git branch -r --merged | egrep -v \"(^\\*|main|master|dev|develop)\" | xargs git branch -d'
