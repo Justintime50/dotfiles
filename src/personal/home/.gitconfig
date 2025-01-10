@@ -9,6 +9,9 @@
 # [includeIf "gitdir:~/git/easypost/"]
 #   	path = ~/.gitconfig-easypost
 
+[fetch]
+	prune = true
+
 [push]
 	autoSetupRemote = true
 
