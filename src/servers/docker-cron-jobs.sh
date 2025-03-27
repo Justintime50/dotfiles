@@ -2,4 +2,5 @@
 
 # Docker exec commands MUST be wrapped in a script like this to work on cron
 
-docker exec golf-rocket-golf-rocket-1 sh -c "php artisan schedule:run"
+golf_rocket_container_id=$(docker ps --filter "name=golf-rocket" --format "{{.ID}}" | head -n 1)
+docker exec "$golf_rocket_container_id" sh -c "php artisan schedule:run"
