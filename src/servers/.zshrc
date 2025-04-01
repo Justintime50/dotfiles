@@ -19,4 +19,4 @@ export path=(
 #############
 ## Aliases ##
 
-alias srvinfra='~/git/server-infra/scripts/srvinfra.sh'
+alias srvinfra='~/git/server-infra/scripts/srvinfra/srvinfra.sh'
