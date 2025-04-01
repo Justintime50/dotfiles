@@ -15,3 +15,8 @@ export path=(
     /usr/sbin
     /sbin
 )
+
+#############
+## Aliases ##
+
+alias srvinfra='~/git/server-infra/scripts/srvinfra.sh'
