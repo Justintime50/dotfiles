@@ -4,6 +4,5 @@ tap "justintime50/formulas"
 brew "alchemist"
 brew "cronic"
 brew "keychain"
-brew "srvinfra"
 # Casks
 cask_args appdir: "~/Applications"
