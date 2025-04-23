@@ -33,4 +33,4 @@ MAILTO=admin@shieldmanagement.net
 21 11 * * * . "$HOME/.keychain/$(hostname)-sh"; cronic rsync -avz "$HOME"/sqldumps_deep rsync@192.168.7.4:/volume1/MySQLBackups/
 
 # Healthchecks
-*/3 * * * * cd "$HOME"/git/server-infra && cronic ./healthchecks/docker-healthcheck.sh
+*/3 * * * * cd "$HOME"/git/server-infra && cronic ./scripts/healthchecks/docker-healthcheck.sh

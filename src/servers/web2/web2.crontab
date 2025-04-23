@@ -19,4 +19,4 @@ MAILTO=admin@shieldmanagement.net
 0 10 * * 0 cronic docker system prune -f
 
 # Healthchecks
-*/3 * * * * cd "$HOME"/git/server-infra && cronic ./healthchecks/docker-healthcheck.sh
+*/3 * * * * cd "$HOME"/git/server-infra && cronic ./scripts/healthchecks/docker-healthcheck.sh
