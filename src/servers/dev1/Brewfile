@@ -3,6 +3,7 @@ tap "justintime50/formulas"
 # Packages
 brew "alchemist"
 brew "cronic"
+brew "deckschrubber"
 brew "keychain"
 # Casks
 cask_args appdir: "~/Applications"
