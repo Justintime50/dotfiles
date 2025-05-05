@@ -29,7 +29,8 @@ dots_config_up() {
         ln -sfn "$DOTFILES_DIR"/src/personal/ssh/config "$HOME"/.ssh/config
 
         # Docker
-        ln -sfn "$DOTFILES_DIR"/src/personal/home/docker-daemon.json "$HOME"/.docker/daemon.json
+        # Docker can't run with a symlink, so we copy the file instead
+        cp "$DOTFILES_DIR"/src/personal/home/docker-daemon.json "$HOME"/.docker/daemon.json
 
         # Text Editors
         _install_emacs
@@ -75,7 +76,8 @@ dots_config_up() {
         sudo ln -sfn "$DOTFILES_DIR"/src/servers/polkit-rules /etc/polkit-1/rules.d
 
         # Docker
-        sudo ln -sfn "$DOTFILES_DIR"/src/servers/docker-daemon.json /etc/docker/daemon.json
+        # Docker can't run with a symlink, so we copy the file instead
+        cp "$DOTFILES_DIR"/src/servers/docker-daemon.json /etc/docker/daemon.json
 
         # Crontabs
         if [[ "$HOSTNAME" == "$LB1_HOSTNAME" ]]; then
