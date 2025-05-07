@@ -20,10 +20,6 @@ export path=(
     /sbin
 )
 
-###############
-## Variables ##
-export SRVINFRA_SERVICES_DIR="$HOME/harvey/projects"
-
 #############
 ## Aliases ##
 
