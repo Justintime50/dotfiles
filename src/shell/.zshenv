@@ -5,11 +5,13 @@
 if [[ "$(uname)" == "Darwin" ]]; then
     # v2.8
     # eval "$(/opt/homebrew/bin/keychain --quick --quiet --eval --agents ssh --inherit any id_rsa)"
+
     # v2.9+
-    eval "$(/opt/homebrew/bin/keychain --eval --quiet --nolock --ssh-allow-forwarded id_rsa)"
+    eval "$(/opt/homebrew/bin/keychain --nolock --quiet --eval id_rsa)"
 elif [[ "$(uname)" == "Linux" ]]; then
     # v2.8
-    # eval "$(/home/linuxbrew/.linuxbrew/bin/keychain --quick --quiet --eval --agents ssh --inherit any id_rsa)"k
+    # eval "$(/home/linuxbrew/.linuxbrew/bin/keychain --quick --quiet --eval --agents ssh --inherit any id_rsa)"
+
     # v2.9+
-    eval "$(/home/linuxbrew/.linuxbrew/bin/keychain --eval --quiet --nolock --ssh-allow-forwarded id_rsa)"
+    eval "$(/home/linuxbrew/.linuxbrew/bin/keychain --nolock --quiet --eval id_rsa)"
 fi
