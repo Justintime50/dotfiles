@@ -24,12 +24,12 @@ export path=(
 ## Aliases ##
 
 # SSH
-alias ssh-lb1='ssh sysadmin@192.168.7.2'
-alias ssh-web1='ssh sysadmin@192.168.7.3'
-alias ssh-web2='ssh sysadmin@192.168.7.5'
-alias ssh-db1='ssh sysadmin@192.168.7.6'
-alias ssh-db2='ssh sysadmin@192.168.7.7'
-alias ssh-dev1='ssh sysadmin@192.168.7.8'
+alias ssh-lb1='ssh -A sysadmin@lb1'
+alias ssh-web1='ssh -A sysadmin@web1'
+alias ssh-web2='ssh -A sysadmin@web2'
+alias ssh-db1='ssh -A sysadmin@db1'
+alias ssh-db2='ssh -A sysadmin@db2'
+alias ssh-dev1='ssh -A sysadmin@dev1'
 
 # Tools
 alias emacs="emacs -nw"
