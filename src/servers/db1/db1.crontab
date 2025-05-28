@@ -28,8 +28,8 @@ MAILTO=admin@shieldmanagement.net
 # TODO: This is just dumping all backups to a single dir, break them up into their own dirs
 10 11 1 * * cronic find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -exec cp '{}' /"$HOME"/sqldumps_deep/ \;
 # Copy backups to NAS
-20 11 * * * . "$HOME/.keychain/$(hostname)-sh"; cronic rsync -avz "$HOME"/sqldumps rsync@192.168.7.4:/volume1/MySQLBackups/
-21 11 * * * . "$HOME/.keychain/$(hostname)-sh"; cronic rsync -avz "$HOME"/sqldumps_deep rsync@192.168.7.4:/volume1/MySQLBackups/
+20 11 * * * . "$HOME/.keychain/$(hostname)-sh"; cronic rsync -avz "$HOME"/sqldumps rsync@synology:/volume1/MySQLBackups/
+21 11 * * * . "$HOME/.keychain/$(hostname)-sh"; cronic rsync -avz "$HOME"/sqldumps_deep rsync@synology:/volume1/MySQLBackups/
 # Cleanup backups older than 30 days (must come last)
 15 11 * * * cronic find "$HOME"/sqldumps -maxdepth 2 -mindepth 2 -mtime +30 -delete
 

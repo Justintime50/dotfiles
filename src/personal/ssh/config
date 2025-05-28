@@ -1,7 +1,7 @@
 Host *
     SetEnv TERM=xterm-256color
 
-Host 192.168.7.* web* db* lb*
+Host 192.168.7.* web* db* lb* dev*
     User jhammond
     IdentityFile ~/.ssh/id_rsa
     ForwardAgent yes
