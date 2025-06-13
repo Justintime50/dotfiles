@@ -38,7 +38,8 @@ export path=(
 # Java
 GPG_TTY="$(tty)"
 export GPG_TTY
-JAVA_HOME=$(/usr/libexec/java_home)
+# Override to use Zulu JDK 21
+JAVA_HOME=$(/usr/libexec/java_home -v 21)
 export JAVA_HOME
 
 #############
