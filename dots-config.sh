@@ -82,6 +82,8 @@ dots_config_up() {
         # Crontabs
         if [[ "$HOSTNAME" == "$LB1_HOSTNAME" ]]; then
             crontab - <"$DOTFILES_DIR"/src/servers/lb1/lb1.crontab
+            # shellcheck disable=SC2002
+            cat "$DOTFILES_DIR"/src/servers/lb1/lb1-root.crontab | sudo crontab -
         fi
         if [[ "$HOSTNAME" == "$WEB1_HOSTNAME" ]]; then
             crontab - <"$DOTFILES_DIR"/src/servers/web1/web1.crontab

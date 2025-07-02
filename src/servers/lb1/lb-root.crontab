@@ -1,0 +1,14 @@
+# lb1 Root Crontab
+# NOTE: Do not store environment variables in this file!
+# They will be sent via email if a cron job fails which could expose sensitive creds
+# Instead, place them in `~/.env-crontab` and source that file on
+# cron jobs that require environment variables
+
+
+# GLOBAL SETUP
+PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+MAILTO=admin@shieldmanagement.net
+
+
+# Certificates
+* * * * * cronic ./git/server-infra/scripts/check-certificate-expirations.sh
