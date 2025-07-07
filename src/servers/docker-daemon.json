@@ -3,6 +3,5 @@
   "log-opts": {
     "max-file": "3",
     "max-size": "10m"
-  },
-  "registry-mirrors": ["https://registry.shieldmanagement.net"]
+  }
 }
