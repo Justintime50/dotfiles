@@ -11,4 +11,4 @@ MAILTO=admin@shieldmanagement.net
 
 
 # Certificates
-0 4 * * * cd /home/sysadmin/git/server-infra/scripts && cronic ./check-certificate-expirations.sh /home/sysadmin/git/server-infra/traefik/prod/acme/acme.json
+0 4 * * * cd /home/sysadmin/git/server-infra/scripts/healthchecks && cronic ./check-certificate-expirations.sh /home/sysadmin/git/server-infra/traefik/prod/acme/acme.json
