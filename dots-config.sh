@@ -15,6 +15,7 @@ dots_config_up() {
     # Always install general shell config
     echo ". $DOTFILES_DIR/src/shell/.zshrc" >>"$HOME"/.zshrc
     ln -sfn "$DOTFILES_DIR/src/shell/.tmux.conf" "$HOME"/.tmux.conf
+    [ -d "$HOME/.tmux/plugins/tpm" ] || git clone https://github.com/tmux-plugins/tpm "$HOME"/.tmux/plugins/tpm
 
     if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]]; then
         # Submodules
@@ -114,6 +115,7 @@ dots_config_down() {
     rm -f "$HOME"/.zshrc
     rm -f "$HOME"/.zshenv
     rm -f "$HOME"/.tmux.conf
+    rm -rf "$HOME"/.tmux/plugins/tpm
 
     if [[ "$HOSTNAME" == "$PERSONAL_HOSTNAME" ]]; then
         # Shell
