@@ -17,7 +17,7 @@ MAILTO=admin@shieldmanagement.net
 
 # Docker
 0 10 * * 0 cronic docker system prune -f
-5 10 * * * . "$HOME"/.env-crontab; cronic deckschrubber --registry http://localhost:5080 -user "$REGISTRY_USER" -password "$REGISTRY_PASSWORD" -latest 10 -repos 20
+5 10 * * * . "$HOME"/.env-crontab; cronic docker exec -t $(docker ps --filter "name=hub_hub." --format "{{.ID}}" | head -n 1) /opt/registry-ui -purge-tags
 
 # Healthchecks
 */3 * * * * cd "$HOME"/git/server-infra && cronic ./scripts/healthchecks/docker-healthcheck.sh
