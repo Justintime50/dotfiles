@@ -6,6 +6,7 @@
 
 EP_USERNAME="jhammond"
 ADMIN_HOST="admin.easypo.net"
+ADHOC_HOST="adhoc2nuq"
 SHARED_DEV_HOST="admin.dev.easypo.net"
 AWS_DEVVM_OREGON3_INSTANCE_NAME="oregon3"
 AWS_DEVVM_USER="vagrant"
@@ -50,6 +51,7 @@ alias ssh-oregon3='ssh -A $AWS_DEVVM_USER@$AWS_DEVVM_OREGON3_INSTANCE_NAME.$EP_U
 alias ssh-oregon3-jump='ssh -A -J `whoami`@$AWS_DEVVM_BASTION_HOST $AWS_DEVVM_USER@$AWS_DEVVM_OREGON3_INSTANCE_NAME.`whoami`.devvm.easypo.net'
 alias ssh-admin='ssh -A $ADMIN_HOST'
 alias ssh-shared-dev='ssh -A $SHARED_DEV_HOST'
+alias ssh-adhoc='ssh -A $ADHOC_HOST'
 
 ###############
 ## Functions ##
