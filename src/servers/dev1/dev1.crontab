@@ -17,7 +17,7 @@ MAILTO=admin@shieldmanagement.net
 
 # Docker
 0 10 * * 0 cronic docker system prune -f
-5 10 * * * . "$HOME"/.env-crontab; cronic docker exec -t $(docker ps --filter "name=hub_hub." --format "{{.ID}}" | head -n 1) /opt/registry-ui -purge-tags
+5 10 * * * cronic docker exec -t $(docker ps --filter "name=hub_hub.1" --format "{{.ID}}" | head -n 1) /opt/registry-ui -purge-tags
 
 # Healthchecks
 */3 * * * * cd "$HOME"/git/server-infra && cronic ./scripts/healthchecks/docker-healthcheck.sh
