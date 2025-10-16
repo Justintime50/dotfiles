@@ -21,7 +21,7 @@ MAILTO=admin@shieldmanagement.net
 
 # Healthchecks
 */3 * * * * cd "$HOME"/git/server-infra && cronic ./scripts/healthchecks/docker-healthcheck.sh
-*/5 * * * * . "$HOME"/.env-crontab; GOVEE_API_KEY="$GOVEE_API_KEY" cronic venv/get_last_unifi_console_backup/bin/python "$HOME"/git/server-infra/scripts/healthchecks/govee_smartplug_healthcheck.py
+*/5 * * * * . "$HOME"/.env-crontab; GOVEE_API_KEY="$GOVEE_API_KEY" cronic venv/govee_smartplug_healthcheck/bin/python "$HOME"/git/server-infra/scripts/healthchecks/govee_smartplug_healthcheck.py
 
 # GitHub Archive
 0 8 * * * . "$HOME"/.env-crontab; . "$HOME/.keychain/$(hostname)-sh"; cronic venv/github-archive/bin/github-archive --users justintime50 --orgs "$GITHUB_ARCHIVE_ORGS" --gists justintime50 --clone --pull --forks --token "$GITHUB_TOKEN" --log_level warning
