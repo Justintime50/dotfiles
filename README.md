@@ -47,6 +47,8 @@ curl -LJs https://raw.githubusercontent.com/justintime50/dotfiles/main/src/perso
     2. Open the GitHub Dark theme file in `personal/iterm2/github-vscode-theme-iterm` and select it as the current theme
 * **Vim**
     1. As long as submodules are initialized and updated locally, Vim should set itself up with `Packer`
+* **Python**
+    1. Use `pyenv` via homebrew (`brew install pyenv`) to manage Python installs and switching (`pyenv install 3.14` && `pyenv global 3.14`)
 
 ## Usage
 
