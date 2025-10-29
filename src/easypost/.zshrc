@@ -17,24 +17,29 @@ AWS_UPLOADS_DIR="/home/$AWS_DEVVM_USER/uploads"
 ##########
 ## Path ##
 export path=(
-    # User-specific binaries
-    /Users/"$USER"/.cargo/bin
-    /Users/"$USER"/.local/bin
-    /Users/"$USER"/.dotnet/tools
-    # Homebrew binaries
-    /opt/homebrew/opt/ruby/bin
-    /opt/homebrew/bin
-    /opt/homebrew/sbin
-    # Mono binaries
-    /usr/local/Cellar/mono/6.12.0.122_1/bin
-    # System binaries
-    /usr/local/bin
-    /usr/bin
-    /bin
-    /usr/local/sbin
-    /usr/sbin
-    /sbin
+	# User-specific binaries
+	/Users/"$USER"/.cargo/bin
+	/Users/"$USER"/.local/bin
+	/Users/"$USER"/.dotnet/tools
+	# Pyenv binaries (must come before homebrew to avoid conflicts)
+	/Users/"$USER"/.pyenv/bin
+	# Homebrew binaries
+	/opt/homebrew/opt/ruby/bin
+	/opt/homebrew/bin
+	/opt/homebrew/sbin
+	# Mono binaries
+	/usr/local/Cellar/mono/6.12.0.122_1/bin
+	# System binaries
+	/usr/local/bin
+	/usr/bin
+	/bin
+	/usr/local/sbin
+	/usr/sbin
+	/sbin
 )
+
+# Pyenv
+eval "$(pyenv init - zsh)"
 
 # Java
 GPG_TTY="$(tty)"
@@ -58,18 +63,18 @@ alias ssh-adhoc='ssh -A $ADHOC_HOST'
 
 alias scp-upload-oregon3="do_scp_upload_oregon3"
 do_scp_upload_oregon3() {
-    if [ -z "$1" ]; then
-        echo "You must provide a filename to use SCP."
-    else
-        scp "$@" "$AWS_DEVVM_USER"@"$AWS_DEVVM_OREGON3_INSTANCE_NAME"."$EP_USERNAME"."$AWS_DEVVM_HOST":"$AWS_UPLOADS_DIR" || echo "Couldn't copy file."
-    fi
+	if [ -z "$1" ]; then
+		echo "You must provide a filename to use SCP."
+	else
+		scp "$@" "$AWS_DEVVM_USER"@"$AWS_DEVVM_OREGON3_INSTANCE_NAME"."$EP_USERNAME"."$AWS_DEVVM_HOST":"$AWS_UPLOADS_DIR" || echo "Couldn't copy file."
+	fi
 }
 
 alias scp-download-oregon3="do_scp_download_oregon3"
 do_scp_download_oregon3() {
-    if [ -z "$1" ]; then
-        echo "You must provide a filename to use SCP."
-    else
-        scp "$AWS_DEVVM_USER"@"$AWS_DEVVM_OREGON3_INSTANCE_NAME"."$EP_USERNAME"."$AWS_DEVVM_HOST":"$1" "$HOME"/Downloads/ || echo "Couldn't copy file."
-    fi
+	if [ -z "$1" ]; then
+		echo "You must provide a filename to use SCP."
+	else
+		scp "$AWS_DEVVM_USER"@"$AWS_DEVVM_OREGON3_INSTANCE_NAME"."$EP_USERNAME"."$AWS_DEVVM_HOST":"$1" "$HOME"/Downloads/ || echo "Couldn't copy file."
+	fi
 }

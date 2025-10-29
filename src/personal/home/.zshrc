@@ -4,20 +4,22 @@
 ##########
 ## Path ##
 export path=(
-    # User-specific binaries
-    /Users/"$USER"/.cargo/bin
-    /Users/"$USER"/.local/bin
-    # Homebrew binaries
-    /opt/homebrew/opt/ruby/bin
-    /opt/homebrew/bin
-    /opt/homebrew/sbin
-    # System binaries
-    /usr/local/bin
-    /usr/bin
-    /bin
-    /usr/local/sbin
-    /usr/sbin
-    /sbin
+	# User-specific binaries
+	/Users/"$USER"/.cargo/bin
+	/Users/"$USER"/.local/bin
+	# Pyenv binaries (must come before homebrew to avoid conflicts)
+	/Users/"$USER"/.pyenv/bin
+	# Homebrew binaries
+	/opt/homebrew/opt/ruby/bin
+	/opt/homebrew/bin
+	/opt/homebrew/sbin
+	# System binaries
+	/usr/local/bin
+	/usr/bin
+	/bin
+	/usr/local/sbin
+	/usr/sbin
+	/sbin
 )
 
 #############
