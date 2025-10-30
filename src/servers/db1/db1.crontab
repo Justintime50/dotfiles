@@ -24,7 +24,7 @@ MAILTO=admin@shieldmanagement.net
 4 11 * * * . "$HOME"/.env-crontab; SRVINFRA_DATABASE_EXECUTABLE="mariadb" cronic "$HOME"/git/server-infra/scripts/srvinfra/srvinfra.sh export_database_secure $(docker ps --filter "name=callus-fabrication-db" --format "{{.ID}}" | head -n 1) "$CALLUSFABRICATION_DB_ROOT_PASSWORD" callusfabrication "$HOME/sqldumps/callusfabrication/callusfabrication_$(date +\%F_\%H-\%M-\%S).enc.gz"
 5 11 * * * . "$HOME"/.env-crontab; SRVINFRA_DATABASE_EXECUTABLE="mariadb" cronic "$HOME"/git/server-infra/scripts/srvinfra/srvinfra.sh export_database_secure $(docker ps --filter "name=golf-rocket-blog-db" --format "{{.ID}}" | head -n 1) "$GOLFROCKETBLOG_DB_ROOT_PASSWORD" golfrocketblog "$HOME/sqldumps/golfrocketblog/golfrocketblog_$(date +\%F_\%H-\%M-\%S).enc.gz"
 6 11 * * * . "$HOME"/.env-crontab; SRVINFRA_DATABASE_EXECUTABLE="mariadb" cronic "$HOME"/git/server-infra/scripts/srvinfra/srvinfra.sh export_database_secure $(docker ps --filter "name=golf-rocket-primary-db" --format "{{.ID}}" | head -n 1) "$GOLFROCKET_DB_ROOT_PASSWORD" golfrocket "$HOME/sqldumps/golfrocket/golfrocket_$(date +\%F_\%H-\%M-\%S).enc.gz"
-10 11 * * * . "$HOME/.keychain/$(hostname)-sh"; cd "$HOME"/git/server-infra/scripts && cronic ./database-backup-maintenance.sh
+10 11 * * * . "$HOME/.keychain/$(hostname)-sh"; cd "$HOME"/git/server-infra/scripts/backups && cronic ./database-backup-maintenance.sh
 
 # Healthchecks
 */3 * * * * cd "$HOME"/git/server-infra && cronic ./scripts/healthchecks/docker-healthcheck.sh

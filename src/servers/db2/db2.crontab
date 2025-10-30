@@ -20,4 +20,4 @@ MAILTO=admin@shieldmanagement.net
 
 # Healthchecks
 */3 * * * * cd "$HOME"/git/server-infra && cronic ./scripts/healthchecks/docker-healthcheck.sh
-# */5 * * * * . "$HOME"/git/server-infra/databases/golf-rocket/replica/.env; cd "$HOME"/git/server-infra/scripts/healthchecks && MARIADB_ROOT_PASSWORD="$MARIADB_ROOT_PASSWORD" cronic ./check-database-replication-status.sh golf-rocket-replica-db
+# */5 * * * * . "$HOME"/git/server-infra/databases/golf-rocket/replica/.env; export MARIADB_ROOT_PASSWORD; cd "$HOME"/git/server-infra/scripts/healthchecks && cronic ./check-database-replication-status.sh golf-rocket-replica-db

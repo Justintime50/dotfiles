@@ -21,7 +21,7 @@ MAILTO=admin@shieldmanagement.net
 
 # Healthchecks
 */3 * * * * cd "$HOME"/git/server-infra && cronic ./scripts/healthchecks/docker-healthcheck.sh
-*/5 * * * * . "$HOME"/.env-crontab; GOVEE_API_KEY="$GOVEE_API_KEY" cronic venv/govee_smartplug_healthcheck/bin/python "$HOME"/git/server-infra/scripts/healthchecks/govee_smartplug_healthcheck.py
+*/5 * * * * . "$HOME"/.env-crontab; export GOVEE_API_KEY; cronic venv/govee_smartplug_healthcheck/bin/python "$HOME"/git/server-infra/scripts/healthchecks/govee_smartplug_healthcheck.py
 
 # GitHub Archive
 0 8 * * * . "$HOME"/.env-crontab; . "$HOME/.keychain/$(hostname)-sh"; cronic venv/github-archive/bin/github-archive --users justintime50 --orgs "$GITHUB_ARCHIVE_ORGS" --gists justintime50 --clone --pull --forks --token "$GITHUB_TOKEN" --log_level warning
@@ -30,5 +30,4 @@ MAILTO=admin@shieldmanagement.net
 0 16 * * 1 . "$HOME"/.env-crontab; cronic venv/pullbug/bin/pullbug --pulls --issues --drafts --github_token "$GITHUB_TOKEN" --github_context users --github_owner Justintime50 --discord --discord_url "$PULLBUG_DISCORD_URL" --log_level warning
 
 # Unifi Config Backups
-0 11 * * * . "$HOME"/.env-crontab; UNIFI_USERNAME="$UNIFI_USERNAME" UNIFI_PASSWORD="$UNIFI_PASSWORD" UNIFI_BACKUP_LOCATION="$UNIFI_BACKUP_LOCATION" cronic venv/get_last_unifi_console_backup/bin/python "$HOME"/git/server-infra/scripts/get_last_console_backup.py
-5 11 * * 0 . "$HOME"/.env-crontab; cronic find "$UNIFI_BACKUP_LOCATION" -mtime +180 -delete
+0 11 * * * . "$HOME/.keychain/$(hostname)-sh"; . "$HOME"/.env-crontab; export UNIFI_USERNAME UNIFI_PASSWORD UNIFI_BACKUP_LOCATION; cd "$HOME"/git/server-infra/scripts/backups && cronic ./unifi-backup-maintenance.sh
