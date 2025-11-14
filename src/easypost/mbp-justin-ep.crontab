@@ -10,5 +10,5 @@ MAILTO=jhammond@easypost.com
 
 # Alchemist
 0 12 * * * cronic alchemist --update
-30 12 * * * cronic alchemist --backup --force
+30 12 * * * cronic alchemist --backup
 35 12 * * * cronic cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/easypost/Brewfile"

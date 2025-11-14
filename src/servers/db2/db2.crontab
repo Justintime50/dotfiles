@@ -10,9 +10,9 @@ PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/s
 MAILTO=admin@shieldmanagement.net
 
 
-# Alchemist (DO NOT use `--greedy` here since it will break Docker in prod)
+# Alchemist
 10 9 * * * cronic alchemist --update
-30 9 * * * cronic alchemist --backup --force
+30 9 * * * cronic alchemist --backup
 45 9 * * * cronic cp "$HOME/alchemist/backup/Brewfile" "$HOME/.dotfiles/src/servers/$(hostname)/Brewfile"
 
 # Docker
