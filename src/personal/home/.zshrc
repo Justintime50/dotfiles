@@ -22,6 +22,9 @@ export path=(
 	/sbin
 )
 
+# Pyenv
+eval "$(pyenv init - zsh)"
+
 #############
 ## Aliases ##
 
