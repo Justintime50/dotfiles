@@ -1,12 +1,6 @@
 [submodule "dots"]
 	path = dots
 	url = https://github.com/justintime50/dots
-[submodule "src/vim/pack/github-nvim-theme"]
-	path = src/vim/pack/github-nvim-theme
-	url = https://github.com/projekt0n/github-nvim-theme
-[submodule "src/vim/pack/packer.nvim"]
-	path = src/vim/pack/packer.nvim
-	url = https://github.com/wbthomason/packer.nvim
 [submodule "src/personal/iterm2/github-vscode-theme-iterm"]
 	path = src/personal/iterm2/github-vscode-theme-iterm
 	url = https://github.com/cdalvaro/github-vscode-theme-iterm

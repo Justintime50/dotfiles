@@ -166,15 +166,14 @@ _install_emacs() {
 }
 
 _install_vim() {
-    # Setup directories prior to linking (helpful for new machines)
-    mkdir -p "$HOME"/.config/nvim/lua
-    mkdir -p "$HOME"/.local/share/nvim/site/pack/packer/start
+    # Install vim-plug
+    if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
+        curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
+            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    fi
 
     # Link items
-    ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.vimrc # legacy
-    ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.config/nvim/init.vim
-    ln -sfn "$DOTFILES_DIR"/src/vim/plugins.lua "$HOME"/.config/nvim/lua/plugins.lua
-    ln -sfn "$DOTFILES_DIR"/src/vim/pack/* "$HOME"/.local/share/nvim/site/pack/packer/start
+    ln -sfn "$DOTFILES_DIR"/src/vim/.vimrc "$HOME"/.vimrc
 }
 
 _uninstall_emacs() {
@@ -183,7 +182,5 @@ _uninstall_emacs() {
 
 _uninstall_vim() {
     rm -f "$HOME"/.vimrc
-    rm -f "$HOME"/.config/nvim/init.vim
-    rm -f "$HOME"/.config/nvim/lua/plugins.lua
-    rm -rf "$HOME"/.local/share/nvim/site/pack/packer/start
+    rm -f "$HOME/.vim/autoload/plug.vim"
 }

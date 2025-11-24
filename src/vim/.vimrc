@@ -74,16 +74,12 @@ if has('syntax') && has('eval')
   packadd! matchit
 endif
 
-" Enable theme
-" NOTE: Configuration needs to be set BEFORE loading the color scheme with `colorscheme` command
-let g:github_function_style = "italic"
-let g:github_sidebars = ["qf", "vista_kind", "terminal", "packer"]
+" Load plugins using vim-plug
+call plug#begin()
 
-" Change the "hint" color to the "orange" color, and make the "error" color bright red
-let g:github_colors = {
-  \ 'hint': 'orange',
-  \ 'error': '#ff0000'
-\ }
+Plug 'wojciechkepka/vim-github-dark'
 
-" Load the colorscheme
-colorscheme github_dark
+call plug#end()
+
+" Setup theme
+colorscheme ghdark

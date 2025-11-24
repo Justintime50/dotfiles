@@ -11,9 +11,7 @@ SAVEHIST=1000
 ############
 ## Editor ##
 unset EDITOR
-if [[ -s $(which nvim) ]]; then
-    export EDITOR=nvim
-elif [[ -s $(which vim) ]]; then
+if [[ -s $(which vim) ]]; then
     export EDITOR=vim
 else
     export EDITOR=vi
