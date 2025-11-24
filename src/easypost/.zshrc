@@ -28,8 +28,8 @@ export path=(
     /opt/homebrew/lib/ruby/gems/3.4.0/bin
     /opt/homebrew/bin
     /opt/homebrew/sbin
-    # Mono binaries
-    /usr/local/Cellar/mono/6.12.0.122_1/bin
+    # C# binaries
+    /usr/local/share/dotnet
     # System binaries
     /usr/local/bin
     /usr/bin
