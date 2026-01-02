@@ -32,3 +32,4 @@ MAILTO=admin@shieldmanagement.net
 # Backups
 0 11 * * * . "$HOME/.keychain/$(hostname)-sh"; . "$HOME"/.env-crontab; export UNIFI_USERNAME UNIFI_PASSWORD UNIFI_BACKUP_LOCATION; cd "$HOME"/git/server-infra/scripts/backups && cronic ./unifi-backup-maintenance.sh
 5 11 * * * . "$HOME/.keychain/$(hostname)-sh"; cd "$HOME"/git/server-infra/scripts/backups && cronic ./backup-docker-registry.sh
+10 11 * * * . "$HOME/.keychain/$(hostname)-sh"; cd "$HOME"/git/server-infra/scripts/backups && cronic ./backup-elasticsearch.sh
