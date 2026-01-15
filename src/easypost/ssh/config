@@ -10,7 +10,7 @@ Host *.easypo.net
     User jhammond
     ForwardAgent yes
 
-Host *sj *wdc *nuq
+Host *wdc *nuq *aze
     User jhammond
     ForwardAgent yes
     ProxyJump admin.easypo.net
