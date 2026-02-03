@@ -14,6 +14,12 @@ AWS_DEVVM_HOST="devvm.easypo.net"
 AWS_DEVVM_BASTION_HOST="admin.dev.easypo.net"
 AWS_UPLOADS_DIR="/home/$AWS_DEVVM_USER/uploads"
 
+## Claude/Vertex/GCP
+export CLAUDE_CODE_USE_VERTEX=1
+export ANTHROPIC_VERTEX_PROJECT_ID="ep-gemini-team-eng"
+export GOOGLE_CLOUD_PROJECT="ep-gemini-team-eng"
+export CLOUD_ML_REGION="global"
+
 ##########
 ## Path ##
 export path=(
