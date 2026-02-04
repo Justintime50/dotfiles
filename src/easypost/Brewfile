@@ -214,6 +214,7 @@ brew "zstd"
 # Casks
 cask_args appdir: "~/Applications"
 cask "copilot-cli"
+cask "gcloud-cli"
 cask "ghostty"
 cask "gimp"
 cask "imageoptim"
