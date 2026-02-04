@@ -1,0 +1,10 @@
+export path=(
+    /usr/local/bin
+	/usr/bin
+	/usr/local/sbin
+	/usr/sbin
+	/home/vagrant/bin
+	/opt/puppetlabs/bin
+	/usr/local/srvbin
+	/home/vagrant/.local/bin
+)

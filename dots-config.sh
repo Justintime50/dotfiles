@@ -56,6 +56,7 @@ dots_config_up() {
         _install_submodules
 
         # Shell
+		echo ". $DOTFILES_DIR/src/easypost/.zshrc-aws" >>"$HOME"/.zshrc
         ln -sfn "$DOTFILES_DIR"/src/easypost/.gitconfig-easypost-aws "$HOME"/.gitconfig
         if [[ "$HOSTNAME" == "$EASYPOST_AWS_OREGON3_HOSTNAME" ]]; then
             crontab - <"$DOTFILES_DIR"/src/easypost/devvm.crontab
