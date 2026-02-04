@@ -29,6 +29,8 @@ export path=(
     /Users/"$USER"/.dotnet/tools
     # Pyenv binaries (must come before homebrew to avoid conflicts)
     /Users/"$USER"/.pyenv/bin
+	# Homeowner binaries
+	/home/vagrant/.local/bin
     # Homebrew binaries
     /opt/homebrew/opt/ruby/bin
     /opt/homebrew/lib/ruby/gems/3.4.0/bin
