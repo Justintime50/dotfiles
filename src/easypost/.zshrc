@@ -85,3 +85,9 @@ do_scp_download_oregon3() {
         scp "$AWS_DEVVM_USER"@"$AWS_DEVVM_OREGON3_INSTANCE_NAME"."$EP_USERNAME"."$AWS_DEVVM_HOST":"$1" "$HOME"/Downloads/ || echo "Couldn't copy file."
     fi
 }
+
+alias gcloud-login="do_gcloud_login"
+do_gcloud_login() {
+	gcloud auth application-default login
+	scp ~/.config/gcloud/application_default_credentials.json "$AWS_DEVVM_USER"@"$AWS_DEVVM_OREGON3_INSTANCE_NAME"."$EP_USERNAME"."$AWS_DEVVM_HOST":/home/vagrant/.config/gcloud/application_default_credentials.json
+}
