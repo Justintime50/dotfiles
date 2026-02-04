@@ -1,4 +1,5 @@
 export path=(
+	# Homeowner binaries
     /usr/local/bin
 	/usr/bin
 	/usr/local/sbin
@@ -6,5 +7,11 @@ export path=(
 	/home/vagrant/bin
 	/opt/puppetlabs/bin
 	/usr/local/srvbin
+	# Personal binaries
 	/home/vagrant/.local/bin
 )
+
+export CLAUDE_CODE_USE_VERTEX=1
+export ANTHROPIC_VERTEX_PROJECT_ID="ep-gemini-team-eng"
+export GOOGLE_CLOUD_PROJECT="ep-gemini-team-eng"
+export CLOUD_ML_REGION="global"
